@@ -183,30 +183,54 @@
     </nav>
 
     <div class="container theme-showcase" role="main">
-        <div class="jumbotron">
+    <label for="inputAddress2">REGISTRO</label>
+    <label for="inputAddress2"></label>
+
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+                </div>
+
+                 <div class="form-group col-md-6">
+                     <label for="apellido">Apellido</label>
+                     <input type="text" class="form-control" id="apellido" placeholder="Apellido">
+                 </div>
+
+            </div>
+
             <div class="form-group">
                 <label for="rut">Rut</label>
-                <input type="rut" class="form-control" id="rut" placeholder="12.345.678-9">
+                <input type="text" class="form-control" id="rut" placeholder="12.345.678-9">
+            </div>
+
+            <div class="form-group">
+                <label for="inputAddress2">Correo</label>
+                <input type="email" class="form-control" id="correo" placeholder="example@example.com">
+            </div>
+
+            <div class="form-gourp">
+                <div class="form-group">
+                     <label for="inputState">Carrera</label>
+                     <select id="correo" class="form-control">
+                         <option selected>Carreras</option>
+                         <option>ICCI</option>
+                         <option>IenCI</option>
+                         <option>IECI</option>
+                    </select>
+                </div>
+                
+            
+            </div>
+
+            <div class="form-group">
+                 <label for="telefono">Telefono</label>
+                 <input type="text" class="form-control" id="telefono">
             </div>
         
-            <div class="form-group">
-                 <label for="exampleDropdownFormPassword2">Contraseña</label>
-                 <input type="password" class="form-control" id="contraseña" placeholder="contraseña">
-            </div>
-
-            <button type="button" class="btn btn-link">Ingresar</button>
-            <a class="btn btn-primary" href="#" role="button">Ingresar</a>
-
-             <div class="form-group">
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="dropdownCheck2">
-                    
-                    <label class="form-check-label" for="dropdownCheck2">
-                      Recuerdame
-                    </label>
-                </div>
-            </div>
-        </div>
+             <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
     </div>
 
 

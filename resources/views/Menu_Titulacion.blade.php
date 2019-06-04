@@ -136,7 +136,7 @@
         }
         .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item.active {
             color: #1C2D3F;
-            background-color: #4e7ca8;
+            background-color: #ff0080;
         }
     }
 
@@ -176,38 +176,41 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-
+                     <a class="navbar-brand" href="{{ url('/') }}">
+                     Inicio
+                     <a class="navbar-brand" href="{{ url('/') }}">
+                     Cerrar Sesion
                 </ul>
              </a>
         </div>
     </nav>
 
     <div class="container theme-showcase" role="main">
-        <div class="jumbotron">
-            <div class="form-group">
-                <label for="rut">Rut</label>
-                <input type="rut" class="form-control" id="rut" placeholder="12.345.678-9">
-            </div>
-        
-            <div class="form-group">
-                 <label for="exampleDropdownFormPassword2">Contraseña</label>
-                 <input type="password" class="form-control" id="contraseña" placeholder="contraseña">
-            </div>
 
-            <button type="button" class="btn btn-link">Ingresar</button>
-            <a class="btn btn-primary" href="#" role="button">Ingresar</a>
+        <div class="list-group">
+             <label for="inputAddress2">ALUMNOS</label>
+             <a href="#" class="list-group-item list-group-item-action">Registro</a>
+             <a href="#" class="list-group-item list-group-item-action">Actualizacion</a>
+       </div> 
 
-             <div class="form-group">
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="dropdownCheck2">
-                    
-                    <label class="form-check-label" for="dropdownCheck2">
-                      Recuerdame
-                    </label>
-                </div>
-            </div>
-        </div>
-    </div>
+       <div class="list-group">
+             <label for="inputAddress2">ACADEMICO</label>
+             <a href="#" class="list-group-item list-group-item-action">Registro</a>
+             <a href="#" class="list-group-item list-group-item-action">Actualizacion</a>
+       </div> 
+
+       <div class="list-group">
+             <label for="inputAddress2">TTULACION</label>
+             <a href="#" class="list-group-item list-group-item-action">Registro de actividad</a>
+             <a href="#" class="list-group-item list-group-item-action">Inscripcion</a>
+             <a href="#" class="list-group-item list-group-item-action">Autorizar actividad</a>
+             <a href="#" class="list-group-item list-group-item-action">Actualizar actividad</a>
+             <a href="#" class="list-group-item list-group-item-action">Actividades en progreso</a>
+             <a href="#" class="list-group-item list-group-item-action">Anulacion</a>
+       </div> 
+
+       <a href="#" class="list-group-item list-group-item-action">Reportes</a>
+     </div>
 
 
 </body>
