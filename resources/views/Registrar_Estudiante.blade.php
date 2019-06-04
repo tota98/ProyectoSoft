@@ -176,15 +176,18 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-
+                     <a class="navbar-brand" href="{{ url('/') }}">
+                     Inicio
+                     <a class="navbar-brand" href="{{ url('/') }}">
+                     Cerrar Sesion
                 </ul>
              </a>
         </div>
     </nav>
 
     <div class="container theme-showcase" role="main">
-    <label for="inputAddress2">REGISTRO</label>
-    <label for="inputAddress2"></label>
+    
+    <h1>REGISTRO<span class="badge badge-secondary"></span></h1>
 
         <form>
             <div class="form-row">

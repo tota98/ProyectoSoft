@@ -187,67 +187,35 @@
 
     <div class="container theme-showcase" role="main">
    
-         <div class="input-group input-group-lg">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-lg">BUSQUEDA</span>
-             </div>
-             <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
-        </div>
-
-         <h1>ACTUALIZACION<span class="badge badge-secondary"></span></h1>
+         <h1>REPORTES<span class="badge badge-secondary"></span></h1>
         
-
-        <form>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Nombre">
-                </div>
-
-                 <div class="form-group col-md-6">
-                     <label for="apellido">Apellido</label>
-                     <input type="text" class="form-control" id="apellido" placeholder="Apellido">
-                 </div>
-
-            </div>
-
-            <div class="form-group">
-                <label for="rut">Rut</label>
-                <input type="text" class="form-control" id="rut" placeholder="12.345.678-9">
-            </div>
-
-            <div class="form-group">
-                <label for="inputAddress2">Correo</label>
-                <input type="email" class="form-control" id="correo" placeholder="example@example.com">
-            </div>
-
-            <div class="form-gourp">
-                <div class="form-group">
-                     <label for="inputState">Carrera</label>
-                     <select id="correo" class="form-control">
-                         <option selected>Carreras</option>
-                         <option>ICCI</option>
-                         <option>IenCI</option>
-                         <option>IECI</option>
-                    </select>
-                </div>
-                
+         <select class="form-control">
+            <option>Actividades de titulación en estado “Aceptada”</option>
+            <option>Actividades de titulación en estado “Ingresada”</option>
+            <option></option>
+            <option></option>
+           
             
-            </div>
+         </select>
 
-            <div class="form-group">
-                 <label for="telefono">Telefono</label>
-                 <input type="text" class="form-control" id="telefono">
+         <div class="btn-group-vertical">
+             <a class="btn btn-primary" href="#" role="button">Link</a>
+             <a class="btn btn-primary" href="#" role="button">Link</a>
+             <a class="btn btn-primary" href="#" role="button">Link</a>
+             <a class="btn btn-primary" href="#" role="button">Link</a>
+             <div class="dropdown">
+                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 Dropdown link
+                 </a>
+
+                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                     <a class="dropdown-item" href="#">Action</a>
+                     <a class="dropdown-item" href="#">Another action</a>
+                     <a class="dropdown-item" href="#">Something else here</a>
+                 </div>
             </div>
-        
-            <div class="form-check">
-                 <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                 <label class="form-check-label" for="defaultCheck1">
-                 Eliminar Alumno
-                 </label>
-            </div>
-             <button type="submit" class="btn btn-primary">Registrar</button>
-        </form>
+         </div>
+
     </div>
 
 

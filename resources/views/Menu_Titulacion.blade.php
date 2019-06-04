@@ -136,7 +136,7 @@
         }
         .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item.active {
             color: #1C2D3F;
-            background-color: #ff0080;
+            background-color: #4e7ca8;
         }
     }
 

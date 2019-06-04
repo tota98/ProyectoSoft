@@ -194,7 +194,7 @@
                  <input type="password" class="form-control" id="contraseña" placeholder="contraseña">
             </div>
 
-            <button type="button" class="btn btn-link">Ingresar</button>
+            
             <a class="btn btn-primary" href="#" role="button">Ingresar</a>
 
              <div class="form-group">

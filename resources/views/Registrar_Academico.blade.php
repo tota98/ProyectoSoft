@@ -186,16 +186,8 @@
     </nav>
 
     <div class="container theme-showcase" role="main">
-   
-         <div class="input-group input-group-lg">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-lg">BUSQUEDA</span>
-             </div>
-             <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
-        </div>
-
-         <h1>ACTUALIZACION<span class="badge badge-secondary"></span></h1>
-        
+    
+    <h1>REGISTRO<span class="badge badge-secondary"></span></h1>
 
         <form>
             <div class="form-row">
@@ -221,31 +213,8 @@
                 <input type="email" class="form-control" id="correo" placeholder="example@example.com">
             </div>
 
-            <div class="form-gourp">
-                <div class="form-group">
-                     <label for="inputState">Carrera</label>
-                     <select id="correo" class="form-control">
-                         <option selected>Carreras</option>
-                         <option>ICCI</option>
-                         <option>IenCI</option>
-                         <option>IECI</option>
-                    </select>
-                </div>
-                
             
-            </div>
-
-            <div class="form-group">
-                 <label for="telefono">Telefono</label>
-                 <input type="text" class="form-control" id="telefono">
-            </div>
         
-            <div class="form-check">
-                 <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                 <label class="form-check-label" for="defaultCheck1">
-                 Eliminar Alumno
-                 </label>
-            </div>
              <button type="submit" class="btn btn-primary">Registrar</button>
         </form>
     </div>

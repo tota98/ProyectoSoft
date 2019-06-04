@@ -15,9 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::get('/reg_1A', function () {
     return view('Registrar_Estudiante');
+});
+
+Route::get('/reg_1B', function () {
+    return view('Actualizar_Estudiante');
+});
+
+Route::get('/reg_2A', function () {
+    return view('Registrar_Academico');
 });
 
 Route::get('/reg_1B', function () {
@@ -30,4 +37,8 @@ Route::get('/secre', function () {
 
 Route::get('/titulacion', function () {
     return view('Menu_Titulacion');
+});
+
+Route::get('/reporte', function () {
+    return view('Reportes');
 });
