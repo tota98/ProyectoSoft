@@ -158,6 +158,11 @@
 
     body{
         background-color: #ffffff;
+        
+    }
+
+    .container theme-showcase  {
+         background-color: #ff0080;
     }
 
 </style>
@@ -185,8 +190,8 @@
         </div>
     </nav>
 
-    <div class="container theme-showcase" role="main">
-   
+    <div class="container theme-showcase" role="main" id="main">
+
          <div class="input-group input-group-lg">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-lg">BUSQUEDA</span>
@@ -209,11 +214,6 @@
                      <input type="text" class="form-control" id="apellido" placeholder="Apellido">
                  </div>
 
-            </div>
-
-            <div class="form-group">
-                <label for="rut">Rut</label>
-                <input type="text" class="form-control" id="rut" placeholder="12.345.678-9">
             </div>
 
             <div class="form-group">
@@ -252,4 +252,5 @@
 
 
 </body>
+
 </html>

@@ -31,8 +31,8 @@ Route::get('/reg_2A', function () {
     return view('Registrar_Academico');
 });
 
-Route::get('/reg_1B', function () {
-    return view('Actualizar_Estudiante');
+Route::get('/reg_2B', function () {
+    return view('Actualizar_Academico');
 });
 
 Route::get('/secre', function () {

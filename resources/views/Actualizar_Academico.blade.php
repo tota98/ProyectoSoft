@@ -176,7 +176,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                     <a class="navbar-brand" href="{{ url('/titulacion') }}">
+                     <a class="navbar-brand" href="{{ url('/') }}">
                      Inicio
                      <a class="navbar-brand" href="{{ url('/') }}">
                      Cerrar Sesion
@@ -186,31 +186,47 @@
     </nav>
 
     <div class="container theme-showcase" role="main">
+   
+         <div class="input-group input-group-lg">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-lg">BUSQUEDA</span>
+             </div>
+             <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        </div>
 
-        <div class="list-group">
-             <label for="inputAddress2">ALUMNOS</label>
-             <a href="{{url('/reg_1A')}}" class="list-group-item list-group-item-action">Registro</a>
-             <a href="{{url('/reg_1B')}}" class="list-group-item list-group-item-action">Actualizacion</a>
-       </div> 
+         <h1>ACTUALIZACION<span class="badge badge-secondary"></span></h1>
+        
 
-       <div class="list-group">
-             <label for="inputAddress2">ACADEMICO</label>
-             <a href="{{url('/reg_2A')}}" class="list-group-item list-group-item-action">Registro</a>
-             <a href="{{url('/reg_2B')}}" class="list-group-item list-group-item-action">Actualizacion</a>
-       </div> 
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+                </div>
 
-       <div class="list-group">
-             <label for="inputAddress2">TTULACION</label>
-             <a href="#" class="list-group-item list-group-item-action">Registro de actividad</a>
-             <a href="#" class="list-group-item list-group-item-action">Inscripcion</a>
-             <a href="#" class="list-group-item list-group-item-action">Autorizar actividad</a>
-             <a href="#" class="list-group-item list-group-item-action">Actualizar actividad</a>
-             <a href="#" class="list-group-item list-group-item-action">Actividades en progreso</a>
-             <a href="#" class="list-group-item list-group-item-action">Anulacion</a>
-       </div> 
+                 <div class="form-group col-md-6">
+                     <label for="apellido">Apellido</label>
+                     <input type="text" class="form-control" id="apellido" placeholder="Apellido">
+                 </div>
 
-       <a href="#" class="list-group-item list-group-item-action">Reportes</a>
-     </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputAddress2">Correo</label>
+                <input type="email" class="form-control" id="correo" placeholder="example@example.com">
+            </div>
+
+            
+        
+            <div class="form-check">
+                 <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                 <label class="form-check-label" for="defaultCheck1">
+                 Eliminar Academico
+                 </label>
+            </div>
+             <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+    </div>
 
 
 </body>

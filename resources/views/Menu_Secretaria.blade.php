@@ -176,7 +176,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                     <a class="navbar-brand" href="{{ url('/') }}">
+                     <a class="navbar-brand" href="{{route('MenuSecretaria')}}">
                      Inicio
                      <a class="navbar-brand" href="{{ url('/') }}">
                      Cerrar Sesion
@@ -189,14 +189,14 @@
 
         <div class="list-group">
              <label for="inputAddress2">ALUMNOS</label>
-             <a href="#" class="list-group-item list-group-item-action">Registro</a>
-             <a href="#" class="list-group-item list-group-item-action">Actualizacion</a>
+             <a href="{{url('/reg_1A')}}" class="list-group-item list-group-item-action">Registro</a>
+             <a href="{{url('/reg_1B')}}" class="list-group-item list-group-item-action">Actualizacion</a>
        </div> 
 
        <div class="list-group">
              <label for="inputAddress2">ACADEMICO</label>
-             <a href="#" class="list-group-item list-group-item-action">Registro</a>
-             <a href="#" class="list-group-item list-group-item-action">Actualizacion</a>
+             <a href="{{url('/reg_2A')}}" class="list-group-item list-group-item-action">Registro</a>
+             <a href="{{url('/reg_2B')}}" class="list-group-item list-group-item-action">Actualizacion</a>
        </div> 
 
        <div class="list-group">
@@ -207,7 +207,7 @@
              <a href="#" class="list-group-item list-group-item-action">Anulacion</a>
        </div> 
 
-       <a href="#" class="list-group-item list-group-item-action">Reportes</a>
+       <a href="{{url('/reporte')}}" class="list-group-item list-group-item-action">Reportes</a>
      </div>
 
 
