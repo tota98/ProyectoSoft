@@ -15,7 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/reg_1A', function () {
+Route::get('/Menu_Secretaria','SecretariaController@Menu')
+    ->name('MenuSecretaria');
+
+Route::get('/reg_1A', function () 
+{
     return view('Registrar_Estudiante');
 });
 
@@ -42,3 +46,6 @@ Route::get('/titulacion', function () {
 Route::get('/reporte', function () {
     return view('Reportes');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
