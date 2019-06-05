@@ -186,7 +186,7 @@
     </nav>
 
     <div class="container theme-showcase" role="main">
-   
+    <div class="jumbotron">
          <h1>REPORTES<span class="badge badge-secondary"></span></h1>
         
          <select class="form-control">
@@ -217,7 +217,7 @@
          </div>
 
     </div>
-
+    </div>
 
 </body>
 </html>

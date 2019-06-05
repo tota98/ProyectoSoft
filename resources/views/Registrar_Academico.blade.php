@@ -186,7 +186,7 @@
     </nav>
 
     <div class="container theme-showcase" role="main">
-    
+    <div class="jumbotron">
     <h1>REGISTRO<span class="badge badge-secondary"></span></h1>
 
         <form>
@@ -218,7 +218,7 @@
              <button type="submit" class="btn btn-primary">Registrar</button>
         </form>
     </div>
-
+    </div>
 
 </body>
 </html>

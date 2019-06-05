@@ -186,7 +186,7 @@
     </nav>
 
     <div class="container theme-showcase" role="main">
-
+    <div class="jumbotron">
         <div class="list-group">
              <label for="inputAddress2">ALUMNOS</label>
              <a href="{{url('/reg_1A')}}" class="list-group-item list-group-item-action">Registro</a>
@@ -211,7 +211,7 @@
 
        <a href="#" class="list-group-item list-group-item-action">Reportes</a>
      </div>
-
+    </div>
 
 </body>
 </html>

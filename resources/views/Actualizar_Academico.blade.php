@@ -186,7 +186,7 @@
     </nav>
 
     <div class="container theme-showcase" role="main">
-   
+    <div class="jumbotron">
          <div class="input-group input-group-lg">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-lg">BUSQUEDA</span>
@@ -227,7 +227,7 @@
              <button type="submit" class="btn btn-primary">Registrar</button>
         </form>
     </div>
-
+    </div>
 
 </body>
 </html>
