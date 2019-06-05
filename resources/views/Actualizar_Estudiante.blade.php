@@ -161,9 +161,6 @@
         
     }
 
-    .container theme-showcase  {
-         background-color: #ff0080;
-    }
 
 </style>
 
@@ -191,7 +188,7 @@
     </nav>
 
     <div class="container theme-showcase" role="main" id="main">
-
+        
          <div class="input-group input-group-lg">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-lg">BUSQUEDA</span>
