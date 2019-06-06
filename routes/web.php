@@ -15,13 +15,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/Menu_Secretaria','SecretariaController@Menu')
-    ->name('MenuSecretaria');
-
 Route::get('/reg_1A', function () 
 {
     return view('Registrar_Estudiante');
 });
+
+
+Route::get('/Menu_Secretaria','SecretariaController@Menu')
+    ->name('MenuSecretaria');
+
+Route::get('/Menu_Encargado_V','EncargadoController@Menu')
+    ->name('MenuEncargado');
+
+Route::get('/Registrar_Estudiante','EstudianteController@Registrar')
+    ->name('RegistrarEstudiante');
+
+Route::get('/Actualizar_Estudiante','EstudianteController@Actualizar')
+    ->name('ActualizarEstudiante');
+
 
 Route::get('/reg_1B', function () {
     return view('Actualizar_Estudiante');
