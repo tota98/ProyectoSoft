@@ -193,7 +193,6 @@
     
    
         <form method = "post" action="{{route('estudiantes.store')}}">
-        @csrf
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nombre">Nombre</label>
