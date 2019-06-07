@@ -190,36 +190,38 @@
     <div class="container theme-showcase" role="main">
     <div class="jumbotron">
     <h1>REGISTRO<span class="badge badge-secondary"></span></h1>
-    
+      
    
-        <form method = "post" action="{{route('estudiantes.store')}}">
+        <form method ="post" action="{{route('estudiantes.store')}}">
+            {{ csrf_field() }}
+           
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+                    <input id="nombre" type="text" class="form-control" name = "nombre" placeholder="Nombre">
                 </div>
 
                  <div class="form-group col-md-6">
                      <label for="apellido">Apellido</label>
-                     <input type="text" class="form-control" id="apellido" placeholder="Apellido">
+                     <input id="apellido"  type="text" class="form-control" name = "apellido" placeholder="Apellido">
                  </div>
 
             </div>
 
             <div class="form-group">
                 <label for="rut">Rut</label>
-                <input type="text" class="form-control" id="rut" placeholder="12.345.678-9">
+                <input id="rut" type="text" class="form-control" name = "rut" placeholder="12.345.678-9">
             </div>
 
             <div class="form-group">
                 <label for="inputAddress2">Correo</label>
-                <input type="email" class="form-control" id="correo" placeholder="example@example.com">
+                <input id="correo" type="email" class="form-control" name ="correo" placeholder="example@example.com">
             </div>
 
-            <div class="form-gourp">
+            <div class="form-group">
                 <div class="form-group">
                      <label for="inputState">Carrera</label>
-                     <select id="carrera" class="form-control">
+                     <select id="carrera" class="form-control" name ="carrera">
                          <option selected>Carreras</option>
                          <option>ICCI</option>
                          <option>IenCI</option>
@@ -232,7 +234,7 @@
 
             <div class="form-group">
                  <label for="telefono">Telefono</label>
-                 <input type="text" class="form-control" id="telefono">
+                 <input id="telefono" name = "telefono" type="text" class="form-control" >
             </div>
         
              <button type="submit" class="btn btn-primary">Registrar</button>

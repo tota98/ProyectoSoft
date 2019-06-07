@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-
+use App\Estudiante;
 class EstudianteController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -36,29 +37,38 @@ class EstudianteController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nombre'=>'required',
-            'apellido'=> 'required',
-            'rut' => 'required',
-            'correo' => 'required',
-            'carrera' => 'required',
-            'telefono' => 'required|integer',
 
-          ]);
+        //dd($request->all());
 
-          Estudiante::create($request->all());
-          
-          $Estudiante = new Estudiante([
-            'nombre' => $request->get('nombre'),
-            'apellido'=> $request->get('apellido'),
-            'rut'=> $request->get('rut'),
-            'correo'=> $request->get('correo'),
-            'carrera'=> $request->get('carrera'),
-            'telefono'=> $request->get('telefono'),
-          ]);
-          $Estudiante->save();
-          return redirect('/Registrar_Estudiante')
-                    ->with('ESTUDIANTE REGISTRADO');
+
+
+       $request->validate([
+           'nombre'=>'required',
+           'apellido'=> 'required',
+           'rut' => 'required',
+           'correo' => 'required',
+           'carrera' => 'required',
+           'telefono' => 'required|integer',
+//
+         ]);
+//
+         Estudiante::create($request->all());
+      
+         //METODO ALTERNATIVO
+         
+    //   $Estudiante = new Estudiante([
+    //     'nombre' => $request->get('nombre'),
+    //     'apellido'=> $request->get('apellido'),
+    //     'rut'=> $request->get('rut'),
+    //     'correo'=> $request->get('correo'),
+    //     'carrera'=> $request->get('carrera'),
+    //     'telefono'=> $request->get('telefono'),
+    //   ]);
+    //   $Estudiante->save();
+
+
+         return redirect('/Registrar_Estudiante')
+                   ->with('ESTUDIANTE REGISTRADO');
     }
 
     /**
