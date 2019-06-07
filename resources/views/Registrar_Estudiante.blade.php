@@ -190,8 +190,10 @@
     <div class="container theme-showcase" role="main">
     <div class="jumbotron">
     <h1>REGISTRO<span class="badge badge-secondary"></span></h1>
-
-        <form>
+    
+   
+        <form method = "post" action="{{route('estudiantes.store')}}">
+        @csrf
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nombre">Nombre</label>
@@ -218,7 +220,7 @@
             <div class="form-gourp">
                 <div class="form-group">
                      <label for="inputState">Carrera</label>
-                     <select id="correo" class="form-control">
+                     <select id="carrera" class="form-control">
                          <option selected>Carreras</option>
                          <option>ICCI</option>
                          <option>IenCI</option>
@@ -236,7 +238,11 @@
         
              <button type="submit" class="btn btn-primary">Registrar</button>
         </form>
+    
+    
     </div>
+    
+
     </div>
 
 </body>

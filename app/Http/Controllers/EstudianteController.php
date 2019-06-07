@@ -34,7 +34,7 @@ class EstudianteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function AñadirEstudiante(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'nombre'=>'required',
@@ -45,6 +45,9 @@ class EstudianteController extends Controller
             'telefono' => 'required|integer',
 
           ]);
+
+          Estudiante::create($request->all());
+          
           $Estudiante = new Estudiante([
             'nombre' => $request->get('nombre'),
             'apellido'=> $request->get('apellido'),
