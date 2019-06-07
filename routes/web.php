@@ -21,6 +21,11 @@ Route::get('/reg_1A', function ()
 });
 
 
+
+Route::resource('estudiantes','EstudianteController');
+
+
+
 Route::get('/Menu_Secretaria','SecretariaController@Menu')
     ->name('MenuSecretaria');
 
@@ -32,6 +37,7 @@ Route::get('/Registrar_Estudiante','EstudianteController@Registrar')
 
 Route::get('/Actualizar_Estudiante','EstudianteController@Actualizar')
     ->name('ActualizarEstudiante');
+
 
 
 Route::get('/reg_1B', function () {
