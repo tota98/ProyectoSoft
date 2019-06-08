@@ -26,7 +26,7 @@ class EstudianteController extends Controller
      */
     public function Registrar()
     {
-        //
+        return view('Registrar_Estudiante');
     }
 
     /**
@@ -67,8 +67,8 @@ class EstudianteController extends Controller
     //   $Estudiante->save();
 
 
-         return redirect('/Registrar_Estudiante')
-                   ->with('ESTUDIANTE REGISTRADO');
+         return view('Registrar_Estudiante')
+             ->with('ESTUDIANTE REGISTRADO');
     }
 
     /**

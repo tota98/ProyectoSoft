@@ -188,35 +188,36 @@
     <div class="container theme-showcase" role="main">
     <div class="jumbotron">
     <h1>REGISTRO<span class="badge badge-secondary"></span></h1>
-
+        
         <form>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+                    <input type="text" class="form-control" id="nombre" name = "nombre" placeholder="Nombre">
                 </div>
 
                  <div class="form-group col-md-6">
                      <label for="apellido">Apellido</label>
-                     <input type="text" class="form-control" id="apellido" placeholder="Apellido">
+                     <input type="text" class="form-control" id="apellido" name = "apellido" placeholder="Apellido">
                  </div>
 
             </div>
 
             <div class="form-group">
                 <label for="rut">Rut</label>
-                <input type="text" class="form-control" id="rut" placeholder="12.345.678-9">
+                <input type="text" class="form-control" id="rut" name = "apellido" placeholder="12.345.678-9">
             </div>
 
             <div class="form-group">
                 <label for="inputAddress2">Correo</label>
-                <input type="email" class="form-control" id="correo" placeholder="example@example.com">
+                <input type="email" class="form-control" id="correo" name = "correo" placeholder="example@example.com">
             </div>
 
             
         
              <button type="submit" class="btn btn-primary">Registrar</button>
         </form>
+        
     </div>
     </div>
 

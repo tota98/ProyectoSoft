@@ -189,7 +189,7 @@
     <div class="jumbotron">
         <div class="list-group">
              <label for="inputAddress2">ALUMNOS</label>
-             <a href="{{url('/reg_1A')}}" class="list-group-item list-group-item-action">Registro</a>
+             <a href="{{route('RegistrarEstudiante')}}" class="list-group-item list-group-item-action">Registro</a>
              <a href="{{url('/reg_1B')}}" class="list-group-item list-group-item-action">Actualizacion</a>
        </div> 
 

@@ -199,7 +199,8 @@
 
          <h1>ACTUALIZACION<span class="badge badge-secondary"></span></h1>
         
-
+        <!-- FORMULARIO PARA ACTUALIZAR ESTUDIANTE -->
+    
         <form>
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -246,7 +247,11 @@
             </div>
              <button type="submit" class="btn btn-primary">Registrar</button>
         </form>
+
+        
     </div>
+
+   
     </div>
 
 </body>

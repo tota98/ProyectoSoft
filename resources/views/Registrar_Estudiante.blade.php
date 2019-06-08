@@ -190,8 +190,10 @@
     <div class="container theme-showcase" role="main">
     <div class="jumbotron">
     <h1>REGISTRO<span class="badge badge-secondary"></span></h1>
-      
+
    
+    <!-- FORMULARIO PARA REGISTRAR ESTUDIANTE -->
+    
         <form method ="post" action="{{route('estudiantes.store')}}">
             {{ csrf_field() }}
            
