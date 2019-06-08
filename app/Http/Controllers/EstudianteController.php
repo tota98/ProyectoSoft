@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Estudiante;
+use Illuminate\Support\Facades\Validator;
 class EstudianteController extends Controller
 {
 
@@ -41,8 +42,9 @@ class EstudianteController extends Controller
         //dd($request->all());
 
 
-
-       $request->validate([
+        
+        $validator = Validator::make($request->all(), [
+            
            'nombre'=>'required',
            'apellido'=> 'required',
            'rut' => 'required',
@@ -51,8 +53,30 @@ class EstudianteController extends Controller
            'telefono' => 'required|integer',
 //
          ]);
-//
-         Estudiante::create($request->all());
+
+         if ($validator->fails() or self::check($request->input('rut')) == false) {
+             if(self::check($request->input('rut')) == false){
+
+                return back()->with('error',"ERROR: rut invalido.");
+             }
+            $errors = $validator->messages();
+            if ( ! empty( $errors ) ) {
+
+                $Errores = "";
+                foreach ( $errors->all() as $error ) {
+                    $Errores .= $error . " \n ";
+                    
+            
+                }
+            } //llama metodo del baner, con los errores concatenados.
+            return back()->with('error',"ERROR:\n ". $Errores );
+       }
+        else{
+            Estudiante::create($request->all());
+            return back()->with('success','Estudiante registrado con exito.');
+
+        }
+         
       
          //METODO ALTERNATIVO
          
@@ -67,7 +91,7 @@ class EstudianteController extends Controller
     //   $Estudiante->save();
 
 
-         return back()->with('success','Estudiante registrado con exito.');
+         
     }
 
     /**

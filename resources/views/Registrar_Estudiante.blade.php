@@ -232,7 +232,7 @@
                 <div class="form-group">
                      <label for="inputState">Carrera</label>
                      <select id="carrera" class="form-control" name ="carrera">
-                         <option selected>Carreras</option>
+                        <option value="" selected disabled>seleccione carrera</option>
                          <option>ICCI</option>
                          <option>IenCI</option>
                          <option>IECI</option>
@@ -245,6 +245,10 @@
             <div class="form-group">
                  <label for="telefono">Telefono</label>
                  <input id="telefono" name = "telefono" type="text" class="form-control" >
+                
+
+
+
             </div>
         
              <button type="submit" class="btn btn-primary">Registrar</button>
