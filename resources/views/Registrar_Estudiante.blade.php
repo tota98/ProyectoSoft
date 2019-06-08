@@ -2,7 +2,10 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 
+
 <head>
+
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -189,6 +192,11 @@
 
     <div class="container theme-showcase" role="main">
     <div class="jumbotron">
+    <!-- El include permite el uso del blade 'Notificacion', muestra los banners de alerta y errores  -->
+    @include('Alerts.Notificacion')
+   
+   
+   
     <h1>REGISTRO<span class="badge badge-secondary"></span></h1>
 
    
