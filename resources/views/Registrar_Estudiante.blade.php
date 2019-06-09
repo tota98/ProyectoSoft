@@ -245,9 +245,7 @@
             <div class="form-group">
                  <label for="telefono">Telefono</label>
                  <input id="telefono" name = "telefono" type="text" class="form-control" >
-                
-
-
+    
 
             </div>
         
