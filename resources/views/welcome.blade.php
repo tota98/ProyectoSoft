@@ -205,11 +205,12 @@
                     </label>
                 </div>
             </div>
-            <div class="btn-group" role="group" aria-label="Basic example">
-        <a class="btn btn-link" href="{{route('MenuSecretaria')}}" role="button">Secretaria</a>
-        <a class="btn btn-secondary" href="{{url('/titulacion')}}" role="button">Encargado Titulacion</a>
-        <button type="button" class="btn btn-secondary" role="button">Right</button>
-    </div>
+
+             <div class="btn-group" role="group" aria-label="Basic example">
+                 <a class="btn btn-link" href="{{route('MenuSecretaria')}}" role="button">Secretaria</a>
+                 <a class="btn btn-secondary" href="{{url('/titulacion')}}" role="button">Encargado Titulacion</a>
+                 <button type="button" class="btn btn-secondary" role="button">Right</button>
+             </div>
 
         </div>
     </div>

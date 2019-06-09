@@ -201,6 +201,9 @@
     </nav>
 
     <div class="container theme-showcase" role="main" id="main">
+
+
+    
     <div class="jumbotron">
     
          <div class="input-group input-group-lg">
@@ -217,14 +220,15 @@
             <input id="buscar" name="buscar" type="text" class="form-control" placeholder="Buscar" />
              <div id="sugerencias"></div>
          </div>
-         {{ csrf_field() }}
+             
 
-
+        {{ csrf_field() }}
          <h1>ACTUALIZACION<span class="badge badge-secondary"></span></h1>
         
         <!-- FORMULARIO PARA ACTUALIZAR ESTUDIANTE -->
     
         <form>
+        <div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nombre">Nombre</label>
@@ -269,13 +273,13 @@
                  </label>
             </div>
              <button type="submit" class="btn btn-primary">Registrar</button>
+
+             </div>
         </form>
 
-        
+    
     </div>
 
-   
-    </div>
 
 </body>
 
