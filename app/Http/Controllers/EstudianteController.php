@@ -51,7 +51,7 @@ class EstudianteController extends Controller
            'correo' => 'required',
            'carrera' => 'required',
            'telefono' => 'required|integer',
-//
+
          ]);
 
          if ($validator->fails() or self::check($request->input('rut')) == false) {
