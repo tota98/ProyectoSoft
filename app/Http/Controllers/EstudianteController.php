@@ -51,31 +51,36 @@ class EstudianteController extends Controller
            'correo' => 'required',
            'carrera' => 'required',
            'telefono' => 'required|integer',
-//
+
          ]);
 
          if ($validator->fails() or self::check($request->input('rut')) == false) {
-             if(self::check($request->input('rut')) == false){
-
-                return back()->with('error',"ERROR: rut invalido.");
-             }
+             
             $errors = $validator->messages();
             if ( ! empty( $errors ) ) {
 
                 $Errores = "";
                 foreach ( $errors->all() as $error ) {
                     $Errores .= $error . " \n ";
-                    
             
                 }
-            } //llama metodo del baner, con los errores concatenados.
-            return back()->with('error',"ERROR:\n ". $Errores );
-       }
-        else{
-            Estudiante::create($request->all());
-            return back()->with('success','Estudiante registrado con exito.');
+            }
+                if(self::check($request->input('rut')) == false and $request->input('rut') != NULL){
 
-        }
+                    return back()->with('error',"ERROR:\n "."rut invalido \n". $Errores );
+                    
+                 }
+                 
+                 else{
+                    return back()->with('error',"ERROR:\n ". $Errores );
+                 }
+                
+            } //llama metodo del baner, con los errores concatenados.
+            
+       
+       Estudiante::create($request->all());
+       return back()->with('success','Estudiante registrado con exito.');
+       
          
       
          //METODO ALTERNATIVO
