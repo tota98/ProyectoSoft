@@ -20,15 +20,22 @@ class AutoCompleteController extends Controller
           if($request->get('query'))
           {
             $query = $request->get('query');
+            
+           
             $data = DB::table('estudiantes')
-            ->where('nombre', 'LIKE', "%{$query}%")->get(); 
+            ->where('rut', 'LIKE', "%{$query}%")->get(); 
             $output = '<ul class = "dropdown-menu" style ="display:block; position:relative">';
             foreach($data as $row)
             {
+                
+
+
+
                 $output .='
                 <li><a href="#">'.$row->nombre."-".$row->apellido."-".$row->correo."-".$row->carrera."-".$row->telefono.'</a></li>
-                
                 ';
+
+                
             }
             $output .= '</ul>';
             echo $output;
