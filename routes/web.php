@@ -81,3 +81,5 @@ Route::get('/reporte', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/autocomplete/fetch','AutoCompleteController@fetch')->name('autocomplete.fetch');
