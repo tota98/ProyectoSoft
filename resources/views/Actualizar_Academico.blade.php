@@ -191,6 +191,13 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-lg">BUSQUEDA</span>
              </div>
+
+             <select class="custom-select custom-select-sm">
+                 <option selected>Busqueda por:</option>
+                 <option value="1">Nombre</option>
+                 <option value="2">Rut</option>
+            </select>
+            
              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
         </div>
 

@@ -190,12 +190,20 @@
 
     <div class="container theme-showcase" role="main" id="main">
     <div class="jumbotron">
+    
          <div class="input-group input-group-lg">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-lg">BUSQUEDA</span>
              </div>
+
+             <select class="custom-select custom-select-sm">
+                 <option selected>Busqueda por:</option>
+                 <option value="1">Nombre</option>
+                 <option value="2">Rut</option>
+            </select>
+
              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
-        </div>
+         </div>
 
          <h1>ACTUALIZACION<span class="badge badge-secondary"></span></h1>
         
