@@ -23,7 +23,7 @@ class AutoCompleteController extends Controller
             
            
             $data = DB::table('estudiantes')
-            ->where('rut', 'LIKE', "%{$query}%")->get(); 
+            ->where('rut', 'LIKE', "%{$query}%")->orWhere('nombre', 'LIKE', "%{$query}%")->get(); 
             $output = '<ul class = "dropdown-menu" style ="display:block; position:relative">';
             foreach($data as $row)
             {
