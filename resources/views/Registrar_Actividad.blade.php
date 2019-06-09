@@ -215,24 +215,42 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="cantEst">Estudiantes participantes</label>
-                    <input id="cantEst" type="text" class="form-control" name = "cantEst" placeholder="Cantidad máxima de estudiantes (1-99)">
+                    <select class="form-control" id="cantEst">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                    </select>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="semestres">Duración en semestres</label>
-                <input id="semestres" type="text" class="form-control" name ="semestres" placeholder="Semestres (1-99)">
+                <select class="form-control" id="semestres">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                </select>
             </div>
 
             <label for="participación">Requiere participación de una organización externa</label>
 
-            <div class="btn-group btn-group-toggle btn-info" data-toggle="buttons">
-                <label class="btn btn-secondary active">
-                    <input type="radio" name="options" id="option1" autocomplete="off" checked> No
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="options" id="option2" autocomplete="off"> Si
-                </label>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline1">Si</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline2">No</label>
             </div>
 
             <div class="form-group">
@@ -242,9 +260,6 @@
         </form>
     
     
-    </div>
-    
-
     </div>
 
 </body>

@@ -220,7 +220,7 @@
 
             <div class="form-group">
                 <label for="inputAddress2">Correo</label>
-                <input type="email" class="form-control" id="correo" placeholder="example@example.com">
+                <input type="email" class="form-control" id="correo" placeholder="ejemplo@ejemplo.com">
             </div>
 
             
