@@ -15,12 +15,16 @@
     <!-- Fonts -->
    
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    
+    
 </head>
 
 
@@ -189,41 +193,48 @@
     </nav>
 
     <div class="container theme-showcase" role="main" id="main">
+
+
+    
     <div class="jumbotron">
          <div class="input-group input-group-lg">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-lg">BUSQUEDA</span>
              </div>
-             <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
-        </div>
+             <input id="buscar" name="buscar" type="text" class="form-control" placeholder="Buscar" />
+             <div id="sugerencias"></div>
 
+
+        </div>
+        {{ csrf_field() }}
          <h1>ACTUALIZACION<span class="badge badge-secondary"></span></h1>
         
         <!-- FORMULARIO PARA ACTUALIZAR ESTUDIANTE -->
     
         <form>
+        <div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+                    <input type="text" class="form-control" id="nombre" name = "nombre" placeholder="Nombre">
                 </div>
 
                  <div class="form-group col-md-6">
                      <label for="apellido">Apellido</label>
-                     <input type="text" class="form-control" id="apellido" placeholder="Apellido">
+                     <input type="text" class="form-control" id="apellido" name = "apellido" placeholder="Apellido">
                  </div>
 
             </div>
 
             <div class="form-group">
                 <label for="inputAddress2">Correo</label>
-                <input type="email" class="form-control" id="correo" placeholder="example@example.com">
+                <input type="email" class="form-control" id="correo" name = "correo" placeholder="example@example.com">
             </div>
 
             <div class="form-gourp">
                 <div class="form-group">
                      <label for="inputState">Carrera</label>
-                     <select id="correo" class="form-control">
+                     <select id="carrera" class="form-control">
                          <option selected>Carreras</option>
                          <option>ICCI</option>
                          <option>IenCI</option>
@@ -236,7 +247,7 @@
 
             <div class="form-group">
                  <label for="telefono">Telefono</label>
-                 <input type="text" class="form-control" id="telefono">
+                 <input type="text" class="form-control" id="telefono" name = "telefono">
             </div>
         
             <div class="form-check">
@@ -246,9 +257,14 @@
                  </label>
             </div>
              <button type="submit" class="btn btn-primary">Registrar</button>
+
+             </div>
         </form>
 
         
+    
+
+
     </div>
 
    
@@ -257,3 +273,34 @@
 </body>
 
 </html>
+<script>
+         $(document).ready(function(){
+
+            $('#buscar').keyup(function(){
+            var query = $(this).val();
+            if(query != '')
+            {
+                var _token = $('input[name="_token"]').val();
+
+                $.ajax({
+                    url:"{{ route('autocomplete.fetch') }}",
+                    method:"POST",
+                    data:{query:query, _token:_token},
+                    success:function(data){
+                        $('#sugerencias').fadeIn();
+                            $('#sugerencias').html(data);
+
+                    }
+
+                }).fail( function( jqXHR, textStatus, errorThrown ) {
+    alert( 'Error!! AJAX IS DED' );
+});;
+            }
+});
+            $(document).on('click', 'li', function(){  
+        $('#buscar').val($(this).text());  
+        $('#sugerencia').fadeOut();  
+            });
+         });
+         
+    </script>
