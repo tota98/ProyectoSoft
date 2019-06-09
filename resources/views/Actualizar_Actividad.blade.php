@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
-
-
 <head>
-
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -163,7 +158,10 @@
 
     body{
         background-color: #ffffff;
+        
     }
+
+
 
 </style>
 
@@ -190,72 +188,64 @@
         </div>
     </nav>
 
-    <div class="container theme-showcase" role="main">
+    <div class="container theme-showcase" role="main" id="main">
     <div class="jumbotron">
-    <!-- El include permite el uso del blade 'Notificacion', muestra los banners de alerta y errores  -->
-    @include('Alerts.Notificacion')
-   
-   
-   
-    <h1>REGISTRO<span class="badge badge-secondary"></span></h1>
+         <div class="input-group input-group-lg">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-lg">BUSQUEDA</span>
+             </div>
+             <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        </div>
 
-   
-    <!-- FORMULARIO PARA REGISTRAR ESTUDIANTE -->
+         <h1>ACTUALIZACION<span class="badge badge-secondary"></span></h1>
+        
+        <!-- FORMULARIO PARA ACTUALIZAR ESTUDIANTE -->
     
-        <form method ="post" action="{{route('estudiantes.store')}}">
-            {{ csrf_field() }}
-           
+        <form>
+        <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="tipo">Tipo de actividad</label>
+                    <input id="tipo" type="text" class="form-control" name = "tipo" placeholder="Nombre del tipo de actividad">
+                </div>
+            </div>
+
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="nombre">Nombre</label>
-                    <input id="nombre" type="text" class="form-control" name = "nombre" placeholder="Nombre">
+                    <label for="cantEst">Estudiantes participantes</label>
+                    <input id="cantEst" type="text" class="form-control" name = "cantEst" placeholder="Cantidad máxima de estudiantes (1-99)">
                 </div>
-
-                 <div class="form-group col-md-6">
-                     <label for="apellido">Apellido</label>
-                     <input id="apellido"  type="text" class="form-control" name = "apellido" placeholder="Apellido">
-                 </div>
-
             </div>
 
             <div class="form-group">
-                <label for="rut">Rut</label>
-                <input id="rut" type="text" class="form-control" name = "rut" placeholder="12.345.678-9">
+                <label for="semestres">Duración en semestres</label>
+                <input id="semestres" type="text" class="form-control" name ="semestres" placeholder="Semestres (1-99)">
             </div>
 
-            <div class="form-group">
-                <label for="inputAddress2">Correo</label>
-                <input id="correo" type="email" class="form-control" name ="correo" placeholder="example@example.com">
+            <label for="participación">Requiere participación de una organización externa</label>
+
+            <div class="btn-group btn-group-toggle btn-info" data-toggle="buttons">
+                <label class="btn btn-secondary active">
+                    <input type="radio" name="options" id="option1" autocomplete="off" checked> No
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> Si
+                </label>
             </div>
 
-            <div class="form-group">
-                <div class="form-group">
-                     <label for="inputState">Carrera</label>
-                     <select id="carrera" class="form-control" name ="carrera">
-                        <option value="" selected disabled>seleccione carrera</option>
-                         <option>ICCI</option>
-                         <option>IenCI</option>
-                         <option>IECI</option>
-                    </select>
-                </div>
-                
-            
+            <div class="form-check">
+                 <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                 <label class="form-check-label" for="defaultCheck1">
+                 Eliminar Actividad
+                 </label>
             </div>
 
-            <div class="form-group">
-                 <label for="telefono">Telefono</label>
-                 <input id="telefono" name = "telefono" type="text" class="form-control" >
-    
-
-            </div>
-        
              <button type="submit" class="btn btn-primary">Registrar</button>
         </form>
-    
-    
-    </div>
-    
 
+        
+    </div>
+
+   
     </div>
 
 </body>

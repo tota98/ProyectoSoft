@@ -200,56 +200,45 @@
     <h1>REGISTRO<span class="badge badge-secondary"></span></h1>
 
    
-    <!-- FORMULARIO PARA REGISTRAR ESTUDIANTE -->
+    <!-- FORMULARIO PARA REGISTRAR ACTIVIDAD -->
     
-        <form method ="post" action="{{route('estudiantes.store')}}">
-            {{ csrf_field() }}
+        <form method ="post" action="{{route('actividades.store')}}">
+            {{ csrf_field() }} 
            
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="nombre">Nombre</label>
-                    <input id="nombre" type="text" class="form-control" name = "nombre" placeholder="Nombre">
+                    <label for="tipo">Tipo de actividad</label>
+                    <input id="tipo" type="text" class="form-control" name = "tipo" placeholder="Nombre del tipo de actividad">
                 </div>
-
-                 <div class="form-group col-md-6">
-                     <label for="apellido">Apellido</label>
-                     <input id="apellido"  type="text" class="form-control" name = "apellido" placeholder="Apellido">
-                 </div>
-
             </div>
 
-            <div class="form-group">
-                <label for="rut">Rut</label>
-                <input id="rut" type="text" class="form-control" name = "rut" placeholder="12.345.678-9">
-            </div>
-
-            <div class="form-group">
-                <label for="inputAddress2">Correo</label>
-                <input id="correo" type="email" class="form-control" name ="correo" placeholder="example@example.com">
-            </div>
-
-            <div class="form-group">
-                <div class="form-group">
-                     <label for="inputState">Carrera</label>
-                     <select id="carrera" class="form-control" name ="carrera">
-                        <option value="" selected disabled>seleccione carrera</option>
-                         <option>ICCI</option>
-                         <option>IenCI</option>
-                         <option>IECI</option>
-                    </select>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="cantEst">Estudiantes participantes</label>
+                    <input id="cantEst" type="text" class="form-control" name = "cantEst" placeholder="Cantidad máxima de estudiantes (1-99)">
                 </div>
-                
-            
             </div>
 
             <div class="form-group">
-                 <label for="telefono">Telefono</label>
-                 <input id="telefono" name = "telefono" type="text" class="form-control" >
-    
-
+                <label for="semestres">Duración en semestres</label>
+                <input id="semestres" type="text" class="form-control" name ="semestres" placeholder="Semestres (1-99)">
             </div>
-        
-             <button type="submit" class="btn btn-primary">Registrar</button>
+
+            <label for="participación">Requiere participación de una organización externa</label>
+
+            <div class="btn-group btn-group-toggle btn-info" data-toggle="buttons">
+                <label class="btn btn-secondary active">
+                    <input type="radio" name="options" id="option1" autocomplete="off" checked> No
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> Si
+                </label>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Registrar</button>
+            </div>
+
         </form>
     
     

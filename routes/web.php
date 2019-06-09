@@ -23,6 +23,7 @@ Route::get('/reg_1A', function ()
 
 
 Route::resource('estudiantes','EstudianteController');
+Route::resource('actividades','ActividadController');
 
 
 
@@ -38,6 +39,12 @@ Route::get('/Registrar_Estudiante','EstudianteController@Registrar')
 Route::get('/Actualizar_Estudiante','EstudianteController@Actualizar')
     ->name('ActualizarEstudiante');
 
+Route::get('/Registrar_Actividad','ActividadController@Registrar')
+    ->name('RegistrarActividad');
+
+    Route::get('/Actualizar_Actividad','ActividadController@Registrar')
+    ->name('ActualizarActividad');
+
 
 
 Route::get('/reg_1B', function () {
@@ -50,6 +57,14 @@ Route::get('/reg_2A', function () {
 
 Route::get('/reg_2B', function () {
     return view('Actualizar_Academico');
+});
+
+Route::get('/reg_3A', function () {
+    return view('Registrar_Actividad');
+});
+
+Route::get('/reg_3B', function () {
+    return view('Actualizar_Actividad');
 });
 
 Route::get('/secre', function () {

@@ -221,11 +221,7 @@
              <div id="sugerencias"></div>
          </div>
              
-         {{ csrf_field() }}
 
-
-
-        </div>
         {{ csrf_field() }}
          <h1>ACTUALIZACION<span class="badge badge-secondary"></span></h1>
         
@@ -281,14 +277,9 @@
              </div>
         </form>
 
-        
     
-
-
     </div>
 
-   
-    </div>
 
 </body>
 
