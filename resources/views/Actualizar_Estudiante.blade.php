@@ -11,18 +11,26 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+  crossorigin="anonymous"></script>
+  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
     <!-- Fonts -->
    
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+   
+    
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
     
     
 </head>
@@ -209,10 +217,12 @@
                  <option value="2">Rut</option>
             </select>
 
-             <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
-         </div>
-             <input id="buscar" name="buscar" type="text" class="form-control" placeholder="Buscar" />
+            <input id="buscar" name="buscar" type="text" class="form-control" placeholder="Buscar" />
              <div id="sugerencias"></div>
+         </div>
+             
+         {{ csrf_field() }}
+
 
 
         </div>
@@ -231,21 +241,21 @@
 
                  <div class="form-group col-md-6">
                      <label for="apellido">Apellido</label>
-                     <input type="text" class="form-control" id="apellido" name = "apellido" placeholder="Apellido">
+                     <input type="text" class="form-control" id="apellido" name ="apellido" placeholder="Apellido">
                  </div>
 
             </div>
 
             <div class="form-group">
                 <label for="inputAddress2">Correo</label>
-                <input type="email" class="form-control" id="correo" name = "correo" placeholder="example@example.com">
+                <input type="email" class="form-control" id="correo" name ="correo" placeholder="example@example.com">
             </div>
 
             <div class="form-gourp">
                 <div class="form-group">
                      <label for="inputState">Carrera</label>
-                     <select id="carrera" class="form-control">
-                         <option selected>Carreras</option>
+                     <select id="carrera" name ="carrera" class="form-control">
+                         <option value="" selected disabled>seleccione carrera</option>
                          <option>ICCI</option>
                          <option>IenCI</option>
                          <option>IECI</option>
@@ -283,11 +293,14 @@
 </body>
 
 </html>
+
 <script>
          $(document).ready(function(){
+           
 
             $('#buscar').keyup(function(){
             var query = $(this).val();
+            
             if(query != '')
             {
                 var _token = $('input[name="_token"]').val();
@@ -297,19 +310,31 @@
                     method:"POST",
                     data:{query:query, _token:_token},
                     success:function(data){
-                        $('#sugerencias').fadeIn();
-                            $('#sugerencias').html(data);
+                        $('#sugerencias').fadeIn(500);
+                           $('#sugerencias').html(data);
 
                     }
 
                 }).fail( function( jqXHR, textStatus, errorThrown ) {
-    alert( 'Error!! AJAX IS DED' );
-});;
+                        alert( 'Error!! AJAX IS DED' )
+                });;
+
+
             }
 });
             $(document).on('click', 'li', function(){  
-        $('#buscar').val($(this).text());  
-        $('#sugerencia').fadeOut();  
+              
+              $('#buscar').val($(this).text()); 
+              var array =  $(this).text().split("-");
+              $('#nombre').val(array[0]);
+              $('#apellido').val(array[1]);
+              $('#correo').val(array[2]);
+              $('#carrera').val(array[3]);
+              $('#telefono').val(array[4]);
+             
+             
+              $('#sugerencia').fadeOut();
+                
             });
          });
          
