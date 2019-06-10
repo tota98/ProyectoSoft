@@ -45,9 +45,6 @@ class EstudianteController extends Controller
     {
 
         
-
-
-        
         $validator = Validator::make($request->all(), [
             'nombre'=>'required',
             'apellido'=> 'required',

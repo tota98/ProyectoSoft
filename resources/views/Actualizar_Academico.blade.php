@@ -192,19 +192,19 @@
                 <span class="input-group-text" id="inputGroup-sizing-lg">BUSQUEDA</span>
              </div>
 
-             <select class="custom-select custom-select-sm">
-                 <option selected>Busqueda por:</option>
-                 <option value="1">Nombre</option>
-                 <option value="2">Rut</option>
-            </select>
-            
-             <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
-        </div>
+             <input id="buscar" name="buscar" type="text" class="form-control" placeholder="Buscar" />
+             <div id="sugerencias"></div>
+         </div>
+         @include('Alerts.Notificacion')    
 
          <h1>ACTUALIZACION<span class="badge badge-secondary"></span></h1>
         
 
-        <form>
+        
+        <!-- FORMULARIO PARA ACTUALIZAR ACTIVIDAD -->
+        <form method ="GET" action="{{route('estudiantes.modificar')}}">
+            {{ csrf_field() }}
+            
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nombre">Nombre</label>
@@ -270,22 +270,19 @@
 });
             $(document).on('click', 'li', function(){  
                 $('#nombre').prop('disabled',false);
-                $('#buscar').prop('disabled',false);
-                $('#apellido').prop('disabled',false);
-                $('#correo').prop('disabled',false);
-                $('#carrera').prop('disabled',false);
-                $('#telefono').prop('disabled',false);
-                $('#id_Estudiante').prop('disabled',false);
+                $('#cant_max').prop('disabled',false);
+                $('#duracion').prop('disabled',false);
+                $('#participacion_organizacion').prop('disabled',false);
+                $('#id_Actividad').prop('disabled',false);
                 $('#ELIMINAR').prop('disabled',false);
 
               $('#buscar').val($(this).text()); 
               var array =  $(this).text().split("-");
               $('#nombre').val(array[0]);
-              $('#apellido').val(array[1]);
-              $('#correo').val(array[2]);
-              $('#carrera').val(array[3]);
-              $('#telefono').val(array[4]);
-              $('#id_Estudiante').val(array[5]);
+              $('#cant_max').val(array[1]);
+              $('#duracion').val(array[2]);
+              $('#participacion_organizacion').val(array[3]);
+              $('#id_Actividad').val(array[4]);
              
              
               $('#sugerencia').fadeOut();

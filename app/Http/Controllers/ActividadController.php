@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Actividad;
+use App\Tipo_actividad;
 use Illuminate\Support\Facades\Validator;
 class ActividadController extends Controller
 {
@@ -30,7 +30,7 @@ class ActividadController extends Controller
     }
     public function Actualizar()
     {
-        $actividades = Actividad::all();
+        $actividades = Tipo_actividad::all();
         return view('Actualizar_Actividad',compact('actividades'));
     }
 
@@ -42,7 +42,7 @@ class ActividadController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        //dd($request->all());
         $validator = Validator::make($request->all(), [
             'nombre'=>'required',
             'cant_max'=> 'required',
@@ -69,15 +69,15 @@ class ActividadController extends Controller
             } //llama metodo del baner, con los errores concatenados.
             //Estudiante::create($request->all());
        
-        $Actividad = new Actividad([
+        $Tipo_actividad = new Tipo_actividad([
             'nombre' => $request->get('nombre'),
             'cant_max'=> $request->get('cant_max'),
             'duracion'=> $request->get('duracion'),
             'participacion_organizacion'=> $request->get('participacion_organizacion'),
             
         ]);
-        $Actividad->save();
-        return back()->with('success','Actividad registrada con exito.');
+        $Tipo_actividad->save();
+        return back()->with('success','Tipo_actividad registrada con exito.');
        
          
       
@@ -126,7 +126,7 @@ class ActividadController extends Controller
      */
     public function destroy($id)
     {
-        $actividades = Actividad::find($id);
+        $actividades = Tipo_actividad::find($id);
         $actividades->delete();
         return back()->with('success','Eliminacion de actividad con exito.');
     }
@@ -148,12 +148,12 @@ class ActividadController extends Controller
             return self::destroy($id);
         }
         else{
-        $Actividad = Actividad::find($request->get('id_Actividad'));
-        $Actividad->nombre =  $request->get('nombre');
-        $Actividad->cant_max = $request->get('cant_max');
-        $Actividad->duracion = $request->get('duracion');
-        $Actividad->participacion_organizacion = $request->get('participacion_organizacion');
-        $Actividad->save();
+        $Tipo_actividad = Tipo_actividad::find($request->get('id_Actividad'));
+        $Tipo_actividad->nombre =  $request->get('nombre');
+        $Tipo_actividad->cant_max = $request->get('cant_max');
+        $Tipo_actividad->duracion = $request->get('duracion');
+        $Tipo_actividad->participacion_organizacion = $request->get('participacion_organizacion');
+        $Tipo_actividad->save();
 
         return back()->with('success','Modificacion de actividad con exito.');
         }
