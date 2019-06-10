@@ -208,25 +208,25 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre">
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" disabled>
                 </div>
 
                  <div class="form-group col-md-6">
                      <label for="apellido">Apellido</label>
-                     <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido">
+                     <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" disabled>
                  </div>
 
             </div>
 
             <div class="form-group">
                 <label for="inputAddress2">Correo</label>
-                <input type="email" class="form-control" id="correo" name ="correo" placeholder="ejemplo@ejemplo.com">
+                <input type="email" class="form-control" id="correo" name ="correo" placeholder="ejemplo@ejemplo.com" disabled>
             </div>
 
             
         
             <div class="form-check">
-                 <input class="form-check-input" type="checkbox" id="ELIMINAR" name="ELIMINAR" disabled>
+                 <input class="form-check-input" type="checkbox" id="ELIMINAR" name="ELIMINAR" disabled disabled>
                  <label class="form-check-label" for="defaultCheck1">
                  Eliminar Academico
                  </label>
