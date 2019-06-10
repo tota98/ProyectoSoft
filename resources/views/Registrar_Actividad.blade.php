@@ -204,18 +204,19 @@
     
         <form method ="post" action="{{route('actividades.store')}}">
             {{ csrf_field() }} 
-           
+           <div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="tipo">Tipo de actividad(*)</label>
-                    <input id="tipo" type="text" class="form-control" name = "tipo" placeholder="Nombre del tipo de actividad">
+                    <input id="nombre" type="text" class="form-control" name = "nombre" placeholder="Nombre del tipo de actividad">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="cantEst">Estudiantes participantes(*)</label>
-                    <select class="form-control" id="cantEst">
+                    <label for="inputState">Estudiantes participantes(*)</label>
+
+                    <select class="form-control" id="cant_max" name ="cant_max" value = "">
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -229,10 +230,10 @@
                     </select>
                 </div>
             </div>
-
+    <div>
             <div class="form-group">
-                <label for="semestres">Duración en semestres(*)</label>
-                <select class="form-control" id="semestres">
+                <label for="inputState">Duración en semestres(*)</label>
+                <select class="form-control" id="duracion" name = "duracion">
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -241,22 +242,22 @@
                         <option>6</option>
                 </select>
             </div>
-
+        </div>
             <label for="participación">Requiere participación de una organización externa(*)</label>
 
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                <input type="radio" id="participacion_organizacion" name="participacion_organizacion" class="custom-control-input">
                 <label class="custom-control-label" for="customRadioInline1">Si</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                <input type="radio" id="participacion_organizacion" name="participacion_organizacion" class="custom-control-input">
                 <label class="custom-control-label" for="customRadioInline2">No</label>
             </div>
 
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Registrar</button>
             </div>
-
+    </div>
         </form>
     
     
