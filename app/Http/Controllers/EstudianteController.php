@@ -131,7 +131,7 @@ class EstudianteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function Modificar(Request $request)
     {
         dd($request->all());
         $request->validate([
@@ -140,6 +140,7 @@ class EstudianteController extends Controller
             'correo'=>'required',
             'carrera'=>'required',
             'telefono'=>'required',
+            'id_estudiante' =>'required',
         ]);
 
         $estudiante = Estudiante::find($request->get('id_Estudiante'));

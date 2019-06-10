@@ -222,14 +222,14 @@
             <input id="buscar" name="buscar" type="text" class="form-control" placeholder="Buscar" />
              <div id="sugerencias"></div>
          </div>
-             
+         @include('Alerts.Notificacion')    
 
         
          <h1>ACTUALIZACION<span class="badge badge-secondary"></span></h1>
         
         <!-- FORMULARIO PARA ACTUALIZAR ESTUDIANTE -->
        
-        <form>
+        <form method ="post" action="{{route('estudiantes.Modificar')}}">
             {{ csrf_field() }}
 
         
