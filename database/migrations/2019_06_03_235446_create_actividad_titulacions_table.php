@@ -18,11 +18,11 @@ class CreateActividadTitulacionsTable extends Migration
             $table->string('titulo',128)->unique();
             $table->enum('estado',['INGRESADA','FINALIZADA','ANULADA','ACEPTADA']);
 
-            $table->date('fecha_registro');
+            $table->date('fecha_registro')->format('d/m/Y');
             $table->integer('semestre_registro')->unsigned();
 
-            $table->date('fecha_inicio');
-            $table->date('fecha_termino');
+            $table->date('fecha_inicio')->format('d/m/Y')->nullable();
+            $table->date('fecha_termino')->format('d/m/Y')->nullable();
 
             $table->date('fecha_examen')->nullable($value=true);
 
