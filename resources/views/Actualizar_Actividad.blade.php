@@ -194,8 +194,10 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-lg">BUSQUEDA</span>
              </div>
-             <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
-        </div>
+             <input id="buscar" name="buscar" type="text" class="form-control" placeholder="Buscar" />
+             <div id="sugerencias"></div>
+         </div>
+         @include('Alerts.Notificacion')  
 
          <h1>ACTUALIZACION<span class="badge badge-secondary"></span></h1>
         
@@ -265,3 +267,57 @@
 
 </body>
 </html>
+
+
+
+<script>
+         $(document).ready(function(){
+           
+
+            $('#buscar').keyup(function(){
+            var query = $(this).val();
+            
+            if(query != '')
+            {
+                var _token = $('input[name="_token"]').val();
+
+                $.ajax({
+                    url:"{{ route('autocomplete.fetch') }}",
+                    method:"POST",
+                    data:{query:query, _token:_token},
+                    success:function(data){
+                        $('#sugerencias').fadeIn(500);
+                           $('#sugerencias').html(data);
+
+                    }
+
+                }).fail( function( jqXHR, textStatus, errorThrown ) {
+                        alert( 'Error!! AJAX IS DED' )
+                });;
+
+
+            }
+});
+            $(document).on('click', 'li', function(){  
+                $('#nombre').prop('disabled',false);
+                $('#cant_max').prop('disabled',false);
+                $('#duracion').prop('disabled',false);
+                $('#participacion_organizacion').prop('disabled',false);
+                $('#id_Actividad').prop('disabled',false);
+                $('#ELIMINAR').prop('disabled',false);
+
+              $('#buscar').val($(this).text()); 
+              var array =  $(this).text().split("-");
+              $('#nombre').val(array[0]);
+              $('#cant_max').val(array[1]);
+              $('#duracion').val(array[2]);
+              $('#participacion_organizacion').val(array[3]);
+              $('#id_Actividad').val(array[4]);
+             
+             
+              $('#sugerencia').fadeOut();
+                
+            });
+         });
+         
+    </script>

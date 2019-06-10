@@ -19,7 +19,7 @@ class CreateTipoActividadsTable extends Migration
             $table->string('nombre',255);
             $table->integer('cant_max')->unsigned();
             $table->integer('duracion')->unsigned();
-            $table->boolean('participacion_organizacion')->default(false);
+            $table->string('participacion_organizacion');
 
         
             $table->timestamps();

@@ -202,9 +202,9 @@
 
         
         <!-- FORMULARIO PARA ACTUALIZAR ACTIVIDAD -->
-        <form method ="GET" action="{{route('estudiantes.modificar')}}">
+        <form method ="GET" action="{{route('actividades.modificar')}}">
             {{ csrf_field() }}
-            
+
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nombre">Nombre</label>
