@@ -11,17 +11,28 @@ class CreateEstudiantesTable extends Migration
      *
      * @return void
      */
+
     public function up()
     {
         Schema::create('estudiantes', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('nombre');
-            $table->string('apellido');
-            $table->string('rut');
-            $table->string('correo');
-            $table->string('carrera');   
-            $table->string('telefono');  
+            $table->string('nombre',255);
+            $table->string('apellido',255);
+            $table->string('rut',15)->unique();
+            $table->string('correo',128)->unique();
+            $table->string('carrera',128);
+            $table->integer('telefono')->unsigned();
+            
+            $table->integer('actividad_titulacion_id')->unsigned()->nullable();
+            
+            
+
+            $table->foreign('actividad_titulacion_id')->references('id')->on('actividad_titulacions')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            
         });
     }
 

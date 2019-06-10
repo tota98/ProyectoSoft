@@ -26,13 +26,14 @@ class AutoCompleteController extends Controller
             ->where('rut', 'LIKE', "%{$query}%")->orWhere('nombre', 'LIKE', "%{$query}%")->get(); 
             $output = '<ul class = "dropdown-menu" style ="display:block; position:relative">';
             foreach($data as $row)
-            {
                 
+            {
+         
 
 
 
                 $output .='
-                <li><a href="#">'.$row->nombre."-".$row->apellido."-".$row->correo."-".$row->carrera."-".$row->telefono.'</a></li>
+                <li><a href="#">'.$row->nombre."-".$row->apellido."-".$row->correo."-".$row->carrera."-".$row->telefono."-".$row->id.'</a></li>
                 ';
 
                 

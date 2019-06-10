@@ -181,6 +181,8 @@
 
 <body>
 
+
+
     <div id="app" >
     
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
@@ -211,46 +213,45 @@
                 <span class="input-group-text" id="inputGroup-sizing-lg">BUSQUEDA</span>
              </div>
 
-             <select class="custom-select custom-select-sm">
-                 <option selected>Busqueda por:</option>
-                 <option value="1">Nombre</option>
-                 <option value="2">Rut</option>
-            </select>
+             
 
             <input id="buscar" name="buscar" type="text" class="form-control" placeholder="Buscar" />
              <div id="sugerencias"></div>
          </div>
-             
+         @include('Alerts.Notificacion')    
 
-        {{ csrf_field() }}
+        
          <h1>ACTUALIZACION<span class="badge badge-secondary"></span></h1>
         
         <!-- FORMULARIO PARA ACTUALIZAR ESTUDIANTE -->
-    
-        <form>
-        <div>
+                                    
+        <form method ="GET" action="{{route('estudiantes.modificar')}}">
+            {{ csrf_field() }}
+
+        
+        
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name = "nombre" placeholder="Nombre">
+                    <input type="text" class="form-control" id="nombre" name = "nombre" placeholder="Nombre" disabled>
                 </div>
 
                  <div class="form-group col-md-6">
                      <label for="apellido">Apellido</label>
-                     <input type="text" class="form-control" id="apellido" name ="apellido" placeholder="Apellido">
+                     <input type="text" class="form-control" id="apellido" name ="apellido" placeholder="Apellido" disabled>
                  </div>
 
             </div>
 
             <div class="form-group">
                 <label for="inputAddress2">Correo</label>
-                <input type="email" class="form-control" id="correo" name ="correo" placeholder="example@example.com">
+                <input type="email" class="form-control" id="correo" name ="correo" placeholder="example@example.com" disabled>
             </div>
 
-            <div class="form-gourp">
+            <div class="form-group">
                 <div class="form-group">
                      <label for="inputState">Carrera</label>
-                     <select id="carrera" name ="carrera" class="form-control">
+                     <select id="carrera" name ="carrera" class="form-control" disabled>
                          <option value="" selected disabled>seleccione carrera</option>
                          <option>ICCI</option>
                          <option>IenCI</option>
@@ -263,23 +264,27 @@
 
             <div class="form-group">
                  <label for="telefono">Telefono</label>
-                 <input type="text" class="form-control" id="telefono" name = "telefono">
+                 <input type="text" class="form-control" id="telefono" name = "telefono" disabled>
             </div>
         
-            <div class="form-check">
-                 <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <div class="form-group">
+                 <input class="form-check-input" type="checkbox" id="ELIMINAR" name="ELIMINAR" disabled>
                  <label class="form-check-label" for="defaultCheck1">
                  Eliminar Alumno
                  </label>
+                 <input id="id_Estudiante" type="hidden" name ="id_Estudiante" class="form-control" >
             </div>
-             <button type="submit" class="btn btn-primary">Registrar</button>
+            
 
-             </div>
+             <button type="submit" class="btn btn-primary">Aplicar</button>
+
+            
+            
         </form>
 
     
+    
     </div>
-
 
 </body>
 
@@ -314,7 +319,15 @@
             }
 });
             $(document).on('click', 'li', function(){  
-              
+                $('#nombre').prop('disabled',false);
+                $('#buscar').prop('disabled',false);
+                $('#apellido').prop('disabled',false);
+                $('#correo').prop('disabled',false);
+                $('#carrera').prop('disabled',false);
+                $('#telefono').prop('disabled',false);
+                $('#id_Estudiante').prop('disabled',false);
+                $('#ELIMINAR').prop('disabled',false);
+
               $('#buscar').val($(this).text()); 
               var array =  $(this).text().split("-");
               $('#nombre').val(array[0]);
@@ -322,6 +335,7 @@
               $('#correo').val(array[2]);
               $('#carrera').val(array[3]);
               $('#telefono').val(array[4]);
+              $('#id_Estudiante').val(array[5]);
              
              
               $('#sugerencia').fadeOut();
@@ -330,3 +344,5 @@
          });
          
     </script>
+
+
