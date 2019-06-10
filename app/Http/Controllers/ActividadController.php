@@ -26,12 +26,12 @@ class ActividadController extends Controller
      */
     public function Registrar()
     {
-        return view('Registrar_Estudiante');
+        return view('Registrar_Actividad');
     }
     public function Actualizar()
     {
-        $estudiantes = Estudiante::all();
-        return view('Actualizar_Estudiante',compact('estudiantes'));
+        $actividades = Actividad::all();
+        return view('Actualizar_Actividad',compact('actividades'));
     }
 
     /**
@@ -42,22 +42,17 @@ class ActividadController extends Controller
      */
     public function store(Request $request)
     {
-
-        
-
-
-        
+        dd($request->all());
         $validator = Validator::make($request->all(), [
             'nombre'=>'required',
-            'apellido'=> 'required',
-            'rut' => 'required',
-            'correo' => 'required',
-            'carrera' => 'required',
-            'telefono' => 'required|integer',
+            'cant_max'=> 'required',
+            'duracion' => 'required',
+            'participacion_organizacion' => 'required',
+    
 
          ]);
 
-         if ($validator->fails() or self::check($request->input('rut')) == false) {
+         if ($validator->fails()) {
              
             $errors = $validator->messages();
             if ( ! empty( $errors ) ) {
@@ -67,39 +62,27 @@ class ActividadController extends Controller
                     $Errores .= $error . " \n ";
             
                 }
+                return back()->with('error',"ERROR:\n ". $Errores );
             }
-                if(self::check($request->input('rut')) == false and $request->input('rut') != NULL){
-
-                    return back()->with('error',"ERROR:\n "."rut invalido \n". $Errores );
-                    
-                 }
-                 
-                 else{
-                    return back()->with('error',"ERROR:\n ". $Errores );
-                 }
+                
                 
             } //llama metodo del baner, con los errores concatenados.
             //Estudiante::create($request->all());
        
-        $Estudiante = new Estudiante([
+        $Actividad = new Actividad([
             'nombre' => $request->get('nombre'),
-            'apellido'=> $request->get('apellido'),
-            'rut'=> $request->get('rut'),
-            'correo'=> $request->get('correo'),
-            'carrera'=> $request->get('carrera'),
-            'telefono'=> $request->get('telefono'),
+            'cant_max'=> $request->get('cant_max'),
+            'duracion'=> $request->get('duracion'),
+            'participacion_organizacion'=> $request->get('participacion_organizacion'),
+            
         ]);
-        $Estudiante->save();
-        return back()->with('success','Estudiante registrado con exito.');
+        $Actividad->save();
+        return back()->with('success','Actividad registrada con exito.');
        
          
       
          //METODO ALTERNATIVO
-         
-
-
-
-         
+            
     }
 
     /**
@@ -143,102 +126,22 @@ class ActividadController extends Controller
      */
     public function destroy($id)
     {
-        $estudiante = Estudiante::find($id);
-        $estudiante->delete();
-        return back()->with('success','Eliminacion de estudiante con exito.');
+        $actividades = Actividad::find($id);
+        $actividades->delete();
+        return back()->with('success','Eliminacion de actividad con exito.');
     }
 
-    public function check($rut) {
-
-        $cleanedRut = $this->clean($rut);
-
-        if (! $cleanedRut)
-            return false;
-
-        list($numero, $digitoVerificador) = explode('-', $cleanedRut);
-
-        //Validamos requisitos m�nimos
-        if ((($digitoVerificador != 'K') && (! is_numeric($digitoVerificador))) || (count(str_split($numero)) > 11))
-            return false;
-
-        //Validamos que todos los caracteres del n�mero sean d�gitos
-        foreach(str_split($numero) as $chr) {
-            if (! is_numeric($chr))
-                return false;
-        }
-
-        //Calculamos el digito verificador
-        $digit = $this->digitoVerificador($numero);
-
-        //Comparamos el digito verificador calculado con el entregado
-        if($digit == $digitoVerificador)
-            return true;
-
-        return false;
-    }
-
-    public function clean($originalRut, $incluyeDigitoVerificador = true) {
-
-        //Eliminamos espacios al principio y final
-        $originalRut = trim($originalRut);
-        //En caso de existir, eliminamos ceros ("0") a la izquierda
-        $originalRut = ltrim($originalRut, '0');
-        $input		= str_split($originalRut);
-        $cleanedRut	= '';
-        foreach ($input as $key => $chr) {
-            //Digito Verificador
-            if ((($key + 1) == count($input)) && ($incluyeDigitoVerificador)){
-                if (is_numeric($chr) || ($chr == 'k') || ($chr == 'K'))
-                    $cleanedRut .= '-'.strtoupper($chr);
-                else
-                    return false;
-            }
-            //N�meros del RUT
-            elseif (is_numeric($chr))
-                $cleanedRut .= $chr;
-        }
-
-        if (strlen($cleanedRut) < 3)
-            return false;
-
-        return $cleanedRut;
-    }
-
-    public function digitoVerificador($rut) {
-        //Preparamos el RUT recibido
-        $numero = $this->clean($rut, false);
-        //Calculamos el d�gito verificador
-        $txt		= array_reverse(str_split($numero));
-        $sum		= 0;
-        $factors	= array(2,3,4,5,6,7,2,3,4,5,6,7);
-        foreach($txt as $key => $chr) {
-            $sum += $chr * $factors[$key];
-        }
-
-        $a			= $sum % 11;
-        $b			= 11-$a;
-
-        if($b == 11)
-            $digitoVerificador	= 0;
-        elseif($b == 10)
-            $digitoVerificador	= 'K';
-        else
-            $digitoVerificador = $b;
-        //Convertimos el n�mero a cadena para efectos de poder comparar
-        $digitoVerificador = (string)$digitoVerificador;
-        return $digitoVerificador;
-    }
+    
 
     public function Modificar(Request $request)
     {
         //dd($request->all());
         $request->validate([
             'nombre'=>'required',
-            'apellido'=>'required',
-            'correo'=>'required',
-            'carrera'=>'required',
-            'telefono'=>'required',
-            'id_Estudiante' =>'required',
+            'cant_max'=>'required',
+            'duracion'=>'required',
+            'participacion_organizacion'=>'required',
+        
         ]);
         if($isChecked = $request->has('ELIMINAR')){
             $id = $request->get('id_Estudiante');

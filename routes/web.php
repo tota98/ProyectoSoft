@@ -46,7 +46,7 @@ Route::get('/Actualizar_Estudiante','EstudianteController@Actualizar')
 Route::get('/Registrar_Actividad','ActividadController@Registrar')
     ->name('RegistrarActividad');
 
-    Route::get('/Actualizar_Actividad','ActividadController@Registrar')
+Route::get('/Actualizar_Actividad','ActividadController@Actualizar')
     ->name('ActualizarActividad');
 
 
