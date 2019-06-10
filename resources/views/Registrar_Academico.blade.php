@@ -189,9 +189,15 @@
 
     <div class="container theme-showcase" role="main">
     <div class="jumbotron">
+    <!-- El include permite el uso del blade 'Notificacion', muestra los banners de alerta y errores  -->
+    @include('Alerts.Notificacion')
+
+
+
     <h1>REGISTRO<span class="badge badge-secondary"></span></h1>
         
-        <form>
+        <form method ="post" action="{{route('academicos.store')}}">
+            {{ csrf_field() }}
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nombre">Nombre</label>
@@ -207,7 +213,7 @@
 
             <div class="form-group">
                 <label for="rut">Rut</label>
-                <input type="text" class="form-control" id="rut" name = "apellido" placeholder="12.345.678-9">
+                <input type="text" class="form-control" id="rut" name = "rut" placeholder="12.345.678-9">
             </div>
 
             <div class="form-group">
@@ -221,6 +227,8 @@
         </form>
         
     </div>
+
+
     </div>
 
 </body>
