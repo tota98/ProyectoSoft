@@ -222,13 +222,14 @@
          </div>
              
 
-        {{ csrf_field() }}
+        
          <h1>ACTUALIZACION<span class="badge badge-secondary"></span></h1>
         
         <!-- FORMULARIO PARA ACTUALIZAR ESTUDIANTE -->
     
         <form>
-        <div>
+            {{ csrf_field() }}
+        
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nombre">Nombre</label>
@@ -274,7 +275,7 @@
             </div>
              <button type="submit" class="btn btn-primary">Registrar</button>
 
-             </div>
+             
         </form>
 
     
