@@ -24,17 +24,17 @@ class CreateAcademicoCorrectoraTable extends Migration
 
 
             //Relation
-            $table->foreign('id_actividad_titulacion')->references('id')->on('actividad_titulacions')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-
-            $table->foreign('id_academico')->references('id')->on('academicos')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-
-            $table->foreign('id_organizacion')->references('id')->on('organizaciones')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+         //   $table->foreign('id_actividad_titulacion')->references('id')->on('actividad_titulacions')
+         //       ->onDelete('cascade')
+         //       ->onUpdate('cascade');
+//
+         //   $table->foreign('id_academico')->references('id')->on('academicos')
+         //       ->onDelete('cascade')
+         //       ->onUpdate('cascade');
+//
+         //   $table->foreign('id_organizacion')->references('id')->on('organizaciones')
+         //       ->onDelete('cascade')
+         //       ->onUpdate('cascade');
             
         });
     }
