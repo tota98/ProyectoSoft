@@ -213,23 +213,19 @@
                 <span class="input-group-text" id="inputGroup-sizing-lg">BUSQUEDA</span>
              </div>
 
-             <select class="custom-select custom-select-sm">
-                 <option selected>Busqueda por:</option>
-                 <option value="1">Nombre</option>
-                 <option value="2">Rut</option>
-            </select>
+             
 
             <input id="buscar" name="buscar" type="text" class="form-control" placeholder="Buscar" />
              <div id="sugerencias"></div>
          </div>
-             
+         @include('Alerts.Notificacion')    
 
         
          <h1>ACTUALIZACION<span class="badge badge-secondary"></span></h1>
         
         <!-- FORMULARIO PARA ACTUALIZAR ESTUDIANTE -->
-       
-        <form>
+                                    
+        <form method ="GET" action="{{route('estudiantes.modificar')}}">
             {{ csrf_field() }}
 
         
@@ -271,12 +267,12 @@
                  <input type="text" class="form-control" id="telefono" name = "telefono">
             </div>
         
-            <div class="form-check">
-                 <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <div class="form-group">
+                 <input class="form-check-input" type="checkbox" id="ELIMINAR" name="ELIMINAR">
                  <label class="form-check-label" for="defaultCheck1">
                  Eliminar Alumno
                  </label>
-                 <input id="id_Estudiante" type="text" name ="id_Estudiante" class="form-control">
+                 <input id="id_Estudiante" type="hidden" name ="id_Estudiante" class="form-control" >
             </div>
             
 

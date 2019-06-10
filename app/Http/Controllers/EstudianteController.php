@@ -133,24 +133,7 @@ class EstudianteController extends Controller
      */
     public function update(Request $request)
     {
-        dd($request->all());
-        $request->validate([
-            'nombre'=>'required',
-            'apellido'=>'required',
-            'correo'=>'required',
-            'carrera'=>'required',
-            'telefono'=>'required',
-        ]);
 
-        $estudiante = Estudiante::find($request->get('id_Estudiante'));
-        $estudiante->nombre =  $request->get('nombre');
-        $estudiante->apellido = $request->get('apellido');
-        $estudiante->correo = $request->get('correo');
-        $estudiante->carrera = $request->get('carrera');
-        $estudiante->telefono = $request->get('telefono');
-        $estudiante->save();
-
-      
     }
 
     /**
@@ -161,7 +144,9 @@ class EstudianteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $estudiante = Estudiante::find($id);
+        $estudiante->delete();
+        return back()->with('success','Eliminacion de estudiante con exito.');
     }
 
     public function check($rut) {
@@ -243,6 +228,34 @@ class EstudianteController extends Controller
         //Convertimos el n�mero a cadena para efectos de poder comparar
         $digitoVerificador = (string)$digitoVerificador;
         return $digitoVerificador;
+    }
+
+    public function Modificar(Request $request)
+    {
+        //dd($request->all());
+        $request->validate([
+            'nombre'=>'required',
+            'apellido'=>'required',
+            'correo'=>'required',
+            'carrera'=>'required',
+            'telefono'=>'required',
+            'id_Estudiante' =>'required',
+        ]);
+        if($isChecked = $request->has('ELIMINAR')){
+            $id = $request->get('id_Estudiante');
+            return self::destroy($id);
+        }
+        else{
+        $estudiante = Estudiante::find($request->get('id_Estudiante'));
+        $estudiante->nombre =  $request->get('nombre');
+        $estudiante->apellido = $request->get('apellido');
+        $estudiante->correo = $request->get('correo');
+        $estudiante->carrera = $request->get('carrera');
+        $estudiante->telefono = $request->get('telefono');
+        $estudiante->save();
+
+        return back()->with('success','Modificacion de estudiante con exito.');
+        }
     }
 
 }
