@@ -320,7 +320,6 @@
 });
             $(document).on('click', 'li', function(){  
                 $('#nombre').prop('disabled',false);
-                $('#buscar').prop('disabled',false);
                 $('#apellido').prop('disabled',false);
                 $('#correo').prop('disabled',false);
                 $('#carrera').prop('disabled',false);

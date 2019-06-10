@@ -231,7 +231,7 @@
                  Eliminar Academico
                  </label>
             </div>
-             <button type="submit" class="btn btn-primary">Registrar</button>
+             <button type="submit" class="btn btn-primary">Aplicar</button>
         </form>
     </div>
     </div>
@@ -252,7 +252,7 @@
                 var _token = $('input[name="_token"]').val();
 
                 $.ajax({
-                    url:"{{ route('autocomplete.fetch') }}",
+                    url:"{{ route('autocomplete.store') }}",
                     method:"POST",
                     data:{query:query, _token:_token},
                     success:function(data){
@@ -270,19 +270,17 @@
 });
             $(document).on('click', 'li', function(){  
                 $('#nombre').prop('disabled',false);
-                $('#cant_max').prop('disabled',false);
-                $('#duracion').prop('disabled',false);
-                $('#participacion_organizacion').prop('disabled',false);
-                $('#id_Actividad').prop('disabled',false);
+                $('#apellido').prop('disabled',false);
+                $('#correo').prop('disabled',false);
+                $('#id_Academico').prop('disabled',false);
                 $('#ELIMINAR').prop('disabled',false);
 
               $('#buscar').val($(this).text()); 
               var array =  $(this).text().split("-");
               $('#nombre').val(array[0]);
-              $('#cant_max').val(array[1]);
-              $('#duracion').val(array[2]);
-              $('#participacion_organizacion').val(array[3]);
-              $('#id_Actividad').val(array[4]);
+              $('#apellido').val(array[1]);
+              $('#correo').val(array[2]);
+              $('#id_Actividad').val(array[3]);
              
              
               $('#sugerencia').fadeOut();

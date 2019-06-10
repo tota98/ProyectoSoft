@@ -92,3 +92,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/autocomplete/fetch','AutoCompleteController@fetch')->name('autocomplete.fetch');
+Route::post('/autocomplete/store','AutoCompleteController@store')->name('autocomplete.store');
+
