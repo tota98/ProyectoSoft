@@ -201,8 +201,8 @@
 
        <div class="list-group">
              <label for="inputAddress2">TTULACION</label>
-             <a href="#" class="list-group-item list-group-item-action">Registro de actividad</a>
-             <a href="#" class="list-group-item list-group-item-action">Inscripcion</a>
+             <a href="{{url('/reg_3A')}}" class="list-group-item list-group-item-action">Registro de actividad</a>
+             <a href="{{url('/reg_3B')}}" class="list-group-item list-group-item-action">Actualización de actividad</a>             <a href="#" class="list-group-item list-group-item-action">Inscripcion</a>
              <a href="#" class="list-group-item list-group-item-action">Autorizar actividad</a>
              <a href="#" class="list-group-item list-group-item-action">Actualizar actividad</a>
              <a href="#" class="list-group-item list-group-item-action">Actividades en progreso</a>

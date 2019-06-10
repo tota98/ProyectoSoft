@@ -201,8 +201,10 @@
         
         <!-- FORMULARIO PARA ACTUALIZAR ESTUDIANTE -->
     
-        <form>
-        <div class="form-row">
+        <form method ="post" action="{{route('actividades.store')}}">
+            {{ csrf_field() }} 
+           
+            <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="tipo">Tipo de actividad</label>
                     <input id="tipo" type="text" class="form-control" name = "tipo" placeholder="Nombre del tipo de actividad">
@@ -212,36 +214,49 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="cantEst">Estudiantes participantes</label>
-                    <input id="cantEst" type="text" class="form-control" name = "cantEst" placeholder="Cantidad máxima de estudiantes (1-99)">
+                    <select class="form-control" id="cantEst">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                    </select>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="semestres">Duración en semestres</label>
-                <input id="semestres" type="text" class="form-control" name ="semestres" placeholder="Semestres (1-99)">
+                <select class="form-control" id="semestres">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                </select>
             </div>
 
             <label for="participación">Requiere participación de una organización externa</label>
 
-            <div class="btn-group btn-group-toggle btn-info" data-toggle="buttons">
-                <label class="btn btn-secondary active">
-                    <input type="radio" name="options" id="option1" autocomplete="off" checked> No
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="options" id="option2" autocomplete="off"> Si
-                </label>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline1">Si</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline2">No</label>
             </div>
 
-            <div class="form-check">
-                 <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                 <label class="form-check-label" for="defaultCheck1">
-                 Eliminar Actividad
-                 </label>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Registrar</button>
             </div>
 
-             <button type="submit" class="btn btn-primary">Registrar</button>
         </form>
-
         
     </div>
 

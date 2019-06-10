@@ -49,13 +49,12 @@ class EstudianteController extends Controller
 
         
         $validator = Validator::make($request->all(), [
-            
-           'nombre'=>'required',
-           'apellido'=> 'required',
-           'rut' => 'required',
-           'correo' => 'required',
-           'carrera' => 'required',
-           'telefono' => 'required|integer',
+            'nombre'=>'required',
+            'apellido'=> 'required',
+            'rut' => 'required',
+            'correo' => 'required',
+            'carrera' => 'required',
+            'telefono' => 'required|integer',
 
          ]);
 
@@ -81,24 +80,24 @@ class EstudianteController extends Controller
                  }
                 
             } //llama metodo del baner, con los errores concatenados.
-            
+            //Estudiante::create($request->all());
        
-       Estudiante::create($request->all());
-       return back()->with('success','Estudiante registrado con exito.');
+        $Estudiante = new Estudiante([
+            'nombre' => $request->get('nombre'),
+            'apellido'=> $request->get('apellido'),
+            'rut'=> $request->get('rut'),
+            'correo'=> $request->get('correo'),
+            'carrera'=> $request->get('carrera'),
+            'telefono'=> $request->get('telefono'),
+        ]);
+        $Estudiante->save();
+        return back()->with('success','Estudiante registrado con exito.');
        
          
       
          //METODO ALTERNATIVO
          
-    //   $Estudiante = new Estudiante([
-    //     'nombre' => $request->get('nombre'),
-    //     'apellido'=> $request->get('apellido'),
-    //     'rut'=> $request->get('rut'),
-    //     'correo'=> $request->get('correo'),
-    //     'carrera'=> $request->get('carrera'),
-    //     'telefono'=> $request->get('telefono'),
-    //   ]);
-    //   $Estudiante->save();
+
 
 
          
