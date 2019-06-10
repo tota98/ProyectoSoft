@@ -45,9 +45,9 @@ class AcademicoController extends Controller
         
         $validator = Validator::make($request->all(), [
             
+           'rut' => 'required',
            'nombre'=>'required',
            'apellido'=> 'required',
-           'rut' => 'required',
            'correo' => 'required',
 
          ]);
@@ -77,9 +77,9 @@ class AcademicoController extends Controller
             
        
          $Academico = new Academico([
+            'rut'=> $request->get('rut'),
             'nombre' => $request->get('nombre'),
             'apellido'=> $request->get('apellido'),
-            'rut'=> $request->get('rut'),
             'correo'=> $request->get('correo'),
          ]);
          $Academico->save();

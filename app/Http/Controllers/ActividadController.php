@@ -144,19 +144,18 @@ class ActividadController extends Controller
         
         ]);
         if($isChecked = $request->has('ELIMINAR')){
-            $id = $request->get('id_Estudiante');
+            $id = $request->get('id_Actividad');
             return self::destroy($id);
         }
         else{
-        $estudiante = Estudiante::find($request->get('id_Estudiante'));
-        $estudiante->nombre =  $request->get('nombre');
-        $estudiante->apellido = $request->get('apellido');
-        $estudiante->correo = $request->get('correo');
-        $estudiante->carrera = $request->get('carrera');
-        $estudiante->telefono = $request->get('telefono');
-        $estudiante->save();
+        $Actividad = Actividad::find($request->get('id_Actividad'));
+        $Actividad->nombre =  $request->get('nombre');
+        $Actividad->cant_max = $request->get('cant_max');
+        $Actividad->duracion = $request->get('duracion');
+        $Actividad->participacion_organizacion = $request->get('participacion_organizacion');
+        $Actividad->save();
 
-        return back()->with('success','Modificacion de estudiante con exito.');
+        return back()->with('success','Modificacion de actividad con exito.');
         }
     }
 }

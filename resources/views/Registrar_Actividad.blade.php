@@ -217,6 +217,7 @@
                     <label for="inputState">Estudiantes participantes(*)</label>
 
                     <select class="form-control" id="cant_max" name ="cant_max" value = "">
+                    <option value="">cantidad de estudiantes</option>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -234,6 +235,7 @@
             <div class="form-group">
                 <label for="inputState">Duración en semestres(*)</label>
                 <select class="form-control" id="duracion" name = "duracion">
+                <option value="">duracion en semestres</option>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -257,7 +259,7 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Registrar</button>
             </div>
-    </div>
+        </div>
         </form>
     
     
