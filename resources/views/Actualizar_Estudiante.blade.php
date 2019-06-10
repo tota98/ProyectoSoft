@@ -233,25 +233,25 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name = "nombre" placeholder="Nombre">
+                    <input type="text" class="form-control" id="nombre" name = "nombre" placeholder="Nombre" disabled>
                 </div>
 
                  <div class="form-group col-md-6">
                      <label for="apellido">Apellido</label>
-                     <input type="text" class="form-control" id="apellido" name ="apellido" placeholder="Apellido">
+                     <input type="text" class="form-control" id="apellido" name ="apellido" placeholder="Apellido" disabled>
                  </div>
 
             </div>
 
             <div class="form-group">
                 <label for="inputAddress2">Correo</label>
-                <input type="email" class="form-control" id="correo" name ="correo" placeholder="example@example.com">
+                <input type="email" class="form-control" id="correo" name ="correo" placeholder="example@example.com" disabled>
             </div>
 
             <div class="form-group">
                 <div class="form-group">
                      <label for="inputState">Carrera</label>
-                     <select id="carrera" name ="carrera" class="form-control">
+                     <select id="carrera" name ="carrera" class="form-control" disabled>
                          <option value="" selected disabled>seleccione carrera</option>
                          <option>ICCI</option>
                          <option>IenCI</option>
@@ -264,11 +264,11 @@
 
             <div class="form-group">
                  <label for="telefono">Telefono</label>
-                 <input type="text" class="form-control" id="telefono" name = "telefono">
+                 <input type="text" class="form-control" id="telefono" name = "telefono" disabled>
             </div>
         
             <div class="form-group">
-                 <input class="form-check-input" type="checkbox" id="ELIMINAR" name="ELIMINAR">
+                 <input class="form-check-input" type="checkbox" id="ELIMINAR" name="ELIMINAR" disabled>
                  <label class="form-check-label" for="defaultCheck1">
                  Eliminar Alumno
                  </label>
@@ -319,7 +319,15 @@
             }
 });
             $(document).on('click', 'li', function(){  
-              
+                $('#nombre').prop('disabled',false);
+                $('#buscar').prop('disabled',false);
+                $('#apellido').prop('disabled',false);
+                $('#correo').prop('disabled',false);
+                $('#carrera').prop('disabled',false);
+                $('#telefono').prop('disabled',false);
+                $('#id_Estudiante').prop('disabled',false);
+                $('#ELIMINAR').prop('disabled',false);
+
               $('#buscar').val($(this).text()); 
               var array =  $(this).text().split("-");
               $('#nombre').val(array[0]);
@@ -336,3 +344,5 @@
          });
          
     </script>
+
+
