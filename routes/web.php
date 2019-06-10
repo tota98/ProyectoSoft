@@ -29,7 +29,7 @@ Route::get('/Modificar_Estudiante','EstudianteController@Modificar')
     Route::get('/Modificar_Academico','AcademicoController@Modificar')
     ->name('academicos.modificar');
     Route::get('/Modificar_Actividad','ActividadController@Modificar')
-    ->name('actividad.modificar');
+    ->name('actividades.modificar');
 
 Route::resource('actividades','ActividadController');
 
@@ -93,4 +93,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/autocomplete/fetch','AutoCompleteController@fetch')->name('autocomplete.fetch');
 Route::post('/autocomplete/store','AutoCompleteController@store')->name('autocomplete.store');
+Route::post('/autocomplete/A_Actividad','AutoCompleteController@ActualizarActividad')->name('autocomplete.actividad');
 

@@ -203,20 +203,20 @@
         
         <!-- FORMULARIO PARA ACTUALIZAR ESTUDIANTE -->
     
-        <form method ="post" action="{{route('actividades.store')}}">
+        <form method ="post" action="{{route('actividades.modificar')}}">
             {{ csrf_field() }} 
            
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="tipo">Tipo de actividad</label>
-                    <input id="tipo" type="text" class="form-control" name = "tipo" placeholder="Nombre del tipo de actividad">
+                    <input id="nombre" type="text" class="form-control" name = "nombre" placeholder="Nombre del tipo de actividad">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="cantEst">Estudiantes participantes</label>
-                    <select class="form-control" id="cantEst">
+                    <select class="form-control" id="cantEst"  name="cantEst">
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -233,7 +233,7 @@
 
             <div class="form-group">
                 <label for="semestres">Duración en semestres</label>
-                <select class="form-control" id="semestres">
+                <select class="form-control" id="duracion" name="duracion">
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -246,14 +246,14 @@
             <label for="participación">Requiere participación de una organización externa</label>
 
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                <input type="radio" id="participacion_organizacion" name="participacion_organizacion" class="custom-control-input">
                 <label class="custom-control-label" for="customRadioInline1">Si</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                <input type="radio" id="participacion_organizacion" name="participacion_organizacion" class="custom-control-input">
                 <label class="custom-control-label" for="customRadioInline2">No</label>
             </div>
-
+            <input id="id_Actividad" type="hidden" name ="id_Actividad" class="form-control" >
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Registrar</button>
             </div>
@@ -282,7 +282,7 @@
                 var _token = $('input[name="_token"]').val();
 
                 $.ajax({
-                    url:"{{ route('autocomplete.fetch') }}",
+                    url:"{{ route('autocomplete.actividad') }}",
                     method:"POST",
                     data:{query:query, _token:_token},
                     success:function(data){
@@ -300,7 +300,7 @@
 });
             $(document).on('click', 'li', function(){  
                 $('#nombre').prop('disabled',false);
-                $('#cant_max').prop('disabled',false);
+                $('#cantEst').prop('disabled',false);
                 $('#duracion').prop('disabled',false);
                 $('#participacion_organizacion').prop('disabled',false);
                 $('#id_Actividad').prop('disabled',false);
@@ -309,7 +309,7 @@
               $('#buscar').val($(this).text()); 
               var array =  $(this).text().split("-");
               $('#nombre').val(array[0]);
-              $('#cant_max').val(array[1]);
+              $('#cantEst').val(array[1]);
               $('#duracion').val(array[2]);
               $('#participacion_organizacion').val(array[3]);
               $('#id_Actividad').val(array[4]);
