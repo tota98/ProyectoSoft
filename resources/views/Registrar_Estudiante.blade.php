@@ -198,7 +198,7 @@
    
    
     <h1>REGISTRO<span class="badge badge-secondary"></span></h1>
-
+    <label>(*) Campos Obligatorios</label>
    
     <!-- FORMULARIO PARA REGISTRAR ESTUDIANTE -->
     
@@ -207,30 +207,30 @@
            
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="nombre">Nombre</label>
+                    <label for="nombre">Nombre(*)</label>
                     <input id="nombre" type="text" class="form-control" name = "nombre" placeholder="Nombre">
                 </div>
 
                  <div class="form-group col-md-6">
-                     <label for="apellido">Apellido</label>
+                     <label for="apellido">Apellido(*)</label>
                      <input id="apellido"  type="text" class="form-control" name = "apellido" placeholder="Apellido">
                  </div>
 
             </div>
 
             <div class="form-group">
-                <label for="rut">Rut</label>
+                <label for="rut">Rut(*)</label>
                 <input id="rut" type="text" class="form-control" name = "rut" placeholder="12.345.678-9">
             </div>
 
             <div class="form-group">
-                <label for="inputAddress2">Correo</label>
+                <label for="inputAddress2">Correo(*)</label>
                 <input id="correo" type="email" class="form-control" name ="correo" placeholder="ejemplo@ejemplo.com">
             </div>
 
             <div class="form-group">
                 <div class="form-group">
-                     <label for="inputState">Carrera</label>
+                     <label for="inputState">Carrera(*)</label>
                      <select id="carrera" class="form-control" name ="carrera">
                         <option value="" selected disabled>seleccione carrera</option>
                          <option>ICCI</option>
@@ -238,15 +238,11 @@
                          <option>IECI</option>
                     </select>
                 </div>
-                
-            
             </div>
 
             <div class="form-group">
                  <label for="telefono">Telefono</label>
                  <input id="telefono" name = "telefono" type="text" class="form-control" >
-    
-
             </div>
         
              <button type="submit" class="btn btn-primary">Registrar</button>
