@@ -198,7 +198,7 @@
    
    
     <h1>REGISTRO<span class="badge badge-secondary"></span></h1>
-
+    <label>(*) Campos Obligatorios</label>
    
     <!-- FORMULARIO PARA REGISTRAR ACTIVIDAD -->
     
@@ -207,14 +207,14 @@
            
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="tipo">Tipo de actividad</label>
+                    <label for="tipo">Tipo de actividad(*)</label>
                     <input id="tipo" type="text" class="form-control" name = "tipo" placeholder="Nombre del tipo de actividad">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="cantEst">Estudiantes participantes</label>
+                    <label for="cantEst">Estudiantes participantes(*)</label>
                     <select class="form-control" id="cantEst">
                         <option>1</option>
                         <option>2</option>
@@ -231,7 +231,7 @@
             </div>
 
             <div class="form-group">
-                <label for="semestres">Duración en semestres</label>
+                <label for="semestres">Duración en semestres(*)</label>
                 <select class="form-control" id="semestres">
                         <option>1</option>
                         <option>2</option>
@@ -242,7 +242,7 @@
                 </select>
             </div>
 
-            <label for="participación">Requiere participación de una organización externa</label>
+            <label for="participación">Requiere participación de una organización externa(*)</label>
 
             <div class="custom-control custom-radio custom-control-inline">
                 <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
