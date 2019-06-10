@@ -29,6 +29,7 @@ Route::get('/Modificar_Estudiante','EstudianteController@Modificar')
 
 Route::resource('actividades','ActividadController');
 
+Route::resource('academicos','AcademicoController');
 
 
 Route::get('/Menu_Secretaria','SecretariaController@Menu')

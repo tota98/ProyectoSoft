@@ -8,7 +8,7 @@ class Academico extends Model
 {
     //
     protected $fillable = [
-        'rut','nombre','apellido','correo',
+        'nombre','apellido','rut','correo',
     ];
 
 }
