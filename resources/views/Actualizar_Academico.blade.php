@@ -238,3 +238,59 @@
 
 </body>
 </html>
+
+
+<script>
+         $(document).ready(function(){
+           
+
+            $('#buscar').keyup(function(){
+            var query = $(this).val();
+            
+            if(query != '')
+            {
+                var _token = $('input[name="_token"]').val();
+
+                $.ajax({
+                    url:"{{ route('autocomplete.fetch') }}",
+                    method:"POST",
+                    data:{query:query, _token:_token},
+                    success:function(data){
+                        $('#sugerencias').fadeIn(500);
+                           $('#sugerencias').html(data);
+
+                    }
+
+                }).fail( function( jqXHR, textStatus, errorThrown ) {
+                        alert( 'Error!! AJAX IS DED' )
+                });;
+
+
+            }
+});
+            $(document).on('click', 'li', function(){  
+                $('#nombre').prop('disabled',false);
+                $('#buscar').prop('disabled',false);
+                $('#apellido').prop('disabled',false);
+                $('#correo').prop('disabled',false);
+                $('#carrera').prop('disabled',false);
+                $('#telefono').prop('disabled',false);
+                $('#id_Estudiante').prop('disabled',false);
+                $('#ELIMINAR').prop('disabled',false);
+
+              $('#buscar').val($(this).text()); 
+              var array =  $(this).text().split("-");
+              $('#nombre').val(array[0]);
+              $('#apellido').val(array[1]);
+              $('#correo').val(array[2]);
+              $('#carrera').val(array[3]);
+              $('#telefono').val(array[4]);
+              $('#id_Estudiante').val(array[5]);
+             
+             
+              $('#sugerencia').fadeOut();
+                
+            });
+         });
+         
+    </script>
