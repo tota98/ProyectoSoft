@@ -181,6 +181,8 @@
 
 <body>
 
+
+
     <div id="app" >
     
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
@@ -222,13 +224,16 @@
          </div>
              
 
-        {{ csrf_field() }}
+        
          <h1>ACTUALIZACION<span class="badge badge-secondary"></span></h1>
         
         <!-- FORMULARIO PARA ACTUALIZAR ESTUDIANTE -->
-    
+       
         <form>
-        <div>
+            {{ csrf_field() }}
+
+        
+        
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nombre">Nombre</label>
@@ -247,7 +252,7 @@
                 <input type="email" class="form-control" id="correo" name ="correo" placeholder="example@example.com">
             </div>
 
-            <div class="form-gourp">
+            <div class="form-group">
                 <div class="form-group">
                      <label for="inputState">Carrera</label>
                      <select id="carrera" name ="carrera" class="form-control">
@@ -271,15 +276,19 @@
                  <label class="form-check-label" for="defaultCheck1">
                  Eliminar Alumno
                  </label>
+                 <input id="id_Estudiante" type="text" name ="id_Estudiante" class="form-control">
             </div>
-             <button type="submit" class="btn btn-primary">Registrar</button>
+            
 
-             </div>
+             <button type="submit" class="btn btn-primary">Aplicar</button>
+
+            
+            
         </form>
 
     
+    
     </div>
-
 
 </body>
 
@@ -322,6 +331,7 @@
               $('#correo').val(array[2]);
               $('#carrera').val(array[3]);
               $('#telefono').val(array[4]);
+              $('#id_Estudiante').val(array[5]);
              
              
               $('#sugerencia').fadeOut();

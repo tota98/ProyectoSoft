@@ -29,6 +29,11 @@ class EstudianteController extends Controller
     {
         return view('Registrar_Estudiante');
     }
+    public function Actualizar()
+    {
+        $estudiantes = Estudiante::all();
+        return view('Actualizar_Estudiante',compact('estudiantes'));
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -39,7 +44,7 @@ class EstudianteController extends Controller
     public function store(Request $request)
     {
 
-        //dd($request->all());
+        
 
 
         
@@ -118,19 +123,35 @@ class EstudianteController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
-    /**
-     * Update the specified resource in storage.
+   /**
+     * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        dd($request->all());
+        $request->validate([
+            'nombre'=>'required',
+            'apellido'=>'required',
+            'correo'=>'required',
+            'carrera'=>'required',
+            'telefono'=>'required',
+        ]);
+
+        $estudiante = Estudiante::find($request->get('id_Estudiante'));
+        $estudiante->nombre =  $request->get('nombre');
+        $estudiante->apellido = $request->get('apellido');
+        $estudiante->correo = $request->get('correo');
+        $estudiante->carrera = $request->get('carrera');
+        $estudiante->telefono = $request->get('telefono');
+        $estudiante->save();
+
+      
     }
 
     /**

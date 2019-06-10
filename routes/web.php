@@ -23,6 +23,7 @@ Route::get('/reg_1A', function ()
 
 
 Route::resource('estudiantes','EstudianteController');
+
 Route::resource('actividades','ActividadController');
 
 
