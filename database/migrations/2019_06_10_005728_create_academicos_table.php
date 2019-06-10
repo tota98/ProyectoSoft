@@ -19,7 +19,7 @@ class CreateAcademicosTable extends Migration
             $table->string('nombre',255);
             $table->string('apellido',255);
             $table->string('rut',15);
-            $table->string('correo',128)->unsined();
+            $table->string('correo',128)->unsigned();
         });
     }
 
