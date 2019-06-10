@@ -24,6 +24,9 @@ Route::get('/reg_1A', function ()
 
 Route::resource('estudiantes','EstudianteController');
 
+Route::get('/Modificar_Estudiante','EstudianteController@Modificar')
+    ->name('estudiantes.modificar');
+
 Route::resource('actividades','ActividadController');
 
 

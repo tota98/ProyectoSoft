@@ -228,8 +228,8 @@
          <h1>ACTUALIZACION<span class="badge badge-secondary"></span></h1>
         
         <!-- FORMULARIO PARA ACTUALIZAR ESTUDIANTE -->
-       
-        <form method ="post" action="{{route('estudiantes.Modificar')}}">
+                                    
+        <form method ="GET" action="{{route('estudiantes.modificar')}}">
             {{ csrf_field() }}
 
         
@@ -276,7 +276,7 @@
                  <label class="form-check-label" for="defaultCheck1">
                  Eliminar Alumno
                  </label>
-                 <input id="id_Estudiante" type="text" name ="id_Estudiante" class="form-control">
+                 <input id="id_Estudiante" type="hidden" name ="id_Estudiante" class="form-control" >
             </div>
             
 

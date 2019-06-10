@@ -131,9 +131,9 @@ class EstudianteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function Modificar(Request $request)
+    public function update(Request $request)
     {
-        dd($request->all());
+        //dd($request->all());
         $request->validate([
             'nombre'=>'required',
             'apellido'=>'required',
@@ -151,7 +151,7 @@ class EstudianteController extends Controller
         $estudiante->telefono = $request->get('telefono');
         $estudiante->save();
 
-      
+        return back()->with('success','Modificacion de estudiante con exito.');
     }
 
     /**
@@ -244,6 +244,29 @@ class EstudianteController extends Controller
         //Convertimos el n�mero a cadena para efectos de poder comparar
         $digitoVerificador = (string)$digitoVerificador;
         return $digitoVerificador;
+    }
+
+    public function Modificar(Request $request)
+    {
+        //dd($request->all());
+        $request->validate([
+            'nombre'=>'required',
+            'apellido'=>'required',
+            'correo'=>'required',
+            'carrera'=>'required',
+            'telefono'=>'required',
+            'id_Estudiante' =>'required',
+        ]);
+        
+        $estudiante = Estudiante::find($request->get('id_Estudiante'));
+        $estudiante->nombre =  $request->get('nombre');
+        $estudiante->apellido = $request->get('apellido');
+        $estudiante->correo = $request->get('correo');
+        $estudiante->carrera = $request->get('carrera');
+        $estudiante->telefono = $request->get('telefono');
+        $estudiante->save();
+
+        return back()->with('success','Modificacion de estudiante con exito.');
     }
 
 }
