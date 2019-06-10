@@ -254,9 +254,14 @@
                 <label class="custom-control-label" for="customRadioInline2">No</label>
             </div>
             <input id="id_Actividad" type="hidden" name ="id_Actividad" class="form-control" >
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Registrar</button>
+            <div class="form-check">
+                 <input class="form-check-input" type="checkbox" id="ELIMINAR" name="ELIMINAR" disabled disabled>
+                 <label class="form-check-label" for="defaultCheck1">
+                 Eliminar Actividad
+                 </label>
+                 <input id="id_Actividad" type="hidden" name ="id_Actividad" class="form-control" >
             </div>
+             <button type="submit" class="btn btn-primary">Aplicar</button>
 
         </form>
         
