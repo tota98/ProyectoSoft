@@ -45,4 +45,37 @@ class AutoCompleteController extends Controller
 
             
     } 
+     public function store(Request $request)
+    {
+       
+          if($request->get('query'))
+          {
+            $query = $request->get('query');
+            
+           
+            $data = DB::table('estudiantes')
+            ->where('rut', 'LIKE', "%{$query}%")->orWhere('nombre', 'LIKE', "%{$query}%")->get(); 
+            $output = '<ul class = "dropdown-menu" style ="display:block; position:relative">';
+            foreach($data as $row)
+                
+            {
+         
+
+
+
+                $output .='
+                <li><a href="#">'.$row->nombre."-".$row->apellido."-".$row->correo."-".$row->carrera."-".$row->telefono."-".$row->id.'</a></li>
+                ';
+
+                
+            }
+            $output .= '</ul>';
+            echo $output;
+            
+          }
+
+            
+    } 
+    
+
 }

@@ -202,7 +202,7 @@
 
         
         <!-- FORMULARIO PARA ACTUALIZAR ACTIVIDAD -->
-        <form method ="GET" action="{{route('actividades.modificar')}}">
+        <form method ="GET" action="{{route('academicos.modificar')}}">
             {{ csrf_field() }}
 
             <div class="form-row">
