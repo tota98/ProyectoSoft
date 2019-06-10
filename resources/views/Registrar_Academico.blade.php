@@ -221,7 +221,7 @@
                 <input type="email" class="form-control" id="correo" name = "correo" placeholder="ejemplo@ejemplo.com">
             </div>
 
-            
+
         
              <button type="submit" class="btn btn-primary">Registrar</button>
         </form>
