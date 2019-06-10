@@ -172,13 +172,13 @@
     
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand">
                 Titulación
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                     <a class="navbar-brand" href="{{ url('/') }}">
+                     <a class="navbar-brand" href="{{ URL::previous() }}">
                      Inicio
                      <a class="navbar-brand" href="{{ url('/') }}">
                      Cerrar Sesion

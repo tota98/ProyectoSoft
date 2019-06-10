@@ -169,7 +169,7 @@
     
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand">
                 Titulación
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
