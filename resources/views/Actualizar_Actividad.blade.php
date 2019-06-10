@@ -203,20 +203,20 @@
         
         <!-- FORMULARIO PARA ACTUALIZAR ESTUDIANTE -->
     
-        <form method ="post" action="{{route('actividades.modificar')}}">
+        <form method ="GET" action="{{route('actividades.modificar')}}">
             {{ csrf_field() }} 
            
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="tipo">Tipo de actividad</label>
-                    <input id="nombre" type="text" class="form-control" name = "nombre" placeholder="Nombre del tipo de actividad">
+                    <input id="nombre" type="text" class="form-control" name = "nombre" placeholder="Nombre del tipo de actividad" disabled>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="cantEst">Estudiantes participantes</label>
-                    <select class="form-control" id="cantEst"  name="cantEst">
+                    <select class="form-control" id="cantEst"  name="cantEst" disabled>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -233,7 +233,7 @@
 
             <div class="form-group">
                 <label for="semestres">Duración en semestres</label>
-                <select class="form-control" id="duracion" name="duracion">
+                <select class="form-control" id="duracion" name="duracion" disabled>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -255,12 +255,13 @@
             </div>
             <input id="id_Actividad" type="hidden" name ="id_Actividad" class="form-control" >
             <div class="form-check">
-                 <input class="form-check-input" type="checkbox" id="ELIMINAR" name="ELIMINAR" disabled disabled>
+                 <input class="form-check-input" type="checkbox" id="ELIMINAR" name="ELIMINAR" disabled>
                  <label class="form-check-label" for="defaultCheck1">
                  Eliminar Actividad
                  </label>
-                 <input id="id_Actividad" type="hidden" name ="id_Actividad" class="form-control" >
+                 
             </div>
+            
              <button type="submit" class="btn btn-primary">Aplicar</button>
 
         </form>

@@ -135,10 +135,10 @@ class ActividadController extends Controller
 
     public function Modificar(Request $request)
     {
-        //dd($request->all());
+        
         $request->validate([
             'nombre'=>'required',
-            'cant_max'=>'required',
+            'cantEst'=>'required',
             'duracion'=>'required',
             'participacion_organizacion'=>'required',
         
@@ -150,7 +150,7 @@ class ActividadController extends Controller
         else{
         $Tipo_actividad = Tipo_actividad::find($request->get('id_Actividad'));
         $Tipo_actividad->nombre =  $request->get('nombre');
-        $Tipo_actividad->cant_max = $request->get('cant_max');
+        $Tipo_actividad->cant_max = $request->get('cantEst');
         $Tipo_actividad->duracion = $request->get('duracion');
         $Tipo_actividad->participacion_organizacion = $request->get('participacion_organizacion');
         $Tipo_actividad->save();
