@@ -21,6 +21,7 @@ class CreateEstudiantesTable extends Migration
             $table->string('apellido',255);
             $table->string('rut',15)->unique();
             $table->string('correo',128)->unique();
+            $table->string('carrera',128);
             $table->integer('telefono')->unsigned();
             
             $table->integer('actividad_titulacion_id')->unsigned()->nullable();
