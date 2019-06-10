@@ -35,15 +35,15 @@ class CreateActividadTitulacionsTable extends Migration
 
             $table->timestamps();
 
-
-            //Relation
-            $table->foreign('id_tipo_actividad')->references('id')->on('tipo_actividads')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-
-            $table->foreign('id_organizacion')->references('id')->on('organizaciones')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+//
+//            //Relation
+//            $table->foreign('id_tipo_actividad')->references('id')->on('tipo_actividads')
+//                ->onDelete('cascade')
+//                ->onUpdate('cascade');
+//
+//            $table->foreign('id_organizacion')->references('id')->on('organizaciones')
+//                ->onDelete('cascade')
+//                ->onUpdate('cascade');
         });
     }
 
