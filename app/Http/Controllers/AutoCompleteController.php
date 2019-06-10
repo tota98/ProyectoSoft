@@ -78,6 +78,39 @@ class AutoCompleteController extends Controller
 
             
     } 
+
+    public function ActualizarActividad(Request $request)
+    {
+       
+          if($request->get('query'))
+          {
+            $query = $request->get('query');
+            
+           
+            $data = DB::table('tipo_actividads')
+            ->where('id', 'LIKE', "%{$query}%")->orWhere('nombre', 'LIKE', "%{$query}%")->get(); 
+            $output = '<ul class = "dropdown-menu" style ="display:block; position:relative">';
+            foreach($data as $row)
+                
+            {
+         
+
+
+
+                $output .='
+                <li><a href="#">'.$row->nombre."-".$row->cant_max."-".$row->duracion."-".$row->id.'</a></li>
+                ';
+
+                
+            }
+            $output .= '</ul>';
+            
+            echo $output;
+            
+          }
+
+            
+    } 
     
 
 }
