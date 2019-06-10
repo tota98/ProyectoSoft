@@ -71,6 +71,7 @@ class AutoCompleteController extends Controller
                 
             }
             $output .= '</ul>';
+            
             echo $output;
             
           }

@@ -216,7 +216,7 @@ class AcademicoController extends Controller
     }
     public function Modificar(Request $request)
     {
-        //dd($request->all());
+        
         $request->validate([
             'nombre'=>'required',
             'apellido'=>'required',
@@ -228,7 +228,7 @@ class AcademicoController extends Controller
             return self::destroy($id);
         }
         else{
-        $academico = Academico::find($request->get('id_academico'));
+        $academico = Academico::find($request->get('id_Academico'));
         $academico->nombre =  $request->get('nombre');
         $academico->apellido = $request->get('apellido');
         $academico->correo = $request->get('correo');

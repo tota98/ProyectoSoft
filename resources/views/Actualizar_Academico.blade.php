@@ -204,37 +204,40 @@
         <!-- FORMULARIO PARA ACTUALIZAR ACTIVIDAD -->
         <form method ="GET" action="{{route('academicos.modificar')}}">
             {{ csrf_field() }}
-
+            
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre">
                 </div>
 
                  <div class="form-group col-md-6">
                      <label for="apellido">Apellido</label>
-                     <input type="text" class="form-control" id="apellido" placeholder="Apellido">
+                     <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido">
                  </div>
 
             </div>
 
             <div class="form-group">
                 <label for="inputAddress2">Correo</label>
-                <input type="email" class="form-control" id="correo" placeholder="ejemplo@ejemplo.com">
+                <input type="email" class="form-control" id="correo" name ="correo" placeholder="ejemplo@ejemplo.com">
             </div>
 
             
         
             <div class="form-check">
-                 <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                 <input class="form-check-input" type="checkbox" id="ELIMINAR" name="ELIMINAR" disabled>
                  <label class="form-check-label" for="defaultCheck1">
                  Eliminar Academico
                  </label>
+                 <input id="id_Academico" type="hidden" name ="id_Academico" class="form-control" >
             </div>
              <button type="submit" class="btn btn-primary">Aplicar</button>
+             
         </form>
     </div>
     </div>
+    
 
 </body>
 </html>
@@ -280,7 +283,7 @@
               $('#nombre').val(array[0]);
               $('#apellido').val(array[1]);
               $('#correo').val(array[2]);
-              $('#id_Actividad').val(array[3]);
+              $('#id_Academico').val(array[3]);
              
              
               $('#sugerencia').fadeOut();
