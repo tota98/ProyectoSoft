@@ -170,7 +170,7 @@
     
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand">
                 Titulación
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -186,11 +186,11 @@
     </nav>
 
     <div class="container theme-showcase" role="main">
-
+    <div class="jumbotron">
         <div class="list-group">
              <label for="inputAddress2">ALUMNOS</label>
-             <a href="{{url('/reg_1A')}}" class="list-group-item list-group-item-action">Registro</a>
-             <a href="{{url('/reg_1B')}}" class="list-group-item list-group-item-action">Actualizacion</a>
+             <a href="{{route('RegistrarEstudiante')}}" class="list-group-item list-group-item-action">Registro</a>
+             <a href="{{route('ActualizarEstudiante')}}" class="list-group-item list-group-item-action">Actualizacion</a>
        </div> 
 
        <div class="list-group">
@@ -200,16 +200,17 @@
        </div> 
 
        <div class="list-group">
-             <label for="inputAddress2">TTULACION</label>
-             <a href="#" class="list-group-item list-group-item-action">Registro de actividad</a>
+             <label for="inputAddress2">TITULACION</label>
+             <a href="{{url('/reg_3A')}}" class="list-group-item list-group-item-action">Registro de actividad</a>
+             <a href="{{url('/reg_3B')}}" class="list-group-item list-group-item-action">Actualización de actividad</a>
              <a href="#" class="list-group-item list-group-item-action">Inscripcion</a>
              <a href="#" class="list-group-item list-group-item-action">Actividades en progreso</a>
              <a href="#" class="list-group-item list-group-item-action">Anulacion</a>
-       </div> 
+       </div>
 
        <a href="{{url('/reporte')}}" class="list-group-item list-group-item-action">Reportes</a>
      </div>
-
+    </div>
 
 </body>
 </html>

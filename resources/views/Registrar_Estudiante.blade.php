@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+
+
 <head>
+
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -170,13 +175,13 @@
     
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand">
                 Titulación
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                     <a class="navbar-brand" href="{{ url('/') }}">
+                     <a class="navbar-brand" href="{{ URL::previous() }}">
                      Inicio
                      <a class="navbar-brand" href="{{ url('/') }}">
                      Cerrar Sesion
@@ -186,56 +191,68 @@
     </nav>
 
     <div class="container theme-showcase" role="main">
-    
+    <div class="jumbotron">
+    <!-- El include permite el uso del blade 'Notificacion', muestra los banners de alerta y errores  -->
+    @include('Alerts.Notificacion')
+   
+   
+   
     <h1>REGISTRO<span class="badge badge-secondary"></span></h1>
-
-        <form>
+    <label>(*) Campos Obligatorios</label>
+   
+    <!-- FORMULARIO PARA REGISTRAR ESTUDIANTE -->
+    
+        <form method ="post" action="{{route('estudiantes.store')}}">
+            {{ csrf_field() }}
+           
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+                    <label for="nombre">Nombre(*)</label>
+                    <input id="nombre" type="text" class="form-control" name = "nombre" placeholder="Nombre">
                 </div>
 
                  <div class="form-group col-md-6">
-                     <label for="apellido">Apellido</label>
-                     <input type="text" class="form-control" id="apellido" placeholder="Apellido">
+                     <label for="apellido">Apellido(*)</label>
+                     <input id="apellido"  type="text" class="form-control" name = "apellido" placeholder="Apellido">
                  </div>
 
             </div>
 
             <div class="form-group">
-                <label for="rut">Rut</label>
-                <input type="text" class="form-control" id="rut" placeholder="12.345.678-9">
+                <label for="rut">Rut(*)</label>
+                <input id="rut" type="text" class="form-control" name = "rut" placeholder="12.345.678-9">
             </div>
 
             <div class="form-group">
-                <label for="inputAddress2">Correo</label>
-                <input type="email" class="form-control" id="correo" placeholder="example@example.com">
+                <label for="inputAddress2">Correo(*)</label>
+                <input id="correo" type="email" class="form-control" name ="correo" placeholder="ejemplo@ejemplo.com">
             </div>
 
-            <div class="form-gourp">
+            <div class="form-group">
                 <div class="form-group">
-                     <label for="inputState">Carrera</label>
-                     <select id="correo" class="form-control">
-                         <option selected>Carreras</option>
+                     <label for="inputState">Carrera(*)</label>
+                     <select id="carrera" class="form-control" name ="carrera">
+                        <option value="" selected disabled>seleccione carrera</option>
                          <option>ICCI</option>
                          <option>IenCI</option>
                          <option>IECI</option>
                     </select>
                 </div>
-                
-            
             </div>
 
             <div class="form-group">
                  <label for="telefono">Telefono</label>
-                 <input type="text" class="form-control" id="telefono">
+                 <input id="telefono" name = "telefono" type="text" class="form-control" >
             </div>
         
              <button type="submit" class="btn btn-primary">Registrar</button>
         </form>
+    
+    
     </div>
+    
 
+    </div>
 
 </body>
 </html>

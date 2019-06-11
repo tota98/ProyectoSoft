@@ -18,9 +18,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    
+
+    @yield('js')
 </head>
 
 
@@ -170,13 +172,13 @@
     
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand">
                 Titulación
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                     <a class="navbar-brand" href="{{ url('/') }}">
+                     <a class="navbar-brand" href="{{ URL::previous() }}">
                      Inicio
                      <a class="navbar-brand" href="{{ url('/') }}">
                      Cerrar Sesion
@@ -186,39 +188,48 @@
     </nav>
 
     <div class="container theme-showcase" role="main">
-    
-    <h1>REGISTRO<span class="badge badge-secondary"></span></h1>
+    <div class="jumbotron">
+    <!-- El include permite el uso del blade 'Notificacion', muestra los banners de alerta y errores  -->
+    @include('Alerts.Notificacion')
 
-        <form>
+
+
+    <h1>REGISTRO<span class="badge badge-secondary"></span></h1>
+        
+        <form method ="post" action="{{route('academicos.store')}}">
+            {{ csrf_field() }}
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+                    <label for="nombre">Nombre(*)</label>
+                    <input type="text" class="form-control" id="nombre" name = "nombre" placeholder="Nombre">
                 </div>
 
                  <div class="form-group col-md-6">
-                     <label for="apellido">Apellido</label>
-                     <input type="text" class="form-control" id="apellido" placeholder="Apellido">
+                     <label for="apellido">Apellido(*)</label>
+                     <input type="text" class="form-control" id="apellido" name = "apellido" placeholder="Apellido">
                  </div>
 
             </div>
 
             <div class="form-group">
                 <label for="rut">Rut</label>
-                <input type="text" class="form-control" id="rut" placeholder="12.345.678-9">
+                <input type="text" class="form-control" id="rut" name = "rut" placeholder="12.345.678-9">
             </div>
 
             <div class="form-group">
-                <label for="inputAddress2">Correo</label>
-                <input type="email" class="form-control" id="correo" placeholder="example@example.com">
+                <label for="inputAddress2">Correo(*)</label>
+                <input type="email" class="form-control" id="correo" name = "correo" placeholder="ejemplo@ejemplo.com">
             </div>
 
-            
+
         
              <button type="submit" class="btn btn-primary">Registrar</button>
         </form>
+        
     </div>
 
+
+    </div>
 
 </body>
 </html>

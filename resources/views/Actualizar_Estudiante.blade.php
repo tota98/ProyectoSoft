@@ -11,16 +11,28 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+  crossorigin="anonymous"></script>
+  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
     <!-- Fonts -->
    
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+   
+    
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    
+    
 </head>
 
 
@@ -161,9 +173,7 @@
         
     }
 
-    .container theme-showcase  {
-         background-color: #ff0080;
-    }
+
 
 </style>
 
@@ -171,17 +181,19 @@
 
 <body>
 
+
+
     <div id="app" >
     
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand">
                 Titulación
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                     <a class="navbar-brand" href="{{ url('/') }}">
+                     <a class="navbar-brand" href="{{ URL::previous() }}">
                      Inicio
                      <a class="navbar-brand" href="{{ url('/') }}">
                      Cerrar Sesion
@@ -192,40 +204,55 @@
 
     <div class="container theme-showcase" role="main" id="main">
 
+
+    
+    <div class="jumbotron">
+    
          <div class="input-group input-group-lg">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-lg">BUSQUEDA</span>
              </div>
-             <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
-        </div>
 
+             
+
+            <input id="buscar" name="buscar" type="text" class="form-control" placeholder="Buscar" />
+             <div id="sugerencias"></div>
+         </div>
+         @include('Alerts.Notificacion')    
+
+        
          <h1>ACTUALIZACION<span class="badge badge-secondary"></span></h1>
         
+        <!-- FORMULARIO PARA ACTUALIZAR ESTUDIANTE -->
+                                    
+        <form method ="GET" action="{{route('estudiantes.modificar')}}">
+            {{ csrf_field() }}
 
-        <form>
+        
+        
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+                    <input type="text" class="form-control" id="nombre" name = "nombre" placeholder="Nombre" disabled>
                 </div>
 
                  <div class="form-group col-md-6">
                      <label for="apellido">Apellido</label>
-                     <input type="text" class="form-control" id="apellido" placeholder="Apellido">
+                     <input type="text" class="form-control" id="apellido" name ="apellido" placeholder="Apellido" disabled>
                  </div>
 
             </div>
 
             <div class="form-group">
                 <label for="inputAddress2">Correo</label>
-                <input type="email" class="form-control" id="correo" placeholder="example@example.com">
+                <input type="email" class="form-control" id="correo" name ="correo" placeholder="example@example.com" disabled>
             </div>
 
-            <div class="form-gourp">
+            <div class="form-group">
                 <div class="form-group">
                      <label for="inputState">Carrera</label>
-                     <select id="correo" class="form-control">
-                         <option selected>Carreras</option>
+                     <select id="carrera" name ="carrera" class="form-control" disabled>
+                         <option value="" selected disabled>seleccione carrera</option>
                          <option>ICCI</option>
                          <option>IenCI</option>
                          <option>IECI</option>
@@ -237,20 +264,84 @@
 
             <div class="form-group">
                  <label for="telefono">Telefono</label>
-                 <input type="text" class="form-control" id="telefono">
+                 <input type="text" class="form-control" id="telefono" name = "telefono" disabled>
             </div>
         
-            <div class="form-check">
-                 <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <div class="form-group">
+                 <input class="form-check-input" type="checkbox" id="ELIMINAR" name="ELIMINAR" disabled>
                  <label class="form-check-label" for="defaultCheck1">
                  Eliminar Alumno
                  </label>
+                 <input id="id_Estudiante" type="hidden" name ="id_Estudiante" class="form-control" >
             </div>
-             <button type="submit" class="btn btn-primary">Registrar</button>
-        </form>
-    </div>
+            
 
+             <button type="submit" class="btn btn-primary">Aplicar</button>
+
+            
+            
+        </form>
+
+    
+    
+    </div>
 
 </body>
 
 </html>
+
+<script>
+         $(document).ready(function(){
+           
+
+            $('#buscar').keyup(function(){
+            var query = $(this).val();
+            
+            if(query != '')
+            {
+                var _token = $('input[name="_token"]').val();
+
+                $.ajax({
+                    url:"{{ route('autocomplete.fetch') }}",
+                    method:"POST",
+                    data:{query:query, _token:_token},
+                    success:function(data){
+                        $('#sugerencias').fadeIn(500);
+                           $('#sugerencias').html(data);
+
+                    }
+
+                }).fail( function( jqXHR, textStatus, errorThrown ) {
+                        alert( 'Error!! AJAX IS DED' )
+                });;
+
+
+            }
+});
+            $(document).on('click', 'li', function(){  
+                $('#nombre').prop('disabled',false);
+                $('#apellido').prop('disabled',false);
+                $('#correo').prop('disabled',false);
+                $('#carrera').prop('disabled',false);
+                $('#telefono').prop('disabled',false);
+                $('#id_Estudiante').prop('disabled',false);
+                $('#ELIMINAR').prop('disabled',false);
+
+              $('#buscar').val($(this).text()); 
+              var array =  $(this).text().split("-");
+              $('#nombre').val(array[0]);
+              $('#apellido').val(array[1]);
+              $('#correo').val(array[2]);
+              $('#carrera').val(array[3]);
+              $('#telefono').val(array[4]);
+              $('#id_Estudiante').val(array[5]);
+             
+             
+              $('#sugerencia').fadeOut();
+                
+            });
+         });
+         
+    </script>
+
+

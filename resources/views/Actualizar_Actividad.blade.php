@@ -158,7 +158,10 @@
 
     body{
         background-color: #ffffff;
+        
     }
+
+
 
 </style>
 
@@ -185,62 +188,92 @@
         </div>
     </nav>
 
-    <div class="container theme-showcase" role="main">
+    <div class="container theme-showcase" role="main" id="main">
     <div class="jumbotron">
          <div class="input-group input-group-lg">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-lg">BUSQUEDA</span>
              </div>
-
              <input id="buscar" name="buscar" type="text" class="form-control" placeholder="Buscar" />
              <div id="sugerencias"></div>
          </div>
-         @include('Alerts.Notificacion')    
+         @include('Alerts.Notificacion')  
 
          <h1>ACTUALIZACION<span class="badge badge-secondary"></span></h1>
         
-
-        
-        <!-- FORMULARIO PARA ACTUALIZAR ACTIVIDAD -->
-        <form method ="GET" action="{{route('academicos.modificar')}}">
-            {{ csrf_field() }}
-            
+        <!-- FORMULARIO PARA ACTUALIZAR ESTUDIANTE -->
+    
+        <form method ="GET" action="{{route('actividades.modificar')}}">
+            {{ csrf_field() }} 
+           
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" disabled>
+                    <label for="tipo">Tipo de actividad</label>
+                    <input id="nombre" type="text" class="form-control" name = "nombre" placeholder="Nombre del tipo de actividad" disabled>
                 </div>
+            </div>
 
-                 <div class="form-group col-md-6">
-                     <label for="apellido">Apellido</label>
-                     <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" disabled>
-                 </div>
-
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="cantEst">Estudiantes participantes</label>
+                    <select class="form-control" id="cantEst"  name="cantEst" disabled>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                    </select>
+                </div>
             </div>
 
             <div class="form-group">
-                <label for="inputAddress2">Correo</label>
-                <input type="email" class="form-control" id="correo" name ="correo" placeholder="ejemplo@ejemplo.com" disabled>
+                <label for="semestres">Duración en semestres</label>
+                <select class="form-control" id="duracion" name="duracion" disabled>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                </select>
             </div>
 
-            
-        
-            <div class="form-check">
-                 <input class="form-check-input" type="checkbox" id="ELIMINAR" name="ELIMINAR" disabled disabled>
-                 <label class="form-check-label" for="defaultCheck1">
-                 Eliminar Academico
-                 </label>
-                 <input id="id_Academico" type="hidden" name ="id_Academico" class="form-control" >
+            <label for="participación">Requiere participación de una organización externa</label>
+
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="participacion_organizacion" name="participacion_organizacion" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline1">Si</label>
             </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="participacion_organizacion" name="participacion_organizacion" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline2">No</label>
+            </div>
+            <input id="id_Actividad" type="hidden" name ="id_Actividad" class="form-control" >
+            <div class="form-check">
+                 <input class="form-check-input" type="checkbox" id="ELIMINAR" name="ELIMINAR" disabled>
+                 <label class="form-check-label" for="defaultCheck1">
+                 Eliminar Actividad
+                 </label>
+                 
+            </div>
+            
              <button type="submit" class="btn btn-primary">Aplicar</button>
-             
+
         </form>
+        
     </div>
+
+   
     </div>
-    
 
 </body>
 </html>
+
 
 
 <script>
@@ -255,7 +288,7 @@
                 var _token = $('input[name="_token"]').val();
 
                 $.ajax({
-                    url:"{{ route('autocomplete.store') }}",
+                    url:"{{ route('autocomplete.actividad') }}",
                     method:"POST",
                     data:{query:query, _token:_token},
                     success:function(data){
@@ -273,17 +306,19 @@
 });
             $(document).on('click', 'li', function(){  
                 $('#nombre').prop('disabled',false);
-                $('#apellido').prop('disabled',false);
-                $('#correo').prop('disabled',false);
-                $('#id_Academico').prop('disabled',false);
+                $('#cantEst').prop('disabled',false);
+                $('#duracion').prop('disabled',false);
+                $('#participacion_organizacion').prop('disabled',false);
+                $('#id_Actividad').prop('disabled',false);
                 $('#ELIMINAR').prop('disabled',false);
 
               $('#buscar').val($(this).text()); 
               var array =  $(this).text().split("-");
               $('#nombre').val(array[0]);
-              $('#apellido').val(array[1]);
-              $('#correo').val(array[2]);
-              $('#id_Academico').val(array[3]);
+              $('#cantEst').val(array[1]);
+              $('#duracion').val(array[2]);
+              $('#participacion_organizacion').val(array[3]);
+              $('#id_Actividad').val(array[4]);
              
              
               $('#sugerencia').fadeOut();

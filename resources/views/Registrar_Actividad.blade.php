@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+
+
 <head>
+
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -187,108 +192,78 @@
 
     <div class="container theme-showcase" role="main">
     <div class="jumbotron">
-         <div class="input-group input-group-lg">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-lg">BUSQUEDA</span>
-             </div>
-
-             <input id="buscar" name="buscar" type="text" class="form-control" placeholder="Buscar" />
-             <div id="sugerencias"></div>
-         </div>
-         @include('Alerts.Notificacion')    
-
-         <h1>ACTUALIZACION<span class="badge badge-secondary"></span></h1>
-        
-
-        
-        <!-- FORMULARIO PARA ACTUALIZAR ACTIVIDAD -->
-        <form method ="GET" action="{{route('academicos.modificar')}}">
-            {{ csrf_field() }}
-            
+    <!-- El include permite el uso del blade 'Notificacion', muestra los banners de alerta y errores  -->
+    @include('Alerts.Notificacion')
+   
+   
+   
+    <h1>REGISTRO<span class="badge badge-secondary"></span></h1>
+    <label>(*) Campos Obligatorios</label>
+   
+    <!-- FORMULARIO PARA REGISTRAR ACTIVIDAD -->
+    
+        <form method ="post" action="{{route('actividades.store')}}">
+            {{ csrf_field() }} 
+           <div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" disabled>
+                    <label for="tipo">Tipo de actividad(*)</label>
+                    <input id="nombre" type="text" class="form-control" name = "nombre" placeholder="Nombre del tipo de actividad">
                 </div>
+            </div>
 
-                 <div class="form-group col-md-6">
-                     <label for="apellido">Apellido</label>
-                     <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" disabled>
-                 </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputState">Estudiantes participantes(*)</label>
 
+                    <select class="form-control" id="cant_max" name ="cant_max" value = "">
+                    <option value="">cantidad de estudiantes</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                    </select>
+                </div>
+            </div>
+    <div>
+            <div class="form-group">
+                <label for="inputState">Duración en semestres(*)</label>
+                <select class="form-control" id="duracion" name = "duracion">
+                <option value="">duracion en semestres</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                </select>
+            </div>
+        </div>
+            <label for="participación">Requiere participación de una organización externa(*)</label>
+
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="participacion_organizacion" name="participacion_organizacion" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline1">Si</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="participacion_organizacion" name="participacion_organizacion" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline2">No</label>
             </div>
 
             <div class="form-group">
-                <label for="inputAddress2">Correo</label>
-                <input type="email" class="form-control" id="correo" name ="correo" placeholder="ejemplo@ejemplo.com" disabled>
+                <button type="submit" class="btn btn-primary">Registrar</button>
             </div>
-
-            
-        
-            <div class="form-check">
-                 <input class="form-check-input" type="checkbox" id="ELIMINAR" name="ELIMINAR" disabled disabled>
-                 <label class="form-check-label" for="defaultCheck1">
-                 Eliminar Academico
-                 </label>
-                 <input id="id_Academico" type="hidden" name ="id_Academico" class="form-control" >
-            </div>
-             <button type="submit" class="btn btn-primary">Aplicar</button>
-             
+        </div>
         </form>
-    </div>
-    </div>
     
+    
+    </div>
 
 </body>
 </html>
-
-
-<script>
-         $(document).ready(function(){
-           
-
-            $('#buscar').keyup(function(){
-            var query = $(this).val();
-            
-            if(query != '')
-            {
-                var _token = $('input[name="_token"]').val();
-
-                $.ajax({
-                    url:"{{ route('autocomplete.store') }}",
-                    method:"POST",
-                    data:{query:query, _token:_token},
-                    success:function(data){
-                        $('#sugerencias').fadeIn(500);
-                           $('#sugerencias').html(data);
-
-                    }
-
-                }).fail( function( jqXHR, textStatus, errorThrown ) {
-                        alert( 'Error!! AJAX IS DED' )
-                });;
-
-
-            }
-});
-            $(document).on('click', 'li', function(){  
-                $('#nombre').prop('disabled',false);
-                $('#apellido').prop('disabled',false);
-                $('#correo').prop('disabled',false);
-                $('#id_Academico').prop('disabled',false);
-                $('#ELIMINAR').prop('disabled',false);
-
-              $('#buscar').val($(this).text()); 
-              var array =  $(this).text().split("-");
-              $('#nombre').val(array[0]);
-              $('#apellido').val(array[1]);
-              $('#correo').val(array[2]);
-              $('#id_Academico').val(array[3]);
-             
-             
-              $('#sugerencia').fadeOut();
-                
-            });
-         });
-         
-    </script>

@@ -15,13 +15,46 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/Menu_Secretaria','SecretariaController@Menu')
-    ->name('MenuSecretaria');
-
 Route::get('/reg_1A', function () 
 {
     return view('Registrar_Estudiante');
 });
+
+
+
+Route::resource('estudiantes','EstudianteController');
+
+Route::get('/Modificar_Estudiante','EstudianteController@Modificar')
+    ->name('estudiantes.modificar');
+    Route::get('/Modificar_Academico','AcademicoController@Modificar')
+    ->name('academicos.modificar');
+    Route::get('/Modificar_Actividad','ActividadController@Modificar')
+    ->name('actividades.modificar');
+
+Route::resource('actividades','ActividadController');
+
+Route::resource('academicos','AcademicoController');
+
+
+Route::get('/Menu_Secretaria','SecretariaController@Menu')
+    ->name('MenuSecretaria');
+
+Route::get('/Menu_Encargado_V','EncargadoController@Menu')
+    ->name('MenuEncargado');
+
+Route::get('/Registrar_Estudiante','EstudianteController@Registrar')
+    ->name('RegistrarEstudiante');
+
+Route::get('/Actualizar_Estudiante','EstudianteController@Actualizar')
+    ->name('ActualizarEstudiante');
+
+Route::get('/Registrar_Actividad','ActividadController@Registrar')
+    ->name('RegistrarActividad');
+
+Route::get('/Actualizar_Actividad','ActividadController@Actualizar')
+    ->name('ActualizarActividad');
+
+
 
 Route::get('/reg_1B', function () {
     return view('Actualizar_Estudiante');
@@ -33,6 +66,14 @@ Route::get('/reg_2A', function () {
 
 Route::get('/reg_2B', function () {
     return view('Actualizar_Academico');
+});
+
+Route::get('/reg_3A', function () {
+    return view('Registrar_Actividad');
+});
+
+Route::get('/reg_3B', function () {
+    return view('Actualizar_Actividad');
 });
 
 Route::get('/secre', function () {
@@ -49,3 +90,8 @@ Route::get('/reporte', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/autocomplete/fetch','AutoCompleteController@fetch')->name('autocomplete.fetch');
+Route::post('/autocomplete/store','AutoCompleteController@store')->name('autocomplete.store');
+Route::post('/autocomplete/A_Actividad','AutoCompleteController@ActualizarActividad')->name('autocomplete.actividad');
+

@@ -169,7 +169,7 @@
     
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand">
                 Titulación
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -205,11 +205,11 @@
                     </label>
                 </div>
             </div>
-            <div class="btn-group" role="group" aria-label="Basic example">
-        <a class="btn btn-link" href="{{route('MenuSecretaria')}}" role="button">Secretaria</a>
-        <a class="btn btn-secondary" href="{{url('/titulacion')}}" role="button">Encargado Titulacion</a>
-        <button type="button" class="btn btn-secondary" role="button">Right</button>
-    </div>
+
+             <div class="btn-group" role="group" aria-label="Basic example">
+                 <a class="btn btn-link" href="{{route('MenuSecretaria')}}" role="button">Secretaria</a>
+                 <a class="btn btn-secondary" href="{{url('/titulacion')}}" role="button">Encargado Titulacion</a>
+             </div>
 
         </div>
     </div>
