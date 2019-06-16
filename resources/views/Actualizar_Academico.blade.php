@@ -259,7 +259,9 @@
                     method:"POST",
                     data:{query:query, _token:_token},
                     success:function(data){
-                        $('#sugerencias').fadeIn(500);
+                        $('#sugerencias').fadeIn(0);
+                        
+
                            $('#sugerencias').html(data);
 
                     }
@@ -271,22 +273,23 @@
 
             }
 });
-            $(document).on('click', 'li', function(){  
+            $(document).on('click', 'li', function(){ 
+                 
                 $('#nombre').prop('disabled',false);
                 $('#apellido').prop('disabled',false);
                 $('#correo').prop('disabled',false);
                 $('#id_Academico').prop('disabled',false);
                 $('#ELIMINAR').prop('disabled',false);
 
-              $('#buscar').val($(this).text()); 
-              var array =  $(this).text().split("-");
+              $('#buscar').val(""); 
+              var array =  $(this).text().split("|");
               $('#nombre').val(array[0]);
               $('#apellido').val(array[1]);
               $('#correo').val(array[2]);
               $('#id_Academico').val(array[3]);
              
-             
-              $('#sugerencia').fadeOut();
+              $('#sugerencias').fadeOut(0);
+              
                 
             });
          });

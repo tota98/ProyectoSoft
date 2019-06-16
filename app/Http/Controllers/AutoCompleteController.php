@@ -65,7 +65,7 @@ class AutoCompleteController extends Controller
 
 
                 $output .='
-                <li><a href="#">'.$row->nombre."-".$row->apellido."-".$row->correo."-".$row->id.'</a></li>
+                <li><a href="#">'.$row->nombre." | ".$row->apellido." | ".$row->correo." | ".$row->id.'</a></li>
                 ';
 
                 
