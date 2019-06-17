@@ -247,16 +247,30 @@
          $(document).ready(function(){
            
 
-            $('#buscar').keyup(function(){
-            var query = $(this).val();
-            if($('#buscar') == ''){
-                $('#sugerencias').fadeOut();
+            
+
+
+
+            $('#buscar').keyup(function(event){
+
+            var key = event.key;
+            if(key == "Backspace"){
+                if ($('#buscar').val() == '') 
+                {
+                    $('#sugerencias').fadeOut(0);
+                }
             }
+            var query = $(this).val();
+            
             if(query != '')
             {
+
+                
                 var _token = $('input[name="_token"]').val();
 
                 $.ajax({
+                    
+                    
                     url:"{{ route('autocomplete.store') }}",
                     method:"POST",
                     data:{query:query, _token:_token},
@@ -297,3 +311,5 @@
          });
          
     </script>
+
+

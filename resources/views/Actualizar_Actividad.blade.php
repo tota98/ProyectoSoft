@@ -282,8 +282,12 @@
 
             $('#buscar').keyup(function(){
             var query = $(this).val();
-            if($('#buscar') == ''){
-                $('#sugerencias').fadeOut();
+            var key = event.key;
+            if(key == "Backspace"){
+                if ($('#buscar').val() == '') 
+                {
+                    $('#sugerencias').fadeOut(0);
+                }
             }
             if(query != '')
             {
