@@ -296,7 +296,9 @@
 
             $('#buscar').keyup(function(){
             var query = $(this).val();
-            
+            if($('#buscar') == ''){
+                $('#sugerencias').fadeOut();
+            }
             if(query != '')
             {
                 var _token = $('input[name="_token"]').val();
@@ -327,8 +329,8 @@
                 $('#id_Estudiante').prop('disabled',false);
                 $('#ELIMINAR').prop('disabled',false);
 
-              $('#buscar').val($(this).text()); 
-              var array =  $(this).text().split("-");
+                $('#buscar').val("");  
+              var array =  $(this).text().split(" | ");
               $('#nombre').val(array[0]);
               $('#apellido').val(array[1]);
               $('#correo').val(array[2]);
@@ -337,7 +339,7 @@
               $('#id_Estudiante').val(array[5]);
              
              
-              $('#sugerencia').fadeOut();
+              $('#sugerencias').fadeOut();
                 
             });
          });

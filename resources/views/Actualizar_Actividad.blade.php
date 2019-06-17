@@ -282,7 +282,9 @@
 
             $('#buscar').keyup(function(){
             var query = $(this).val();
-            
+            if($('#buscar') == ''){
+                $('#sugerencias').fadeOut();
+            }
             if(query != '')
             {
                 var _token = $('input[name="_token"]').val();
@@ -292,7 +294,7 @@
                     method:"POST",
                     data:{query:query, _token:_token},
                     success:function(data){
-                        $('#sugerencias').fadeIn(500);
+                        $('#sugerencias').fadeIn();
                            $('#sugerencias').html(data);
 
                     }
@@ -312,8 +314,8 @@
                 $('#id_Actividad').prop('disabled',false);
                 $('#ELIMINAR').prop('disabled',false);
 
-              $('#buscar').val($(this).text()); 
-              var array =  $(this).text().split("-");
+                $('#buscar').val(""); 
+              var array =  $(this).text().split(" | ");
               $('#nombre').val(array[0]);
               $('#cantEst').val(array[1]);
               $('#duracion').val(array[2]);
@@ -321,7 +323,7 @@
               $('#id_Actividad').val(array[4]);
              
              
-              $('#sugerencia').fadeOut();
+              $('#sugerencias').fadeOut();
                 
             });
          });

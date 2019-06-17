@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Estudiante;
 use App\Academico;
+use App\Actividad;
 use DB;
 class AutoCompleteController extends Controller
 {
@@ -34,7 +35,7 @@ class AutoCompleteController extends Controller
 
 
                 $output .='
-                <li><a href="#">'.$row->nombre."-".$row->apellido."-".$row->correo."-".$row->carrera."-".$row->telefono."-".$row->id.'</a></li>
+                <li><a href="#">'.$row->nombre." | ".$row->apellido." | ".$row->correo." | ".$row->carrera." | ".$row->telefono." | ".$row->id.'</a></li>
                 ';
 
                 
@@ -98,7 +99,7 @@ class AutoCompleteController extends Controller
 
 
                 $output .='
-                <li><a href="#">'.$row->nombre."-".$row->cant_max."-".$row->duracion."-".$row->participacion_organizacion."-".$row->id.'</a></li>
+                <li><a href="#">'.$row->nombre." | ".$row->cant_max." | ".$row->duracion." | ".$row->participacion_organizacion." | ".$row->id.'</a></li>
                 ';
 
                 

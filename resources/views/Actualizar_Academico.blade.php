@@ -249,7 +249,9 @@
 
             $('#buscar').keyup(function(){
             var query = $(this).val();
-            
+            if($('#buscar') == ''){
+                $('#sugerencias').fadeOut();
+            }
             if(query != '')
             {
                 var _token = $('input[name="_token"]').val();
