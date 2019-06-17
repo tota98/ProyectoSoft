@@ -70,6 +70,7 @@ class ActividadController extends Controller
             //Estudiante::create($request->all());
             if($request->get('participacion_organizacion') == null){
                 $request['participacion_organizacion'] = 'off';
+                
             }
             
         $Tipo_actividad = new Tipo_actividad([
@@ -149,6 +150,7 @@ class ActividadController extends Controller
         ]);
         if($request->get('participacion_organizacion') == null){
             $request['participacion_organizacion'] = 'off';
+            //dd($request->all());
         }
         if($isChecked = $request->has('ELIMINAR')){
             $id = $request->get('id_Actividad');

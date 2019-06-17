@@ -244,7 +244,7 @@
             </div>
 
             <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="participacion_organizacion" name="participacion_organizacion " disabled>
+            <input type="checkbox" class="custom-control-input" id="participacion_organizacion" name="participacion_organizacion" disabled>
             <label class="custom-control-label" for="defaultUnchecked">incluye participación externa</label>
         </div>
 
