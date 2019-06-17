@@ -245,21 +245,18 @@
                 </select>
             </div>
         </div>
-            <label for="participación">Requiere participación de una organización externa(*)</label>
-
-            <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="participacion_organizacion" name="participacion_organizacion" class="custom-control-input">
-                <label class="custom-control-label" for="customRadioInline1">Si</label>
-            </div>
-            <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="participacion_organizacion" name="participacion_organizacion" class="custom-control-input">
-                <label class="custom-control-label" for="customRadioInline2">No</label>
-            </div>
+        
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="participacion_organizacion" name="participacion_organizacion">
+            <label class="custom-control-label" for="defaultUnchecked">incluye participación externa</label>
+        </div>
 
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Registrar</button>
             </div>
         </div>
+
+        
         </form>
     
     

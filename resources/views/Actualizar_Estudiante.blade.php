@@ -343,7 +343,7 @@
               $('#id_Estudiante').val(array[5]);
              
              
-              $('#sugerencias').fadeOut();
+              $('#sugerencias').fadeOut(0);
                 
             });
          });

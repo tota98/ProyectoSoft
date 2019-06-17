@@ -47,7 +47,7 @@ class ActividadController extends Controller
             'nombre'=>'required',
             'cant_max'=> 'required',
             'duracion' => 'required',
-            'participacion_organizacion' => 'required',
+            
     
 
          ]);
@@ -68,11 +68,15 @@ class ActividadController extends Controller
                 
             } //llama metodo del baner, con los errores concatenados.
             //Estudiante::create($request->all());
-       
+            if($request->get('participacion_organizacion') == null){
+                $request['participacion_organizacion'] = 'off';
+            }
+            
         $Tipo_actividad = new Tipo_actividad([
             'nombre' => $request->get('nombre'),
             'cant_max'=> $request->get('cant_max'),
             'duracion'=> $request->get('duracion'),
+            
             'participacion_organizacion'=> $request->get('participacion_organizacion'),
             
         ]);
@@ -140,9 +144,12 @@ class ActividadController extends Controller
             'nombre'=>'required',
             'cantEst'=>'required',
             'duracion'=>'required',
-            'participacion_organizacion'=>'required',
+            
         
         ]);
+        if($request->get('participacion_organizacion') == null){
+            $request['participacion_organizacion'] = 'off';
+        }
         if($isChecked = $request->has('ELIMINAR')){
             $id = $request->get('id_Actividad');
             return self::destroy($id);

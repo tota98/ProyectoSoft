@@ -243,16 +243,12 @@
                 </select>
             </div>
 
-            <label for="participación">Requiere participación de una organización externa</label>
+            <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="participacion_organizacion" name="participacion_organizacion " disabled>
+            <label class="custom-control-label" for="defaultUnchecked">incluye participación externa</label>
+        </div>
 
-            <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="participacion_organizacion" name="participacion_organizacion" class="custom-control-input">
-                <label class="custom-control-label" for="customRadioInline1">Si</label>
-            </div>
-            <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="participacion_organizacion" name="participacion_organizacion" class="custom-control-input">
-                <label class="custom-control-label" for="customRadioInline2">No</label>
-            </div>
+        
             <input id="id_Actividad" type="hidden" name ="id_Actividad" class="form-control" >
             <div class="form-check">
                  <input class="form-check-input" type="checkbox" id="ELIMINAR" name="ELIMINAR" disabled>
@@ -323,11 +319,17 @@
               $('#nombre').val(array[0]);
               $('#cantEst').val(array[1]);
               $('#duracion').val(array[2]);
-              $('#participacion_organizacion').val(array[3]);
+              if(array[3] == 'on'){
+                $('#participacion_organizacion').prop('checked',true);
+              }
+              else{
+                $('#participacion_organizacion').prop('checked',false);
+              }
+              
               $('#id_Actividad').val(array[4]);
              
              
-              $('#sugerencias').fadeOut();
+              $('#sugerencias').fadeOut(0);
                 
             });
          });
