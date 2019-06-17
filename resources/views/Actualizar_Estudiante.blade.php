@@ -312,7 +312,7 @@
                     method:"POST",
                     data:{query:query, _token:_token},
                     success:function(data){
-                        $('#sugerencias').fadeIn(500);
+                        $('#sugerencias').fadeIn(0);
                            $('#sugerencias').html(data);
 
                     }

@@ -298,7 +298,7 @@
                     method:"POST",
                     data:{query:query, _token:_token},
                     success:function(data){
-                        $('#sugerencias').fadeIn();
+                        $('#sugerencias').fadeIn(0);
                            $('#sugerencias').html(data);
 
                     }
