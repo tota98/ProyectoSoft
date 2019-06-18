@@ -186,31 +186,33 @@
     </nav>
 
     <div class="container theme-showcase" role="main">
-    <div class="jumbotron">
-        <div class="list-group">
-             <label for="inputAddress2">ALUMNOS</label>
-             <a href="{{url('/reg_1A')}}" class="list-group-item list-group-item-action">Registro</a>
-             <a href="{{url('/reg_1B')}}" class="list-group-item list-group-item-action">Actualizacion</a>
-       </div> 
+    
+        <div class="jumbotron">
+        
+             <div class="container">
+                 <h3>ALUMNOS<span class="badge badge-secondary"></span></h3>
+                 <a href="{{url('/reg_1A')}}" class="btn btn-primary btn-block">Registro</a>
+                 <a href="{{url('/reg_1B')}}" class="btn btn-primary btn-block">Actualización/Eliminación</a>
+             </div> 
 
-       <div class="list-group">
-             <label for="inputAddress2">ACADEMICO</label>
-             <a href="{{url('/reg_2A')}}" class="list-group-item list-group-item-action">Registro</a>
-             <a href="{{url('/reg_2B')}}" class="list-group-item list-group-item-action">Actualizacion</a>
-       </div> 
+            <div class="container">
+                 <h3>ACADEMICO<span class="badge badge-secondary"></span></h3>
+                 <a href="{{url('/reg_2A')}}" class="btn btn-primary btn-block">Registro</a>
+                 <a href="{{url('/reg_2B')}}" class="btn btn-primary btn-block">Actualización/Eliminación</a>
+             </div> 
 
-       <div class="list-group">
-             <label for="inputAddress2">TTULACION</label>
-             <a href="{{url('/reg_3A')}}" class="list-group-item list-group-item-action">Registro de actividad</a>
-             <a href="{{url('/reg_3B')}}" class="list-group-item list-group-item-action">Actualización de actividad</a>             <a href="#" class="list-group-item list-group-item-action">Inscripcion</a>
-             <a href="#" class="list-group-item list-group-item-action">Autorizar actividad</a>
-             <a href="#" class="list-group-item list-group-item-action">Actualizar actividad</a>
-             <a href="#" class="list-group-item list-group-item-action">Actividades en progreso</a>
-             <a href="#" class="list-group-item list-group-item-action">Anulacion</a>
-       </div> 
-
-       <a href="#" class="list-group-item list-group-item-action">Reportes</a>
-     </div>
+            <div class="container">
+                 <h3>TITULACIÓN<span class="badge badge-secondary"></span></h3>
+                 <a href="{{url('/reg_3A')}}" class="btn btn-primary btn-block">Registro de actividad</a>
+                 <a href="{{url('/reg_3B')}}" class="btn btn-primary btn-block">Actualización de actividad/Eliminación</a>             
+                 <a href="#" class="btn btn-primary btn-block">Inscripción</a>
+                 <a href="#" class="btn btn-primary btn-block">Autorizar actividad</a>
+                 <a href="#" class="btn btn-primary btn-block">Actividades en progreso</a>
+                 <a href="#" class="btn btn-primary btn-block">Anulacion</a>
+     
+                 <a href="#" class="btn btn-primary btn-block">Reportes</a>
+             </div>
+         </div>
     </div>
 
 </body>

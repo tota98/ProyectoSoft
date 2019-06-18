@@ -186,30 +186,33 @@
     </nav>
 
     <div class="container theme-showcase" role="main">
-    <div class="jumbotron">
-        <div class="list-group">
-             <label for="inputAddress2">ALUMNOS</label>
-             <a href="{{route('RegistrarEstudiante')}}" class="list-group-item list-group-item-action">Registro</a>
-             <a href="{{route('ActualizarEstudiante')}}" class="list-group-item list-group-item-action">Actualizacion</a>
-       </div> 
 
-       <div class="list-group">
-             <label for="inputAddress2">ACADEMICO</label>
-             <a href="{{url('/reg_2A')}}" class="list-group-item list-group-item-action">Registro</a>
-             <a href="{{url('/reg_2B')}}" class="list-group-item list-group-item-action">Actualizacion</a>
-       </div> 
+         <div class="jumbotron">
 
-       <div class="list-group">
-             <label for="inputAddress2">TITULACION</label>
-             <a href="{{url('/reg_3A')}}" class="list-group-item list-group-item-action">Registro de actividad</a>
-             <a href="{{url('/reg_3B')}}" class="list-group-item list-group-item-action">Actualización de actividad</a>
-             <a href="#" class="list-group-item list-group-item-action">Inscripcion</a>
-             <a href="#" class="list-group-item list-group-item-action">Actividades en progreso</a>
-             <a href="#" class="list-group-item list-group-item-action">Anulacion</a>
-       </div>
-
-       <a href="{{url('/reporte')}}" class="list-group-item list-group-item-action">Reportes</a>
-     </div>
+             <div class="container">
+                 <h3>ALUMNOS<span class="badge badge-secondary"></span></h3>
+                <a href="{{route('RegistrarEstudiante')}}" class="btn btn-primary btn-block">Registro</a>
+                <a href="{{route('ActualizarEstudiante')}}" class="btn btn-primary btn-block" >Actualizacion</a>
+             </div> 
+             
+             <div class="container">
+                 <h3>ACADEMICOS<span class="badge badge-secondary"></span></h3>
+                 <a href="{{url('/reg_2A')}}" class="btn btn-primary btn-block">Registro</a>
+                 <a href="{{url('/reg_2B')}}" class="btn btn-primary btn-block">Actualizacion</a>
+             </div> 
+       
+             <div class="container">
+                 <h3>TITULACIÓN<span class="badge badge-secondary"></span></h3>
+                 <a href="{{url('/reg_3A')}}" class="btn btn-primary btn-block">Registro de actividad</a>
+                 <a href="{{url('/reg_3B')}}" class="btn btn-primary btn-block">Actualización de actividad</a>
+                 <a href="#" class="btn btn-primary btn-block">Inscripcion</a>
+                 <a href="#" class="btn btn-primary btn-block">Actividades en progreso</a>
+                 <a href="#" class="btn btn-primary btn-block">Anulacion</a>
+                 
+            
+                 <a href="{{url('/reporte')}}" class="btn btn-primary btn-block">Reportes</a>
+            </div>
+         </div>
     </div>
 
 </body>
