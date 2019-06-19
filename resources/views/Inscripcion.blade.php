@@ -238,16 +238,16 @@
                          
                     </select>
             </div>
-
-
-            <div class="form-row">
-                <div class="form-gruop">
+<div class="form-gruop">
                      <label for="inputState">Fecha inicio(*)</label>
                 </div>
+            <div class="row form-inline">
+            <div class="form-row" >
+                
 
                 <div class="form-gruop col-md-2">
                 
-                    <select id="dia" class="form-control" name ="dia">
+                    <select id="dia" class="form-control" name ="dia" style="width:150px;">
                         <option value="" selected disabled>dia</option>
                         <option>1</option>
                         <option>2</option>
@@ -286,7 +286,7 @@
                
                 
                 <div class="form-group col-md-2">
-                    <select id="mes" class="form-control" name ="mes">
+                    <select id="mes" class="form-control" name ="mes" style="width:150px;">
                     <option value="" selected disabled>mes</option>
                      <option >Enero</option>
                      <option>Febrero</option>
@@ -305,7 +305,7 @@
                  
 
                 <div class="form-group col-md-2">
-                    <select id="mes" class="form-control" name ="mes">
+                    <select id="mes" class="form-control" name ="mes" style="width:150px;">
                     <option value="" selected disabled>año</option>
                      <option >2019</option>
                      <option>2020</option>
@@ -319,12 +319,14 @@
                 </div>
 
             </div>
-
-
-            <button type="submit" class="btn btn-primary">Inscribir</button>
-
-        </form>
+            </div>
+            <div class="row">
     
+</div>
+            
+            <button type="submit" class="btn btn-primary" style="display: inline-block;vertical-align: top; margin-top:20px">Inscribir</button>
+        
+        </form>
     
     </div>
     </div>
