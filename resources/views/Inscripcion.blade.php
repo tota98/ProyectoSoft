@@ -1,6 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+
+
 <head>
+
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -176,7 +181,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                     <a class="navbar-brand" href="{{route('MenuSecretaria')}}">
+                     <a class="navbar-brand" href="{{ URL::previous() }}">
                      Inicio
                      <a class="navbar-brand" href="{{ url('/') }}">
                      Cerrar Sesion
@@ -186,33 +191,142 @@
     </nav>
 
     <div class="container theme-showcase" role="main">
-
-         <div class="jumbotron">
-
-             <div class="container">
-                 <h3>ALUMNOS<span class="badge badge-secondary"></span></h3>
-                <a href="{{route('RegistrarEstudiante')}}" class="btn btn-primary btn-block">Registro</a>
-                <a href="{{route('ActualizarEstudiante')}}" class="btn btn-primary btn-block" >Actualización/Eliminación</a>
-             </div> 
-             
-             <div class="container">
-                 <h3>ACADEMICOS<span class="badge badge-secondary"></span></h3>
-                 <a href="{{url('/reg_2A')}}" class="btn btn-primary btn-block">Registro</a>
-                 <a href="{{url('/reg_2B')}}" class="btn btn-primary btn-block">Actualización/Eliminación</a>
-             </div> 
-       
-             <div class="container">
-                 <h3>TITULACIÓN<span class="badge badge-secondary"></span></h3>
-                 <a href="{{url('/reg_3A')}}" class="btn btn-primary btn-block">Registro de actividad</a>
-                 <a href="{{url('/reg_3B')}}" class="btn btn-primary btn-block">Actualización de actividad/Eliminación</a>
-                 <a href="#" class="btn btn-primary btn-block">Inscripcion</a>
-                 <a href="#" class="btn btn-primary btn-block">Actividades en progreso</a>
-                 <a href="#" class="btn btn-primary btn-block">Anulacion</a>
-                 
+    <div class="jumbotron">
+      <!-- El include permite el uso del blade 'Notificacion', muestra los banners de alerta y errores  -->
+      @include('Alerts.Notificacion')
+   
+   
+   
+     <h1>INSCRIPCIÓN<span class="badge badge-secondary"></span></h1>
+     <label>(*) Campos Obligatorios</label>
+   
+     <!-- FORMULARIO PARA REGISTRAR ESTUDIANTE -->
+    
+        <form method ="post" action="{{route('estudiantes.store')}}">
+            {{ csrf_field() }}
+           
             
-                 <a href="{{url('/reporte')}}" class="btn btn-primary btn-block">Reportes</a>
+            <div class="form-group">
+                
+                    <label for="nombre">Título(*)</label>
+                    <input id="nombre" type="text" class="form-control" name = "nombre" placeholder="Nombre">
+               
+
             </div>
-         </div>
+            
+            <div class="form-group">
+                 <label for="inputState">Tipo de actividad(*)</label>
+                 <select id="carrera" class="form-control" name ="carrera">
+                     <option value="" selected disabled>seleccione carrera</option>
+                     <option></option>
+                 </select>
+            </div>
+           
+            <div class="form-group">
+                     <label for="inputState">Alumnos(*)</label>
+                     <select id="carrera" class="form-control" name ="carrera">
+                        <option value="" selected disabled>seleccione carrera</option>
+                         <option></option>
+                    </select>
+            </div>
+            
+            <div class="form-group">
+                     <label for="inputState">Academico(*)</label>
+                     <select id="carrera" class="form-control" name ="carrera">
+                        <option value="" selected disabled>seleccione carrera</option>
+                         <option></option>
+                         
+                    </select>
+            </div>
+
+
+            <div class="form-row">
+                <div class="form-gruop">
+                     <label for="inputState">Fecha inicio(*)</label>
+                </div>
+
+                <div class="form-gruop col-md-2">
+                
+                    <select id="dia" class="form-control" name ="dia">
+                        <option value="" selected disabled>dia</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
+                        <option>17</option>
+                        <option>18</option>
+                        <option>19</option>
+                        <option>20</option>
+                        <option>21</option>
+                        <option>22</option>
+                        <option>23</option>
+                        <option>24</option>
+                        <option>25</option>
+                        <option>26</option>
+                        <option>27</option>
+                        <option>28</option>
+                        <option>29</option>
+                        <option>30</option>
+                        <option>31</option>
+                     </select>
+
+                </div>
+               
+                
+                <div class="form-group col-md-2">
+                    <select id="mes" class="form-control" name ="mes">
+                    <option value="" selected disabled>mes</option>
+                     <option >Enero</option>
+                     <option>Febrero</option>
+                     <option>Marzo</option>
+                     <option>Abril</option>
+                     <option>Mayo</option>
+                     <option>Junio</option>
+                     <option>Julio</option>
+                     <option>Agosto</option>
+                     <option>Septiembre</option>
+                     <option>Octubre</option>
+                     <option>Noviembre</option>
+                     <option>Diciembre</option>
+                     </select>
+                </div>
+                 
+
+                <div class="form-group col-md-2">
+                    <select id="mes" class="form-control" name ="mes">
+                    <option value="" selected disabled>año</option>
+                     <option >2019</option>
+                     <option>2020</option>
+                     <option>2021</option>
+                     <option>2022</option>
+                     <option>2023</option>
+                     <option>2024</option>
+                     <option>2025</option>
+                     <option>2026</option>
+                     </select>
+                </div>
+
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Inscribir</button>
+
+        </form>
+    
+    
+    </div>
     </div>
 
 </body>

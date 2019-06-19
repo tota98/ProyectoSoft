@@ -87,6 +87,10 @@ Route::get('/titulacion', function () {
 Route::get('/reporte', function () {
     return view('Reportes');
 });
+
+Route::get('/inscripcion', function () {
+    return view('Inscripcion');
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
