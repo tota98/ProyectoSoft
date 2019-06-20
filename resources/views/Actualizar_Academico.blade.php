@@ -271,7 +271,7 @@
                 $.ajax({
                     
                     
-                    url:"{{ route('autocomplete.store') }}",
+                    url:"{{ route('autocomplete.academico') }}",
                     method:"POST",
                     data:{query:query, _token:_token},
                     success:function(data){
