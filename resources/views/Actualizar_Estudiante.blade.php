@@ -308,7 +308,7 @@
                 var _token = $('input[name="_token"]').val();
 
                 $.ajax({
-                    url:"{{ route('autocomplete.fetch') }}",
+                    url:"{{ route('autocomplete.estudiante') }}",
                     method:"POST",
                     data:{query:query, _token:_token},
                     success:function(data){

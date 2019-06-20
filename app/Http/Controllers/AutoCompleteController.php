@@ -16,7 +16,7 @@ class AutoCompleteController extends Controller
         return view('search');
     }
  
-    public function fetch(Request $request)
+    public function ActualizarEstudiante(Request $request)
     {
        
           if($request->get('query'))
@@ -47,7 +47,7 @@ class AutoCompleteController extends Controller
 
             
     } 
-     public function store(Request $request)
+     public function ActualizarAcademico(Request $request)
     {
        
           if($request->get('query'))
