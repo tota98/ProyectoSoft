@@ -209,14 +209,14 @@
             <div class="form-group">
                 
                     <label for="nombre">Título(*)</label>
-                    <input id="nombre" type="text" class="form-control" name = "nombre" placeholder="Nombre">
+                    <input id="titulo" type="text" class="form-control" name = "titulo" placeholder="Titulo">
                
 
             </div>
             
             <div class="form-group">
                  <label for="inputState">Tipo de actividad(*)</label>
-                 <select id="carrera" class="form-control" name ="carrera">
+                 <select id="actividad" class="form-control" name ="actividad">
                      <option value="" selected disabled>seleccione carrera</option>
                      <option></option>
                  </select>
@@ -224,7 +224,7 @@
            
             <div class="form-group">
                      <label for="inputState">Alumnos(*)</label>
-                     <select id="carrera" class="form-control" name ="carrera">
+                     <select id="alumno" class="form-control" name ="alumno">
                         <option value="" selected disabled>seleccione carrera</option>
                          <option></option>
                     </select>
@@ -232,15 +232,17 @@
             
             <div class="form-group">
                      <label for="inputState">Academico(*)</label>
-                     <select id="carrera" class="form-control" name ="carrera">
+                     <select id="academico" class="form-control" name ="academico">
                         <option value="" selected disabled>seleccione carrera</option>
                          <option></option>
                          
                     </select>
             </div>
-<div class="form-gruop">
+
+            <div class="form-gruop">
                      <label for="inputState">Fecha inicio(*)</label>
-                </div>
+            </div>
+           
             <div class="row form-inline">
             <div class="form-row" >
                 
@@ -305,7 +307,7 @@
                  
 
                 <div class="form-group col-md-2">
-                    <select id="mes" class="form-control" name ="mes" style="width:150px;">
+                    <select id="año" class="form-control" name ="año" style="width:150px;">
                     <option value="" selected disabled>año</option>
                      <option >2019</option>
                      <option>2020</option>
@@ -324,6 +326,19 @@
     
 </div>
             
+<button type="submit" class="btn btn-primary" style="display: inline-block;vertical-align: top; margin-top:20px">Inscribir</button>
+           
+           
+            <div class="form-group">
+                     <label for="inputState">Nombre organización</label>
+                     <input id="nombreOrganizacion" type="text" class="form-control" name = "nombre" placeholder="Nombre organización">
+            </div>
+            
+            <div class="form-group">
+                     <label for="inputState">Tutor</label>
+                     <input id="tutor" type="text" class="form-control" name = "tutor" placeholder="Tutor">
+            </div>
+
             <button type="submit" class="btn btn-primary" style="display: inline-block;vertical-align: top; margin-top:20px">Inscribir</button>
         
         </form>
