@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Tipo_actividad;
 use Illuminate\Support\Facades\Validator;
+use DB;
 class ActividadController extends Controller
 {
    /**
@@ -17,6 +18,12 @@ class ActividadController extends Controller
     {
        
 
+    }
+
+    public function Inscripcion(){
+
+        $actividad_list = DB::table('tipo_actividads')->groupBy('nombre')-get();
+       
     }
 
     /**
