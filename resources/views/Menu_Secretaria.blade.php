@@ -205,7 +205,7 @@
                  <h3>TITULACIÓN<span class="badge badge-secondary"></span></h3>
                  <a href="{{url('/reg_3A')}}" class="btn btn-primary btn-block" >Registro de actividad</a>
                  <a href="{{url('/reg_3B')}}" class="btn btn-primary btn-block" >Actualización de actividad/Eliminación</a>
-                 <a href="#" class="btn btn-primary btn-block" >Inscripcion</a>
+                 <a href="{{route('InscripcionActividad')}}" method="post" class="btn btn-primary btn-block" >Inscripcion</a>
                  <a href="#" class="btn btn-primary btn-block" >Actividades en progreso</a>
                  <a href="#" class="btn btn-primary btn-block" >Anulacion</a>
                  

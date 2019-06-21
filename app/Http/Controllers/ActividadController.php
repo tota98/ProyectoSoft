@@ -22,8 +22,10 @@ class ActividadController extends Controller
 
     public function Inscripcion(){
 
-        $actividad_list = DB::table('tipo_actividads')->groupBy('nombre')-get();
-       
+        $actividad_list = DB::table('tipo_actividads')->get();
+        $estudiante_list = DB::table('estudiantes')->get();
+        $academico_list = DB::table('academicos')->get();
+        return view('Inscripcion')->with('actividad_list',$actividad_list)->with('estudiante_list',$estudiante_list)->with('academico_list',$academico_list);
     }
 
     /**

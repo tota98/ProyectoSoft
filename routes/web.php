@@ -53,7 +53,7 @@ Route::get('/Registrar_Actividad','ActividadController@Registrar')
 
 Route::get('/Actualizar_Actividad','ActividadController@Actualizar')
     ->name('ActualizarActividad');
-
+Route::get('/Inscripcion','ActividadController@Inscripcion')->name('InscripcionActividad');
 
 
 Route::get('/reg_1B', function () {

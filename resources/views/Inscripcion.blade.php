@@ -217,24 +217,29 @@
             <div class="form-group">
                  <label for="inputState">Tipo de actividad(*)</label>
                  <select id="actividad" class="form-control" name ="actividad">
-                     <option value="" selected disabled>seleccione carrera</option>
-                     <option></option>
+                     <option value="" selected disabled>seleccione actividad</option>
+                     @foreach($actividad_list as $actividad)
+                    <option value = "{{$actividad->nombre }}">{{$actividad ->nombre}}</option>
+                     @endforeach
+                     
                  </select>
             </div>
            
             <div class="form-group">
                      <label for="inputState">Alumnos(*)</label>
                      <select id="alumno" class="form-control" name ="alumno">
-                        <option value="" selected disabled>seleccione carrera</option>
-                         <option></option>
+                        <option value="" selected disabled>seleccione estudiante</option>
+                        @foreach($estudiante_list as $estudiante)
+                    <option value = "{{$estudiante->nombre }}">{{$estudiante ->nombre}}</option>
+                     @endforeach
                     </select>
             </div>
             
             <div class="form-group">
                      <label for="inputState">Academico(*)</label>
                      <select id="academico" class="form-control" name ="academico">
-                        <option value="" selected disabled>seleccione carrera</option>
-                         <option></option>
+                        <option value="" selected disabled>seleccione academico</option>
+                         
                          
                     </select>
             </div>
