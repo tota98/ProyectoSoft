@@ -239,7 +239,9 @@
                      <label for="inputState">Academico(*)</label>
                      <select id="academico" class="form-control" name ="academico">
                         <option value="" selected disabled>seleccione academico</option>
-                         
+                        @foreach($academico_list as $academico)
+                    <option value = "{{$academico->nombre }}">{{$academico ->nombre}}</option>
+                     @endforeach
                          
                     </select>
             </div>
