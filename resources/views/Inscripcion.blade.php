@@ -15,7 +15,7 @@
     <title>Titulación</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    
 
     <!-- Fonts -->
    
@@ -25,21 +25,36 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 
-
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
+  
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    
+ 
+    
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script type="text/javascript" src="../js/bootstrap-datepicker.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/i18n/jquery-ui-i18n.min.js"></script>
+  
+    <script src="../js/locale/bootstrap-datepicker.es.js" charset="UTF-8"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="../css/datepicker.css" >
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-  <script>
-    var j = jQuery.noConflict();
-    j( function() {
-        j( "#datepicker" ).datepicker();
-    } );
+ 
+
+
+
+<script>
+ $(document).ready(function(){
+
+    $('#fecha').datepicker({
+
+        language: 'es'
+		
+    });
+    $.datepicker.setDefaults($.datepicker.regional['es']);
+ });
 </script>
+
 
 
 
@@ -271,104 +286,23 @@
                     </select>
             </div>
 
-            <div class="form-gruop">
+            <div class="form-group">
                      <label for="inputState">Fecha inicio(*)</label>
-            </div>
-           
-
-           
-
-            <div class="row form-inline">
-            <div class="form-row" >
-                
-           
-            <div class="md-form">
-  <input placeholder="Selected date" type="text" id="datepicker" class="form-control datepicker">
-  <label for="date-picker-example">Try me...</label>
-</div>
-
-
-
-                <div class="form-gruop col-md-2">
-                
-                    <select id="dia" class="form-control" name ="dia" style="width:150px;">
-                        <option value="" selected disabled>dia</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
-                        <option>11</option>
-                        <option>12</option>
-                        <option>13</option>
-                        <option>14</option>
-                        <option>15</option>
-                        <option>16</option>
-                        <option>17</option>
-                        <option>18</option>
-                        <option>19</option>
-                        <option>20</option>
-                        <option>21</option>
-                        <option>22</option>
-                        <option>23</option>
-                        <option>24</option>
-                        <option>25</option>
-                        <option>26</option>
-                        <option>27</option>
-                        <option>28</option>
-                        <option>29</option>
-                        <option>30</option>
-                        <option>31</option>
-                     </select>
-
-                </div>
-               
-                
-                <div class="form-group col-md-2">
-                    <select id="mes" class="form-control" name ="mes" style="width:150px;">
-                    <option value="" selected disabled>mes</option>
-                     <option >Enero</option>
-                     <option>Febrero</option>
-                     <option>Marzo</option>
-                     <option>Abril</option>
-                     <option>Mayo</option>
-                     <option>Junio</option>
-                     <option>Julio</option>
-                     <option>Agosto</option>
-                     <option>Septiembre</option>
-                     <option>Octubre</option>
-                     <option>Noviembre</option>
-                     <option>Diciembre</option>
-                     </select>
-                </div>
-                 
-
-                <div class="form-group col-md-2">
-                    <select id="año" class="form-control" name ="año" style="width:150px;">
-                    <option value="" selected disabled>año</option>
-                     <option >2019</option>
-                     <option>2020</option>
-                     <option>2021</option>
-                     <option>2022</option>
-                     <option>2023</option>
-                     <option>2024</option>
-                     <option>2025</option>
-                     <option>2026</option>
-                     </select>
-                </div>
-
-            </div>
-            </div>
-            <div class="row">
-    
-</div>
+                     <input placeholder="fecha" type="text" id="fecha" name="fecha" class="form-control datepicker" style="width: 120px;">
             
-<button type="submit" class="btn btn-primary" style="display: inline-block;vertical-align: top; margin-top:20px">Inscribir</button>
+            </div>
+           
+
+           
+
+         
+            
+        
+        <div class="row">
+    
+
+        
+            <button type="submit" class="btn btn-primary" style="display: inline-block;vertical-align: top; margin-top:20px">Inscribir</button>
            
            
             <div class="form-group">
@@ -384,7 +318,7 @@
             <button type="submit" class="btn btn-primary" style="display: inline-block;vertical-align: top; margin-top:20px">Inscribir</button>
             
             
-            
+        </div> 
             
 
 
@@ -392,8 +326,6 @@
     
     
     </div>
-
-    
     </div>
 
 
@@ -404,3 +336,5 @@
 
 
   </html>
+
+  
