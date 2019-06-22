@@ -20,13 +20,31 @@
     <!-- Fonts -->
    
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
+    
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/bootstrap-datepicker.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/datepicker.css" >
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <script>
+    var j = jQuery.noConflict();
+    j( function() {
+        j( "#datepicker" ).datepicker();
+    } );
+</script>
+
+
+
 </head>
+
 
 
 <style type="text/css">
@@ -171,6 +189,10 @@
 
 <body>
 
+
+
+
+
     <div id="app" >
     
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
@@ -192,6 +214,9 @@
 
     <div class="container theme-showcase" role="main">
     <div class="jumbotron">
+    
+
+
       <!-- El include permite el uso del blade 'Notificacion', muestra los banners de alerta y errores  -->
       @include('Alerts.Notificacion')
    
@@ -250,9 +275,19 @@
                      <label for="inputState">Fecha inicio(*)</label>
             </div>
            
+
+           
+
             <div class="row form-inline">
             <div class="form-row" >
                 
+           
+            <div class="md-form">
+  <input placeholder="Selected date" type="text" id="datepicker" class="form-control datepicker">
+  <label for="date-picker-example">Try me...</label>
+</div>
+
+
 
                 <div class="form-gruop col-md-2">
                 
@@ -347,11 +382,25 @@
             </div>
 
             <button type="submit" class="btn btn-primary" style="display: inline-block;vertical-align: top; margin-top:20px">Inscribir</button>
-        
+            
+            
+            
+            
+
+
         </form>
     
-    </div>
+    
     </div>
 
+    
+    </div>
+
+
+
 </body>
-</html>
+
+
+
+
+  </html>
