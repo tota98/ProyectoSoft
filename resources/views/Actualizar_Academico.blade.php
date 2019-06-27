@@ -194,33 +194,47 @@
 
              <input id="buscar" name="buscar" type="text" class="form-control" placeholder="Buscar" />
              <div id="sugerencias"></div>
+            
          </div>
-         @include('Alerts.Notificacion')    
-
-         <h1>ACTUALIZACION<span class="badge badge-secondary"></span></h1>
         
+         
 
+         @include('Alerts.Notificacion')    
+         
+         <h1>ACTUALIZACION<span class="badge badge-secondary"></span></h1>
+         
+       
         
         <!-- FORMULARIO PARA ACTUALIZAR ACTIVIDAD -->
         <form method ="GET" action="{{route('academicos.modificar')}}">
             {{ csrf_field() }}
             
             <div class="form-row">
+            
+
+             
                 <div class="form-group col-md-6">
                     <label for="nombre">Nombre</label>
                     <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" disabled>
+
+                    <label for="apellido">Apellido</label>
+                     <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" disabled>
+                    
                 </div>
 
-                 <div class="form-group col-md-6">
-                     <label for="apellido">Apellido</label>
-                     <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" disabled>
-                 </div>
+                <div class="form-group col-md-6">
+                <label for="id">ID</label>
+             <input id="id_Academico" name ="id_Academico" class="form-control" style="width: 100px;" disabled> 
 
+                     <label for="inputAddress2">Correo</label>
+                <input type="email" class="form-control" id="correo" name ="correo" placeholder="ejemplo@ejemplo.com" disabled>
+                     </div>
+                 
+                 
             </div>
 
             <div class="form-group">
-                <label for="inputAddress2">Correo</label>
-                <input type="email" class="form-control" id="correo" name ="correo" placeholder="ejemplo@ejemplo.com" disabled>
+                
             </div>
 
             
@@ -230,7 +244,7 @@
                  <label class="form-check-label" for="defaultCheck1">
                  Eliminar Academico
                  </label>
-                 <input id="id_Academico" type="hidden" name ="id_Academico" class="form-control" >
+                 
             </div>
              <button type="submit" class="btn btn-primary">Aplicar</button>
              
@@ -294,7 +308,7 @@
                 $('#nombre').prop('disabled',false);
                 $('#apellido').prop('disabled',false);
                 $('#correo').prop('disabled',false);
-                $('#id_Academico').prop('disabled',false);
+                //$('#id_Academico').prop('disabled',false);
                 $('#ELIMINAR').prop('disabled',false);
 
               $('#buscar').val(""); 
