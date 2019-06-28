@@ -224,8 +224,8 @@
 
                 <div class="form-group col-md-6">
                 <label for="id">ID</label>
-             <input id="id_Academico" name ="id_Academico" class="form-control" style="width: 100px;" disabled> 
-
+             <input id="id_Academico_aux" name ="id_Academico_aux" class="form-control" style="width: 100px;" disabled> 
+             <input id="id_Academico" name ="id_Academico" class="form-control" style="width: 100px;" type="hidden"> 
                      <label for="inputAddress2">Correo</label>
                 <input type="email" class="form-control" id="correo" name ="correo" placeholder="ejemplo@ejemplo.com" disabled>
                      </div>
@@ -317,6 +317,7 @@
               $('#apellido').val(array[1]);
               $('#correo').val(array[2]);
               $('#id_Academico').val(array[3]);
+              $('#id_Academico_aux').val(array[3]);
              
               $('#sugerencias').fadeOut(0);
               
