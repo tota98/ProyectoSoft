@@ -225,7 +225,7 @@
                     <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" disabled>
 
                     <label for="apellido">Apellido</label>
-                     <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" disabled>
+                    <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" disabled>
                     
                 </div>
 
@@ -334,7 +334,7 @@
            }
 
         }).fail( function( jqXHR, textStatus, errorThrown ) {
-            alert( 'Error!! AJAX IS DED' )
+            alert( 'ERROR, revise que los datos del formulario esten correctos.' )
                 });
 
             
@@ -386,7 +386,7 @@
            }
 
         }).fail( function( jqXHR, textStatus, errorThrown ) {
-            alert( 'Error!! AJAX IS DED' )
+            alert( 'ERROR, revise que los datos del formulario esten correctos.' )
                 });
         }
         

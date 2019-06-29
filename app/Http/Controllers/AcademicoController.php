@@ -228,17 +228,18 @@ class AcademicoController extends Controller
             'correo'=>'required',
             'id_Academico' =>'required',
         ]);
-        if($request->get('eliminar')=="on"){
+        if($request->get('eliminar')=="on")
+        {
             $id = $request->get('id_Academico');
             return self::destroy($id);
         }
-        else{
+        else
+        {
         $academico = Academico::find($request->get('id_Academico'));
         $academico->nombre =  $request->get('nombre');
         $academico->apellido = $request->get('apellido');
         $academico->correo = $request->get('correo');
         $academico->save();
-
         \Session::flash('success','Modificacion de estudiante con exito.');
     
         }
