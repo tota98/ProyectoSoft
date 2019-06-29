@@ -66,7 +66,7 @@ class AutoCompleteController extends Controller
 
 
                 $output .='
-                <li><a href="#"> '.$row->nombre." | ".$row->apellido." | ".$row->correo." | ".$row->id.'</a></li>
+                <li><a href="#">'.$row->nombre." | ".$row->apellido." | ".$row->correo." | ".$row->id.'</a></li>
                 ';
 
                 
@@ -89,7 +89,7 @@ class AutoCompleteController extends Controller
             
            
             $data = DB::table('tipo_actividads')
-            ->where('id', 'LIKE', "%{$query}%")->orWhere('nombre', 'LIKE', "%{$query}%")->get(); 
+            ->where('id', 'LIKE', "%{$query}%")->orWhere('nombre','LIKE',"%{$query}%")->get(); 
             $output = '<ul class = "dropdown-menu pre-scrollable"  style ="display:block;  max-height: 120px;">';
             foreach($data as $row)
                 

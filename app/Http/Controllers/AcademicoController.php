@@ -223,11 +223,21 @@ class AcademicoController extends Controller
       //dd($request->all());
         
         $request->validate([
-            'nombre'=>'required',
-            'apellido'=>'required',
-            'correo'=>'required',
+            'nombre'=>'required|alpha',
+            'apellido'=>'required|alpha',
+            'correo'=>'required|email',
             'id_Academico' =>'required',
         ]);
+        
+          
+
+
+
+
+
+
+
+
         if($request->get('eliminar')=="on")
         {
             $id = $request->get('id_Academico');
@@ -236,9 +246,9 @@ class AcademicoController extends Controller
         else
         {
         $academico = Academico::find($request->get('id_Academico'));
-        $academico->nombre =  $request->get('nombre');
-        $academico->apellido = $request->get('apellido');
-        $academico->correo = $request->get('correo');
+        $academico->nombre =$request->get('nombre');
+        $academico->apellido =$request->get('apellido');
+        $academico->correo =$request->get('correo');
         $academico->save();
         \Session::flash('success','Modificacion de estudiante con exito.');
     

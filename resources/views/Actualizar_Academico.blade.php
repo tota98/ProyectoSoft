@@ -11,7 +11,10 @@
     <!-- Scripts -->
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
     <!-- Fonts -->
    
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
@@ -30,6 +33,12 @@
 
 
 <style type="text/css">
+
+.error {
+  color: #F00;
+}
+
+
     .navbar {
         background-color: #23415b;
     }
@@ -211,30 +220,32 @@
        
         
         <!-- FORMULARIO PARA ACTUALIZAR ACTIVIDAD -->
-        <form>
+        <form id="form"style = "margin-bottom: 225px">
 
         <div class="flash-message"></div>
             {{ csrf_field() }}
             
-            <div class="form-row">
+            <div class="form-row" >
             
 
              
                 <div class="form-group col-md-6">
+                <div>
                     <label for="nombre">Nombre</label>
                     <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" disabled>
-
+                    </div>
                     <label for="apellido">Apellido</label>
                     <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" disabled>
-                    
+                
                 </div>
-
+                <div>
+                </div>
                 <div class="form-group col-md-6">
                 <label for="id">ID</label>
              <input id="id_Academico_aux" name ="id_Academico_aux" class="form-control" style="width: 100px;" disabled> 
              <input id="id_Academico" name ="id_Academico" class="form-control" style="width: 100px;" type="hidden"> 
                      <label for="inputAddress2">Correo</label>
-                <input type="email" class="form-control" id="correo" name ="correo" placeholder="ejemplo@ejemplo.com" disabled>
+                <input type="text" class="form-control" id="correo" name ="correo" placeholder="ejemplo@ejemplo.com" disabled>
                      </div>
                  
                  
@@ -245,23 +256,113 @@
             </div>
 
             
-        
+         
+
+        </form>
+        <div>
             <div class="form-check">
-                 <input class="form-check-input" type="checkbox" id="ELIMINAR" name="ELIMINAR"  disabled>
+                 <input class="form-check-input" type="checkbox" id="ELIMINAR" name="ELIMINAR"   disabled>
                  <label class="form-check-label" for="defaultCheck1">
                  Eliminar Academico
                  </label>
-                 
-            </div>
-             <button  type="submit" class="btn btn-primary btn-submit">Aplicar</button>
+                 </div>
+         
+             <button  type="submit" class="btn btn-primary btn-submit" style = "margin-bottom: -55px">Aplicar</button>
              
-        </form>
+            
+          </div>
     </div>
+    
     </div>
     
 
 </body>
 
+
+<script>
+
+
+
+    $(document).ready(function () {
+        $.extend( $.validator.messages, {
+	required: "Este campo es obligatorio.",
+	remote: "Por favor, rellena este campo.",
+	email: "Por favor, escribe una dirección de correo válida.",
+	url: "Por favor, escribe una URL válida.",
+	date: "Por favor, escribe una fecha válida.",
+	dateISO: "Por favor, escribe una fecha (ISO) válida.",
+	number: "Por favor, escribe un número válido.",
+    digits: "Por favor, escribe sólo dígitos.",
+    lettersonly: "Por favor, incluir solo letras en el campo.",
+	creditcard: "Por favor, escribe un número de tarjeta válido.",
+	equalTo: "Por favor, escribe el mismo valor de nuevo.",
+	extension: "Por favor, escribe un valor con una extensión aceptada.",
+	maxlength: $.validator.format( "Por favor, no escribas más de {0} caracteres." ),
+	minlength: $.validator.format( "Por favor, no escribas menos de {0} caracteres." ),
+	rangelength: $.validator.format( "Por favor, escribe un valor entre {0} y {1} caracteres." ),
+	range: $.validator.format( "Por favor, escribe un valor entre {0} y {1}." ),
+	max: $.validator.format( "Por favor, escribe un valor menor o igual a {0}." ),
+	min: $.validator.format( "Por favor, escribe un valor mayor o igual a {0}." ),
+	nifES: "Por favor, escribe un NIF válido.",
+	nieES: "Por favor, escribe un NIE válido.",
+	cifES: "Por favor, escribe un CIF válido."
+} );
+
+        
+    $('#form').validate({
+
+   
+        // initialize the plugin
+        rules: {
+            nombre: {
+                required: true,
+                lettersonly: true
+            },
+            apellido: {
+                required: true,
+                lettersonly: true
+            },
+            correo: {
+                required: true,
+                email: true
+            },
+            minlength: {
+                required: true,
+                minlength: 5
+                
+            },
+            maxlength: {
+                required: true,
+                maxlength: 8
+                
+            },
+            minvalue: {
+                required: true,
+                min: 1
+                
+            },
+            maxvalue: {
+                required: true,
+                max: 100
+                
+            },
+            range: {
+                required: true,
+                range: [20, 40]
+                
+            },
+            url: {
+            required: true,
+            url: true
+            },
+            filename: {
+                required: true,
+                extension: "jpeg|png"
+            },
+        }
+    });
+});
+</script>
 
 <script type="text/javascript">
 
@@ -334,7 +435,8 @@
            }
 
         }).fail( function( jqXHR, textStatus, errorThrown ) {
-            alert( 'ERROR, revise que los datos del formulario esten correctos.' )
+            alert( 'ERROR, revise que los datos del formulario esten correctos. ' )
+            //location.reload();
                 });
 
             
@@ -386,7 +488,8 @@
            }
 
         }).fail( function( jqXHR, textStatus, errorThrown ) {
-            alert( 'ERROR, revise que los datos del formulario esten correctos.' )
+            //swal("Hello world!");
+            alert( 'ERROR, revise que los datos del formulario esten correctos. ' )
                 });
         }
         
@@ -461,7 +564,9 @@
                 $('#ELIMINAR').prop('disabled',false);
 
               $('#buscar').val(""); 
-              var array =  $(this).text().split("|");
+              var array =  $(this).text().split(" | ").join("|");
+              array = array.split("|");
+              
               $('#nombre').val(array[0]);
               $('#apellido').val(array[1]);
               $('#correo').val(array[2]);
