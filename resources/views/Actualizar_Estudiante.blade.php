@@ -10,17 +10,14 @@
     <title>Titulación</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script
-  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+    
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
   integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
   crossorigin="anonymous"></script>
   
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script
-            src="https://code.jquery.com/jquery-3.4.1.js"
-            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-            crossorigin="anonymous"></script>
+    
     <!-- Fonts -->
    
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
@@ -225,7 +222,7 @@
         
         <!-- FORMULARIO PARA ACTUALIZAR ESTUDIANTE -->
                                     
-        <form method ="GET" action="{{route('estudiantes.modificar')}}">
+        <form method ="GET" action="{{route('estudiantes.modificar')}}" >
             {{ csrf_field() }}
 
         
@@ -276,7 +273,7 @@
             </div>
             
 
-             <button type="submit" class="btn btn-primary">Aplicar</button>
+             <button type="submit" class="btn btn-primary" value="user_value" >Aplicar</button>
 
             
             
@@ -288,7 +285,24 @@
 
 </body>
 
+
+<script>
+
+function submit(){
+            if($("#ELIMINAR").val() == ""){
+                alert("Please check value of VAR")
+                return false;
+           }
+           else{
+               alert("Please check value of VAR")
+               return false;
+           }
+    }
+
+
+</script>
 </html>
+
 
 <script>
          $(document).ready(function(){

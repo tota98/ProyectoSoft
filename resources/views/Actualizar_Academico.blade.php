@@ -4,23 +4,28 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+   
 
     <title>Titulación</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
     <!-- Fonts -->
    
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+   
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    
+
+    
+     <!-- CSRF Token -->
+     <meta name="csrf-token" content="{{ csrf_token() }}">
+    
 </head>
 
 
@@ -206,7 +211,9 @@
        
         
         <!-- FORMULARIO PARA ACTUALIZAR ACTIVIDAD -->
-        <form method ="GET" action="{{route('academicos.modificar')}}">
+        <form>
+
+        <div class="flash-message"></div>
             {{ csrf_field() }}
             
             <div class="form-row">
@@ -240,13 +247,13 @@
             
         
             <div class="form-check">
-                 <input class="form-check-input" type="checkbox" id="ELIMINAR" name="ELIMINAR" disabled disabled>
+                 <input class="form-check-input" type="checkbox" id="ELIMINAR" name="ELIMINAR"  disabled>
                  <label class="form-check-label" for="defaultCheck1">
                  Eliminar Academico
                  </label>
                  
             </div>
-             <button type="submit" class="btn btn-primary">Aplicar</button>
+             <button  type="submit" class="btn btn-primary btn-submit">Aplicar</button>
              
         </form>
     </div>
@@ -254,6 +261,148 @@
     
 
 </body>
+
+
+<script type="text/javascript">
+
+
+
+    $.ajaxSetup({
+
+        headers: {
+
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+
+        }
+
+    });
+
+
+
+    $(".btn-submit").click(function(e){
+      
+
+       
+        if($('#ELIMINAR').is(":checked")){
+
+            if(!confirm('Desea realmente eliminar este academico?')){
+              e.preventDefault();
+              
+        }else{
+
+            e.preventDefault();
+        var nombre = $("input[id=nombre]").val();
+
+        var apellido = $("input[id=apellido]").val();
+
+        var id_Academico = $("input[id=id_Academico]").val();
+
+        var correo = $("input[id=correo]").val();
+
+
+        var eliminar = $('#ELIMINAR').val();
+        var ischecked = $('#ELIMINAR').is(":checked");
+
+        if (ischecked) {
+            eliminar = "on";
+        }
+        else{
+            eliminar = "off";
+        }
+
+        
+        var _token = $('input[name="_token"]').val();
+
+       
+
+
+
+
+
+        $.ajax({
+           
+           type:'get',
+          
+           url:'/Modificar_Academico',
+          
+           data:{nombre:nombre,apellido:apellido,correo:correo,id_Academico:id_Academico,eliminar:eliminar,_token:_token},
+        
+           success:function(data){
+            location.reload();
+            
+                
+           }
+
+        }).fail( function( jqXHR, textStatus, errorThrown ) {
+            alert( 'Error!! AJAX IS DED' )
+                });
+
+            
+            }
+
+        }else{
+
+            e.preventDefault();
+        var nombre = $("input[id=nombre]").val();
+
+        var apellido = $("input[id=apellido]").val();
+
+        var id_Academico = $("input[id=id_Academico]").val();
+
+        var correo = $("input[id=correo]").val();
+
+
+        var eliminar = $('#ELIMINAR').val();
+        var ischecked = $('#ELIMINAR').is(":checked");
+
+        if (ischecked) {
+            eliminar = "on";
+        }
+        else{
+            eliminar = "off";
+        }
+
+        
+        var _token = $('input[name="_token"]').val();
+
+       
+
+
+
+
+
+        $.ajax({
+           
+           type:'get',
+          
+           url:'/Modificar_Academico',
+          
+           data:{nombre:nombre,apellido:apellido,correo:correo,id_Academico:id_Academico,eliminar:eliminar,_token:_token},
+        
+           success:function(data){
+            location.reload();
+            
+                
+           }
+
+        }).fail( function( jqXHR, textStatus, errorThrown ) {
+            alert( 'Error!! AJAX IS DED' )
+                });
+        }
+        
+
+      
+        
+        
+
+               
+
+	});
+
+
+
+</script>
+
 </html>
 
 
@@ -285,7 +434,7 @@
                 $.ajax({
                     
                     
-                    url:"{{ route('autocomplete.academico') }}",
+                    url:'{{ route('autocomplete.academico') }}',
                     method:"POST",
                     data:{query:query, _token:_token},
                     success:function(data){
@@ -326,5 +475,8 @@
          });
          
     </script>
+
+
+
 
 

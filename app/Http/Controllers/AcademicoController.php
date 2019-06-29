@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Academico;
 use Illuminate\Support\Facades\Validator;
+use Session;
+use View;
 class AcademicoController extends Controller
 {
 
@@ -130,7 +132,9 @@ class AcademicoController extends Controller
     {
         $academico = Academico::find($id);
         $academico->delete();
-        return back()->with('success','Eliminacion de academico con exito.');
+        \Session::flash('success','Eliminacion de academico con exito.');
+    
+        
     
     }
 
@@ -216,6 +220,7 @@ class AcademicoController extends Controller
     }
     public function Modificar(Request $request)
     {
+      //dd($request->all());
         
         $request->validate([
             'nombre'=>'required',
@@ -223,7 +228,7 @@ class AcademicoController extends Controller
             'correo'=>'required',
             'id_Academico' =>'required',
         ]);
-        if($isChecked = $request->has('ELIMINAR')){
+        if($request->get('eliminar')=="on"){
             $id = $request->get('id_Academico');
             return self::destroy($id);
         }
@@ -234,7 +239,8 @@ class AcademicoController extends Controller
         $academico->correo = $request->get('correo');
         $academico->save();
 
-        return back()->with('success','Modificacion de academico con exito.');
+        \Session::flash('success','Modificacion de estudiante con exito.');
+    
         }
     }
 
