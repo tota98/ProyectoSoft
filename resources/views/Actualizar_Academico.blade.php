@@ -352,6 +352,7 @@
                         icon: "warning",
                         buttons: true,
                         dangerMode: true,
+                        buttons: ["Cancelar", "Aceptar"],
                 })
             .then((willDelete) => {
               if (willDelete) 
