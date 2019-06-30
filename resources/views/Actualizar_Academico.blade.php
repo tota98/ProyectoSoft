@@ -405,180 +405,61 @@
                         dangerMode: true,
                 })
             .then((willDelete) => {
-              if (willDelete) {
-
-                  
-                    e.preventDefault();
-                    var nombre = $("input[id=nombre]").val();
-                    var apellido = $("input[id=apellido]").val();
-                    var id_Academico = $("input[id=id_Academico]").val();
-                    var correo = $("input[id=correo]").val();
-                    var eliminar = $('#ELIMINAR').val();
-                    var ischecked = $('#ELIMINAR').is(":checked");
-                    
-                    if (ischecked) {
-                        eliminar = "on";
-                    }
-                    else{
-                        eliminar = "off";
-                    }
-                    var _token = $('input[name="_token"]').val();
-                    $.ajax({
-                    
-                       type:'get',
-                    
-                       url:'/Modificar_Academico',
-                    
-                       data:{nombre:nombre,apellido:apellido,correo:correo,id_Academico:id_Academico,eliminar:eliminar,_token:_token},
-                    
-                       success:function(data){
-                        location.reload();
-
-
-                       }
-                   
-                    }).fail( function( jqXHR, textStatus, errorThrown ) {
-                        alert( 'ERROR, revise que los datos del formulario esten correctos. ' )
-                        //location.reload();
-                            });
-                        
-                  
-                
-              }
-            }); 
-
-
-          
-
+              if (willDelete) 
+              {
+                Enviar();
+                }
+             }); 
             }
         else
         {
-
-            e.preventDefault();
-        var nombre = $("input[id=nombre]").val();
-
-        var apellido = $("input[id=apellido]").val();
-
-        var id_Academico = $("input[id=id_Academico]").val();
-
-        var correo = $("input[id=correo]").val();
-
-
-        var eliminar = $('#ELIMINAR').val();
-        var ischecked = $('#ELIMINAR').is(":checked");
-
-        if (ischecked) {
-            eliminar = "on";
+           Enviar();
         }
-        else{
-            eliminar = "off";
-        }
-
-        
-        var _token = $('input[name="_token"]').val();
-
-       
-
-
-
-
-
-        $.ajax({
-           
-           type:'get',
-          
-           url:'/Modificar_Academico',
-          
-           data:{nombre:nombre,apellido:apellido,correo:correo,id_Academico:id_Academico,eliminar:eliminar,_token:_token},
-        
-           success:function(data){
-            location.reload();
-            
-                
-           }
-
-        }).fail( function( jqXHR, textStatus, errorThrown ) {
-            //swal("Hello world!");
-            swal("ERROR", "Revise que los datos del formulario esten correctos", "error");
-            //alert( 'ERROR, revise que los datos del formulario esten correctos. ' )
-                });
-        }
-        
-
-      
-        
-        
-
-               
-
-	});
-
-
+    });
+    
 
 </script>
-
-</html>
 <script>
-public function Enviar(){
 
-    e.preventDefault();
-        var nombre = $("input[id=nombre]").val();
-
-        var apellido = $("input[id=apellido]").val();
-
-        var id_Academico = $("input[id=id_Academico]").val();
-
-        var correo = $("input[id=correo]").val();
-
-
-        var eliminar = $('#ELIMINAR').val();
-        var ischecked = $('#ELIMINAR').is(":checked");
-
-        if (ischecked) {
-            eliminar = "on";
-        }
-        else{
-            eliminar = "off";
-        }
-
-        
-        var _token = $('input[name="_token"]').val();
-
-       
-
-
-
-
-
-        $.ajax({
-           
-           type:'get',
-          
-           url:'/Modificar_Academico',
-          
-           data:{nombre:nombre,apellido:apellido,correo:correo,id_Academico:id_Academico,eliminar:eliminar,_token:_token},
-        
-           success:function(data){
-            location.reload();
-            
-                
-           }
-
-        }).fail( function( jqXHR, textStatus, errorThrown ) {
-            alert( 'ERROR, revise que los datos del formulario esten correctos. ' )
-            //location.reload();
-                });
+ function Enviar(){
+$.ajaxSetup({
+headers: {
+'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 }
+});
+    var nombre = $("input[id=nombre]").val();
+    var apellido = $("input[id=apellido]").val();
+    var id_Academico = $("input[id=id_Academico]").val();
+    var correo = $("input[id=correo]").val();
+    var eliminar = $('#ELIMINAR').val();
+    var ischecked = $('#ELIMINAR').is(":checked");
+    if (ischecked) {
+        eliminar = "on";
+    }
+    else{
+        eliminar = "off";
+    }
+    var _token = $('input[name="_token"]').val();
+    $.ajax({
+       
+       type:'get',
+       url:'/Modificar_Academico',
+       data:{nombre:nombre,apellido:apellido,correo:correo,id_Academico:id_Academico,eliminar:eliminar,_token:_token},
+       success:function(data){
+        location.reload(); 
+       }
+
+    }).fail( function( jqXHR, textStatus, errorThrown ) {
+        alert( 'ERROR, revise que los datos del formulario esten correctos. ' )
+        //location.reload();
+            });
+}
+
 
 </script>
 
 <script>
          $(document).ready(function(){
-           
-
-            
-
-
 
             $('#buscar').keyup(function(event){
 
@@ -592,11 +473,8 @@ public function Enviar(){
             var query = $(this).val();
             
             if(query != '')
-            {
-
-                
+            { 
                 var _token = $('input[name="_token"]').val();
-
                 $.ajax({
                     
                     
@@ -605,12 +483,8 @@ public function Enviar(){
                     data:{query:query, _token:_token},
                     success:function(data){
                         $('#sugerencias').fadeIn(0);
-                        
-
-                           $('#sugerencias').html(data);
-
+                        $('#sugerencias').html(data);
                     }
-
                 }).fail( function( jqXHR, textStatus, errorThrown ) {
                         alert( 'Error!! AJAX IS DED' )
                 });;
@@ -648,3 +522,5 @@ public function Enviar(){
 
 
 
+
+</html>
