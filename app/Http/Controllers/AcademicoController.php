@@ -223,8 +223,8 @@ class AcademicoController extends Controller
       //dd($request->all());
         
         $request->validate([
-            'nombre'=>'required|alpha',
-            'apellido'=>'required|alpha',
+            'nombre'=>'required|regex:/^[\pL\s\-]+$/u',
+            'apellido'=>'required|regex:/^[\pL\s\-]+$/u',
             'correo'=>'required|email',
             'id_Academico' =>'required',
         ]);
