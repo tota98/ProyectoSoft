@@ -329,40 +329,7 @@
             },
             correo: {
                 required: true,
-                email: true
-            },
-            minlength: {
-                required: true,
-                minlength: 5
-                
-            },
-            maxlength: {
-                required: true,
-                maxlength: 8
-                
-            },
-            minvalue: {
-                required: true,
-                min: 1
-                
-            },
-            maxvalue: {
-                required: true,
-                max: 100
-                
-            },
-            range: {
-                required: true,
-                range: [20, 40]
-                
-            },
-            url: {
-            required: true,
-            url: true
-            },
-            filename: {
-                required: true,
-                extension: "jpeg|png"
+                email: true   
             },
         }
     });
@@ -373,29 +340,11 @@
 
 
 
-    $.ajaxSetup({
-
-        headers: {
-
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-
-        }
-
-    });
 
 
 
     $(".btn-submit").click(function(e){
-      
-
-
-
-
-
-
-
-       
-        if($('#ELIMINAR').is(":checked")){
+      if($('#ELIMINAR').is(":checked")){
 
             swal({
                         title: "Seguro que desea eliminar este academico?",
@@ -421,39 +370,39 @@
 </script>
 <script>
 
- function Enviar(){
-$.ajaxSetup({
-headers: {
-'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-}
-});
-    var nombre = $("input[id=nombre]").val();
-    var apellido = $("input[id=apellido]").val();
-    var id_Academico = $("input[id=id_Academico]").val();
-    var correo = $("input[id=correo]").val();
-    var eliminar = $('#ELIMINAR').val();
-    var ischecked = $('#ELIMINAR').is(":checked");
-    if (ischecked) {
-        eliminar = "on";
-    }
-    else{
-        eliminar = "off";
-    }
-    var _token = $('input[name="_token"]').val();
-    $.ajax({
-       
-       type:'get',
-       url:'/Modificar_Academico',
-       data:{nombre:nombre,apellido:apellido,correo:correo,id_Academico:id_Academico,eliminar:eliminar,_token:_token},
-       success:function(data){
-        location.reload(); 
-       }
-
-    }).fail( function( jqXHR, textStatus, errorThrown ) {
-        alert( 'ERROR, revise que los datos del formulario esten correctos. ' )
-        //location.reload();
+function Enviar(){
+        $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+            var nombre = $("input[id=nombre]").val();
+            var apellido = $("input[id=apellido]").val();
+            var id_Academico = $("input[id=id_Academico]").val();
+            var correo = $("input[id=correo]").val();
+            var eliminar = $('#ELIMINAR').val();
+            var ischecked = $('#ELIMINAR').is(":checked");
+            if (ischecked) {
+                eliminar = "on";
+            }
+            else{
+                eliminar = "off";
+            }
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+            
+               type:'get',
+               url:'/Modificar_Academico',
+               data:{nombre:nombre,apellido:apellido,correo:correo,id_Academico:id_Academico,eliminar:eliminar,_token:_token},
+               success:function(data){
+                    location.reload(); 
+               }
+           
+            }).fail( function( jqXHR, textStatus, errorThrown ) {
+                alert( 'ERROR, revise que los datos del formulario esten correctos. ' )
+                //location.reload();
             });
-}
+            }
 
 
 </script>
