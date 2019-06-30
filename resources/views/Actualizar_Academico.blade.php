@@ -284,6 +284,11 @@
 
 
     $(document).ready(function () {
+
+        jQuery.validator.addMethod('lettersonly', function(value, element) {
+    return this.optional(element) || /^[a-z áãâäàéêëèíîïìóõôöòúûüùçñ]+$/i.test(value);
+}, "Letters and spaces only please");
+
         $.extend( $.validator.messages, {
 	required: "Este campo es obligatorio.",
 	remote: "Por favor, rellena este campo.",
