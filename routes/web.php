@@ -28,7 +28,7 @@ Route::resource('estudiantes','EstudianteController');
 //Rutas para controlador autoComplete, utilizado en vistas de actualizacion
 Route::get('/Modificar_Estudiante','EstudianteController@Modificar')
     ->name('estudiantes.modificar');
-    Route::get('/Modificar_Academico','AcademicoController@Modificar')
+Route::get('/Modificar_Academico','AcademicoController@Modificar')
     ->name('academicos.modificar');
     Route::get('/Modificar_Actividad','ActividadController@Modificar')
     ->name('actividades.modificar');
