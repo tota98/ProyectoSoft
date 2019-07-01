@@ -269,7 +269,10 @@
 
             <div class="form-group">
                  <label for="telefono">Telefono</label>
+                 <div class="form-group form-inline">
+                 <label for="exampleInputEmail1">+56 9</label>   
                  <input type="text" class="form-control" id="telefono" name = "telefono" disabled>
+                 </div>
             </div>
         
             <div class="form-group">
@@ -367,7 +370,7 @@ function submit(){
             },
             telefono: {
                 number: true,
-                maxlength: 9
+                maxlength: 8
             },
              
             
