@@ -13,8 +13,12 @@
     
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
-  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
-  crossorigin="anonymous"></script>
+      integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+      crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
   
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     
@@ -34,6 +38,10 @@
 
 
 <style type="text/css">
+
+.error {
+  color: #F00;
+}
     .navbar {
         background-color: #23415b;
     }
@@ -222,7 +230,7 @@
         
         <!-- FORMULARIO PARA ACTUALIZAR ESTUDIANTE -->
                                     
-        <form method ="GET" action="{{route('estudiantes.modificar')}}" >
+        <form method ="GET" action="{{route('estudiantes.modificar')}}" id="form">
             {{ csrf_field() }}
 
         
@@ -298,8 +306,73 @@ function submit(){
                return false;
            }
     }
+</script>
 
 
+
+
+
+
+<script>
+
+
+
+    $(document).ready(function () {
+
+        jQuery.validator.addMethod('lettersonly', function(value, element) {
+    return this.optional(element) || /^[a-z áãâäàéêëèíîïìóõôöòúûüùçñ]+$/i.test(value);
+}, "Letters and spaces only please");
+
+        $.extend( $.validator.messages, {
+	required: "Este campo es obligatorio.",
+	remote: "Por favor, rellena este campo.",
+	email: "Por favor, escribe una dirección de correo válida.",
+	url: "Por favor, escribe una URL válida.",
+	date: "Por favor, escribe una fecha válida.",
+	dateISO: "Por favor, escribe una fecha (ISO) válida.",
+	number: "Por favor, escribe un número válido.",
+    digits: "Por favor, escribe sólo dígitos.",
+    lettersonly: "Por favor, incluir solo letras en el campo.",
+	creditcard: "Por favor, escribe un número de tarjeta válido.",
+	equalTo: "Por favor, escribe el mismo valor de nuevo.",
+	extension: "Por favor, escribe un valor con una extensión aceptada.",
+	maxlength: $.validator.format( "Por favor, no escribas más de {0} caracteres." ),
+	minlength: $.validator.format( "Por favor, no escribas menos de {0} caracteres." ),
+	rangelength: $.validator.format( "Por favor, escribe un valor entre {0} y {1} caracteres." ),
+	range: $.validator.format( "Por favor, escribe un valor entre {0} y {1}." ),
+	max: $.validator.format( "Por favor, escribe un valor menor o igual a {0}." ),
+	min: $.validator.format( "Por favor, escribe un valor mayor o igual a {0}." ),
+	nifES: "Por favor, escribe un NIF válido.",
+	nieES: "Por favor, escribe un NIE válido.",
+	cifES: "Por favor, escribe un CIF válido."
+} );
+
+        
+    $('#form').validate({
+
+   
+        //se inicia plugin para validar en tiempo real
+        rules: {
+            nombre: {
+                required: true,
+                lettersonly: true
+            },
+            apellido: {
+                required: true,
+                lettersonly: true
+            },
+            correo: {
+                required: true,
+                email: true  
+            },
+            telefono: {
+                number: true
+            },
+             
+            
+        }
+    });
+});
 </script>
 </html>
 
