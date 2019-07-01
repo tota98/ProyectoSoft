@@ -317,7 +317,7 @@
     $('#form').validate({
 
    
-        // initialize the plugin
+        //se inicia plugin para validar en tiempo real
         rules: {
             nombre: {
                 required: true,
@@ -436,7 +436,7 @@ function Enviar(){
                         $('#sugerencias').html(data);
                     }
                 }).fail( function( jqXHR, textStatus, errorThrown ) {
-                        alert( 'Error!! AJAX IS DED' )
+                        alert( 'Error, revise la conexion con la base de datos ' )
                 });;
 
 
