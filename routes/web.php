@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/reg_1A', function () 
@@ -93,7 +93,6 @@ Route::get('/reporte', function () {
 Route::get('/inscripcion', function () {
     return view('Inscripcion');
 });
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -101,3 +100,7 @@ Route::post('/autocomplete/fetch','AutoCompleteController@ActualizarEstudiante')
 Route::post('/autocomplete/store','AutoCompleteController@ActualizarAcademico')->name('autocomplete.academico');
 Route::post('/autocomplete/A_Actividad','AutoCompleteController@ActualizarActividad')->name('autocomplete.actividad');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

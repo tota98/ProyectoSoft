@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +22,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
-
 
 <style type="text/css">
     .navbar {
@@ -162,59 +161,97 @@
 
 </style>
 
-    
 
 <body>
+    <div id="app">
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
 
-    <div id="app" >
-    
-    <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-        <div class="container">
-            <a class="navbar-brand">
-                Titulación
+                    <!-- Collapsed Hamburger -->
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-                     <a class="navbar-brand" href="{{route('MenuSecretaria')}}">
-                     Inicio
-                     <a class="navbar-brand" href="{{ url('/') }}">
-                     Cerrar Sesion
-                </ul>
-             </a>
-        </div>
-    </nav>
+                    <!-- Branding Image -->
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        Sistema de Titulación UCN
+                    </a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="nav navbar-nav">
+                        &nbsp;
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="nav navbar-nav navbar-right">
+                        <!-- Authentication Links -->
+                        @guest
+                            <li><a href="{{ route('login') }}">Ingreso</a></li>
+                            <li><a href="{{ route('register') }}">Registro</a></li>
+                        @else
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+                                
+                                <li>
+                                    <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                        Cerrar sesión 
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+
+                        @endguest
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        @yield('content')
+    </div>
 
     <div class="container theme-showcase" role="main">
 
         <div class="jumbotron">
-            
-             <div class="container" >
-                 <h3>ALUMNOS<span class="badge badge-secondary"></span></h3>
+    
+            <div class="container" >
+                <h3>ALUMNOS<span class="badge badge-secondary"></span></h3>
                 <a href="{{route('RegistrarEstudiante')}}" class="btn btn-primary btn-block" >Registro</a>
                 <a href="{{route('ActualizarEstudiante')}}" class="btn btn-primary btn-block" >Actualización/Eliminación</a>
-             </div> 
-             
-             <div class="container">
-                 <h3>ACADEMICOS<span class="badge badge-secondary"></span></h3>
-                 <a href="{{url('/reg_2A')}}" class="btn btn-primary btn-block" >Registro</a>
-                 <a href="{{url('/reg_2B')}}" class="btn btn-primary btn-block" >Actualización/Eliminación</a>
-             </div> 
-       
-             <div class="container">
-                 <h3>TITULACIÓN<span class="badge badge-secondary"></span></h3>
-                 <a href="{{url('/reg_3A')}}" class="btn btn-primary btn-block" >Registro de actividad</a>
-                 <a href="{{url('/reg_3B')}}" class="btn btn-primary btn-block" >Actualización de actividad/Eliminación</a>
-                 <a href="{{route('InscripcionActividad')}}" method="post" class="btn btn-primary btn-block" >Inscripcion</a>
-                 <a href="#" class="btn btn-primary btn-block" >Actividades en progreso</a>
-                 <a href="#" class="btn btn-primary btn-block" >Anulacion</a>
-                 
+            </div> 
             
-                 <a href="{{url('/reporte')}}" class="btn btn-primary btn-block" >Reportes</a>
+            <div class="container">
+                <h3>ACADEMICOS<span class="badge badge-secondary"></span></h3>
+                <a href="{{url('/reg_2A')}}" class="btn btn-primary btn-block" >Registro</a>
+                <a href="{{url('/reg_2B')}}" class="btn btn-primary btn-block" >Actualización/Eliminación</a>
+            </div> 
+
+            <div class="container">
+                <h3>TITULACIÓN<span class="badge badge-secondary"></span></h3>
+                <a href="{{url('/reg_3A')}}" class="btn btn-primary btn-block" >Registro de actividad</a>
+                <a href="{{url('/reg_3B')}}" class="btn btn-primary btn-block" >Actualización de actividad/Eliminación</a>
+                <a href="{{route('InscripcionActividad')}}" method="post" class="btn btn-primary btn-block" >Inscripcion</a>
+                <a href="#" class="btn btn-primary btn-block" >Actividades en progreso</a>
+                <a href="#" class="btn btn-primary btn-block" >Anulacion</a>
+                
+            
+                <a href="{{url('/reporte')}}" class="btn btn-primary btn-block" >Reportes</a>
             </div>
-        </div>   
-         
+        </div>       
     </div>
 
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
