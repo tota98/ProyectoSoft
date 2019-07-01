@@ -366,7 +366,8 @@ function submit(){
                 email: true  
             },
             telefono: {
-                number: true
+                number: true,
+                maxlength: 9
             },
              
             
