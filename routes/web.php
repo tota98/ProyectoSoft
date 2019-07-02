@@ -100,6 +100,7 @@ Route::post('/autocomplete/fetch','AutoCompleteController@ActualizarEstudiante')
 Route::post('/autocomplete/store','AutoCompleteController@ActualizarAcademico')->name('autocomplete.academico');
 Route::post('/autocomplete/A_Actividad','AutoCompleteController@ActualizarActividad')->name('autocomplete.actividad');
 
+Route::post('/Inscripcion/registrar','InscripcionController@registrar')->name('Inscripcion.registrar');
 
 Auth::routes();
 

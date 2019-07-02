@@ -47,14 +47,14 @@
  $(document).ready(function(){
     $.datepicker.setDefaults($.datepicker.regional['es']);
 
-    $('#fecha1').datepicker({
+    $('#fechaInicio').datepicker({
         inline: true,
         minDate: "dateToday",
         onClose: function( selectedDate ) {
-        $( "#fecha2").datepicker( "option", "minDate", selectedDate );
+        $( "#fechaTermino").datepicker( "option", "minDate", selectedDate );
     }
     });
-    $('#fecha2').datepicker({
+    $('#fechaTermino').datepicker({
         
     });
     
@@ -261,7 +261,7 @@
    
      <!-- FORMULARIO PARA REGISTRAR ESTUDIANTE -->
     
-        <form method ="post" action="{{route('estudiantes.store')}}">
+        <form>
             {{ csrf_field() }}
            
             
@@ -276,12 +276,13 @@
                  <label for="inputState">Tipo de actividad(*)</label>
                  <input id="cantidadEstudiantes" type="hidden" class="form-control" name = "cantidadEstudiantes" placeholder="cant.Estudiantes" >
                  <input id="participacion"  type="hidden" type="text" class="form-control" name = "participacion" placeholder="participacion " >
+                 <input id="id_Actividad" type="hidden" class="form-control" name = "id_Actividad" placeholder="cant.Estudiantes" >
           
                  <select id="actividad" class="form-control" name ="actividad">
                      <option value="" selected disabled>seleccione actividad</option>
                      @foreach($actividad_list as $actividad)
-        'nombre','cant_max','duracion','participacion_organizacion',
-                    <option value = "{{$actividad->nombre }}" data-cant_max = "{{$actividad->cant_max}}" data-organizacion ="{{$actividad->participacion_organizacion}}"  >{{"nombre :".$actividad ->nombre." | "."cant. maxima de estudiantes: ".$actividad->cant_max}}</option>
+                        'nombre','cant_max','duracion','participacion_organizacion',
+                    <option value = "{{$actividad->nombre }}" data-cant_max = "{{$actividad->cant_max}}" data-organizacion ="{{$actividad->participacion_organizacion}}" data-id="{{$actividad->id}}" >{{"nombre :".$actividad ->nombre." | "."cant. maxima de estudiantes: ".$actividad->cant_max}}</option>
                      @endforeach
                      
                  </select>
@@ -291,16 +292,17 @@
             <div class="form-group form-inline">
                      <label for="inputState">Alumnos(*)</label> 
                      <div class="btn btn-primary btn-circle" id="botonMas">+</div>
+                     <div class="btn btn-primary btn-circle" id="botonMenos">-</div>
                      
             </div>         
             
             
                 <div id="original0">
-                    <select id="alumno" class="form-control" name ="alumno" style = "width: 565px">
+                    <select id="alumno" class="form-control" name ="alumno" style = "width: 565px; margin-top: 5px;">
                         
                         <option value="" selected disabled>seleccione estudiante</option>
                           @foreach($estudiante_list as $estudiante)
-                        <option value = "{{$estudiante->nombre }}">{{"rut: ".$estudiante ->rut." | "."nombre: ".$estudiante ->nombre}}</option>
+                        <option value = "{{$estudiante->nombre }}" data-id="{{$estudiante->id}}">{{"rut: ".$estudiante ->rut." | "."nombre: ".$estudiante ->nombre}}</option>
                        @endforeach
                     
                     </select>
@@ -314,19 +316,21 @@
             
             
             <div class="form-group" style = "margin-top: 40px;">
-            
+                        <input id="id_Academico_1" type="hidden"  class="form-control" name = "id_Academico_1" placeholder="" >
+                        <input id="id_Academico_2" type="hidden"  class="form-control" name = "id_Academico_2" placeholder="" >
+          
                      <label for="inputState">Academico(*)</label>
                    
-                        <select id="academico1" class="form-control" name ="academico1">
+                        <select id="academico_1" class="form-control" name ="academico_1">
                         <option value="" selected disabled>seleccione academico</option>
                         @foreach($academico_list as $academico)
-                        <option value = "{{$academico->nombre }}">{{"rut: ".$academico ->rut." | "."nombre: ".$academico ->nombre}}</option>
+                        <option value = "{{$academico->nombre }}" data-id = "{{$academico->id}}">{{"rut: ".$academico ->rut." | "."nombre: ".$academico ->nombre}}</option>
                         @endforeach
                         </select>
-                        <select id="academico2" class="form-control" name ="academico2">
+                        <select id="academico_2" class="form-control" name ="academico_2" style = "margin-top: 5px;">
                         <option value="" selected disabled>seleccione academico (opcional)</option>
                         @foreach($academico_list as $academico)
-                        <option value = "{{$academico->nombre }}">{{"rut: ".$academico ->rut." | "."nombre: ".$academico ->nombre}}</option>
+                        <option value = "{{$academico->nombre }}" data-id = "{{$academico->id}}">{{"rut: ".$academico ->rut." | "."nombre: ".$academico ->nombre}}</option>
                         @endforeach
                         </select>
                      
@@ -334,25 +338,23 @@
             <div class="form-group form-inline">
                     <div class="form-group">
                              <label for="inputState">Fecha inicio(*)</label>
-                             <input placeholder="fecha" type="text" id="fecha1" name="fecha1" class="form-control datepicker" style="width: 120px;">
+                             <input placeholder="fecha" type="text" id="fechaInicio" name="fechaInicio" class="form-control datepicker" style="width: 120px;">
                     </div>
                     <div class="form-group" style="margin-left: 30px;">
                              <label for="inputState">Fecha termino(*)</label>
-                             <input placeholder="fecha" type="text" id="fecha2" name="fecha2" class="form-control datepicker" style="width: 120px;">
+                             <input placeholder="fecha" type="text" id="fechaTermino" name="fechaTermino" class="form-control datepicker" style="width: 120px;">
                     </div>
             </div>
            
 
            
 
-            <button type="submit" id="boton1" class="btn btn-primary" style="display: inline-block;vertical-align: top; margin-top:20px">Inscribir</button>
-            
-        
+           
         
             
 
 
-        </form>
+       
     
         <div class="row">
     
@@ -373,7 +375,10 @@
     <button type="submit" id="boton2" class="btn btn-primary" style="display: inline-block;vertical-align: top; margin-top:20px">Inscribir</button>
     
     </div>
-    
+    </form>
+    <button type="submit" id="boton1" class="btn btn-primary" style="display: inline-block;vertical-align: top; margin-top:20px">Inscribir</button>
+            
+        
     
 </div> 
     </div>
@@ -383,12 +388,24 @@
 
 </body>
 <script>
+
+$('#academico_1').on('change',function(){
+        var id = $(this).children('option:selected').data('id');
+        $("#id_Academico_1").val(id);
+    });
+$('#academico_2').on('change',function(){
+        var id = $(this).children('option:selected').data('id');
+        $("#id_Academico_2").val(id);
+    });
+
 $('#actividad').on('change',function(){
+    renovar = true;
     var cantidadEstudiantes = $(this).children('option:selected').data('cant_max');
     var participacion = $(this).children('option:selected').data('organizacion');
+    var id = $(this).children('option:selected').data('id');
     $('#cantidadEstudiantes').val(cantidadEstudiantes);
     $('#participacion').val(participacion);
-
+    $('#id_Actividad').val(id);
     if($("#participacion").val() == "on")
     {
         $("#menu_extra").removeClass('hidden'); 
@@ -400,44 +417,128 @@ $('#actividad').on('change',function(){
         $("#boton2").addClass('hidden'); 
         $("#boton1").removeClass('hidden'); 
     }
+
+   
+    //En caso de escoger otra actividad, se deben eliminar los estudiantes agregados anteriormente.
+    while(i != 0){
+        quitarEstudiantes();
+    }
+    renovar = false;
 });
+
 </script>
 
 <script type='text/javascript'>
 
 document.getElementById("botonMas").onclick = function() {agregarEstudiantes()};
-
+document.getElementById("botonMenos").onclick = function() {quitarEstudiantes()};
 
 var i = 0;
-
+var renovar = false;
 
 
 
 function agregarEstudiantes(){
-if(i < $("#cantidadEstudiantes").val()-1){
+
+    if(i < $("#cantidadEstudiantes").val()-1){
+        var original;
+        
+        original = document.getElementById("original" +i);
+    
+    
+    var clone = original.cloneNode(true); // "deep" clone
+    clone.id = "original" + ++i; // para asegurar que no se repita ninguna id
+    
+    original.appendChild(clone);
+    
+    
+    }
+            else if ($("#cantidadEstudiantes").val() == 0)
+                    {
+                    alert("error, seleccione previamente una actividad"); 
+                    }
+            else{
+                    alert("error, se llego a la cantidad maxima de estudiantes de esta actividad.");
+                }
+        
+}
+
+function quitarEstudiantes(){
+
+if((i <= $("#cantidadEstudiantes").val()-1 && i != 0) || renovar == true){
     var original;
     
     original = document.getElementById("original" +i);
 
-  
-var clone = original.cloneNode(true); // "deep" clone
-clone.id = "original" + ++i; // there can only be one element with an ID
 
-original.appendChild(clone);
+original.parentNode.removeChild(original);
+--i;
 
 
 }
-else if ($("#cantidadEstudiantes").val() == 0){
-    alert("error, seleccione previamente una actividad"); 
-}
-else{
-    alert("error, se llego a la cantidad maxima de estudiantes de esta actividad.");
-}
+        else if ($("#cantidadEstudiantes").val() == 0)
+                {
+                alert("error, seleccione previamente una actividad"); 
+                }
+        else{
+                alert("error,no puede inscribir una actividad con cero estudiantes.");
+            }
     
 }
 
+$("#boton1").click(function(e){
+Enviar();
+});
+
+function EnviarOrganizacion(){
+
+}
+function Enviar(){
+        $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+            var titulo = $("input[id=titulo]").val();
+            var id_Actividad = $("input[id=id_Actividad]").val();
+            var id_Academico_1 = $("input[id=id_Academico_1]").val();
+            var id_Academico_2 = $("input[id=id_Academico_2]").val();
+            var fechaInicio = $("#fechaInicio").val();
+            var fechaTermino = $("#fechaTermino").val();
+            var estudiantes = 1;
+            
+            
+            
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+            
+               type:'post',
+               url:'/Inscripcion/registrar',
+               data:{titulo:titulo,id_Actividad:id_Actividad,id_Academico_1:id_Academico_1,id_Academico_2:id_Academico_2,
+                fechaInicio:fechaInicio,fechaTermino:fechaTermino,estudiantes:estudiantes,_token:_token},
+               success:function(data){
+                
+               }
+           
+            }).fail( function( jqXHR, textStatus, errorThrown ) {
+                alert( 'dead ajax' )
+                //location.reload();
+            });
+            }
 
     </script>
+
+
+<script>
+
+
+
+</script>
+
+
+
+
+
 
   </html>
 
