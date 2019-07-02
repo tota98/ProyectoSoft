@@ -42,17 +42,31 @@
 
 
 
-<script>
+<script type="text/javascript">
+
  $(document).ready(function(){
-
-    $('#fecha').datepicker({
-
-        language: 'es'
-		
-    });
     $.datepicker.setDefaults($.datepicker.regional['es']);
+
+    $('#fecha1').datepicker({
+        inline: true,
+        minDate: "dateToday",
+        onClose: function( selectedDate ) {
+        $( "#fecha2").datepicker( "option", "minDate", selectedDate );
+    }
+    });
+    $('#fecha2').datepicker({
+        
+    });
+    
+    
  });
+
+
+  
+
 </script>
+
+
 
 
 
@@ -62,6 +76,16 @@
 
 
 <style type="text/css">
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  line-height: 30px; /* adjust line height to align vertically*/
+  padding:0;
+  border-radius: 50%;
+}
+
+
+
     .navbar {
         background-color: #23415b;
     }
@@ -203,10 +227,6 @@
 
 <body>
 
-
-
-
-
     <div id="app" >
     
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
@@ -214,7 +234,7 @@
             <a class="navbar-brand">
                 Titulación
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
                      <a class="navbar-brand" href="{{ URL::previous() }}">
@@ -226,7 +246,7 @@
         </div>
     </nav>
 
-    <div class="container theme-showcase" role="main">
+<div class="container theme-showcase" role="main">
     <div class="jumbotron">
     
 
@@ -250,89 +270,174 @@
                     <label for="nombre">Título(*)</label>
                     <input id="titulo" type="text" class="form-control" name = "titulo" placeholder="Titulo">
                
-
             </div>
             
             <div class="form-group">
                  <label for="inputState">Tipo de actividad(*)</label>
+                 <input id="cantidadEstudiantes" type="hidden" class="form-control" name = "cantidadEstudiantes" placeholder="cant.Estudiantes" >
+                 <input id="participacion"  type="hidden" type="text" class="form-control" name = "participacion" placeholder="participacion " >
+          
                  <select id="actividad" class="form-control" name ="actividad">
                      <option value="" selected disabled>seleccione actividad</option>
                      @foreach($actividad_list as $actividad)
-                    <option value = "{{$actividad->nombre }}">{{$actividad ->nombre}}</option>
+        'nombre','cant_max','duracion','participacion_organizacion',
+                    <option value = "{{$actividad->nombre }}" data-cant_max = "{{$actividad->cant_max}}" data-organizacion ="{{$actividad->participacion_organizacion}}"  >{{"nombre :".$actividad ->nombre." | "."cant. maxima de estudiantes: ".$actividad->cant_max}}</option>
                      @endforeach
                      
                  </select>
             </div>
            
-            <div class="form-group">
-                     <label for="inputState">Alumnos(*)</label>
-                     <select id="alumno" class="form-control" name ="alumno">
-                        <option value="" selected disabled>seleccione estudiante</option>
-                        @foreach($estudiante_list as $estudiante)
-                    <option value = "{{$estudiante->nombre }}">{{$estudiante ->nombre}}</option>
-                     @endforeach
-                    </select>
-            </div>
             
-            <div class="form-group">
+            <div class="form-group form-inline">
+                     <label for="inputState">Alumnos(*)</label> 
+                     <div class="btn btn-primary btn-circle" id="botonMas">+</div>
+                     
+            </div>         
+            
+            
+                <div id="original0">
+                    <select id="alumno" class="form-control" name ="alumno" style = "width: 565px">
+                        
+                        <option value="" selected disabled>seleccione estudiante</option>
+                          @foreach($estudiante_list as $estudiante)
+                        <option value = "{{$estudiante->nombre }}">{{"rut: ".$estudiante ->rut." | "."nombre: ".$estudiante ->nombre}}</option>
+                       @endforeach
+                    
+                    </select>
+                </div>
+               
+
+           
+            <div  id="asd"></div>
+           
+            
+            
+            
+            <div class="form-group" style = "margin-top: 40px;">
+            
                      <label for="inputState">Academico(*)</label>
-                     <select id="academico" class="form-control" name ="academico">
+                   
+                        <select id="academico1" class="form-control" name ="academico1">
                         <option value="" selected disabled>seleccione academico</option>
                         @foreach($academico_list as $academico)
-                    <option value = "{{$academico->nombre }}">{{$academico ->nombre}}</option>
-                     @endforeach
-                         
-                    </select>
+                        <option value = "{{$academico->nombre }}">{{"rut: ".$academico ->rut." | "."nombre: ".$academico ->nombre}}</option>
+                        @endforeach
+                        </select>
+                        <select id="academico2" class="form-control" name ="academico2">
+                        <option value="" selected disabled>seleccione academico (opcional)</option>
+                        @foreach($academico_list as $academico)
+                        <option value = "{{$academico->nombre }}">{{"rut: ".$academico ->rut." | "."nombre: ".$academico ->nombre}}</option>
+                        @endforeach
+                        </select>
+                     
             </div>
-
-            <div class="form-group">
-                     <label for="inputState">Fecha inicio(*)</label>
-                     <input placeholder="fecha" type="text" id="fecha" name="fecha" class="form-control datepicker" style="width: 120px;">
-            
+            <div class="form-group form-inline">
+                    <div class="form-group">
+                             <label for="inputState">Fecha inicio(*)</label>
+                             <input placeholder="fecha" type="text" id="fecha1" name="fecha1" class="form-control datepicker" style="width: 120px;">
+                    </div>
+                    <div class="form-group" style="margin-left: 30px;">
+                             <label for="inputState">Fecha termino(*)</label>
+                             <input placeholder="fecha" type="text" id="fecha2" name="fecha2" class="form-control datepicker" style="width: 120px;">
+                    </div>
             </div>
            
 
            
 
-         
+            <button type="submit" id="boton1" class="btn btn-primary" style="display: inline-block;vertical-align: top; margin-top:20px">Inscribir</button>
             
         
-        <div class="row">
-    
-
         
-            <button type="submit" class="btn btn-primary" style="display: inline-block;vertical-align: top; margin-top:20px">Inscribir</button>
-           
-           
-            <div class="form-group">
-                     <label for="inputState">Nombre organización</label>
-                     <input id="nombreOrganizacion" type="text" class="form-control" name = "nombre" placeholder="Nombre organización">
-            </div>
-            
-            <div class="form-group">
-                     <label for="inputState">Tutor</label>
-                     <input id="tutor" type="text" class="form-control" name = "tutor" placeholder="Tutor">
-            </div>
-
-            <button type="submit" class="btn btn-primary" style="display: inline-block;vertical-align: top; margin-top:20px">Inscribir</button>
-            
-            
-        </div> 
             
 
 
         </form>
     
+        <div class="row">
+    
+
+        
+            
+           
+    <div class = "form-group hidden" id="menu_extra" >       
+    <div class="form-group">
+             <label for="inputState">Nombre organización</label>
+             <input id="nombreOrganizacion" type="text" class="form-control" name = "nombre" placeholder="Nombre organización">
+    </div>
+    
+    <div class="form-group">
+             <label for="inputState">Tutor</label>
+             <input id="tutor" type="text" class="form-control" name = "tutor" placeholder="Tutor">
+    </div>
+    <button type="submit" id="boton2" class="btn btn-primary" style="display: inline-block;vertical-align: top; margin-top:20px">Inscribir</button>
     
     </div>
+    
+    
+</div> 
     </div>
+</div>
 
 
 
 </body>
+<script>
+$('#actividad').on('change',function(){
+    var cantidadEstudiantes = $(this).children('option:selected').data('cant_max');
+    var participacion = $(this).children('option:selected').data('organizacion');
+    $('#cantidadEstudiantes').val(cantidadEstudiantes);
+    $('#participacion').val(participacion);
+
+    if($("#participacion").val() == "on")
+    {
+        $("#menu_extra").removeClass('hidden'); 
+        $("#boton2").removeClass('hidden'); 
+        $("#boton1").addClass('hidden'); 
+    }
+    else{
+        $("#menu_extra").addClass('hidden');
+        $("#boton2").addClass('hidden'); 
+        $("#boton1").removeClass('hidden'); 
+    }
+});
+</script>
+
+<script type='text/javascript'>
+
+document.getElementById("botonMas").onclick = function() {agregarEstudiantes()};
+
+
+var i = 0;
 
 
 
+
+function agregarEstudiantes(){
+if(i < $("#cantidadEstudiantes").val()-1){
+    var original;
+    
+    original = document.getElementById("original" +i);
+
+  
+var clone = original.cloneNode(true); // "deep" clone
+clone.id = "original" + ++i; // there can only be one element with an ID
+
+original.appendChild(clone);
+
+
+}
+else if ($("#cantidadEstudiantes").val() == 0){
+    alert("error, seleccione previamente una actividad"); 
+}
+else{
+    alert("error, se llego a la cantidad maxima de estudiantes de esta actividad.");
+}
+    
+}
+
+
+    </script>
 
   </html>
 

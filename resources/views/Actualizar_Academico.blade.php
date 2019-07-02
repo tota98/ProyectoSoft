@@ -34,9 +34,10 @@
 
 <style type="text/css">
 
-.error {
-  color: #F00;
-}
+.error 
+    {
+     color: #F00;
+    }
 
 
     .navbar {
@@ -345,7 +346,7 @@
 
     $(".btn-submit").click(function(e){
       if($('#ELIMINAR').is(":checked")){
-
+            
             swal({
                         title: "Seguro que desea eliminar este academico?",
                         text: "Una vez eliminado, no podra recuperar la información perdida",
