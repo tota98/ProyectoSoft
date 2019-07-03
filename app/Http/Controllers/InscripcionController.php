@@ -67,7 +67,7 @@ class InscripcionController extends Controller
             $id_actividad = $Actividad_Titulacion->id;
             $id_organizacion;
             
-            for( $i = 0; $i < 2;$i++){
+            for( $i = 1; $i <= 2;$i++){
             if($request->get('id_academico_'.$i) != null){
                 $actividadProfesor = actividad_profesor::create([
                     'id_actividad_titulacion' => $id_actividad,
