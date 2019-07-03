@@ -261,7 +261,7 @@
    
      <!-- FORMULARIO PARA REGISTRAR ESTUDIANTE -->
     
-        <form>
+        <form  method ="post" action="{{route('Inscripcion.registrar')}}">
             {{ csrf_field() }}
            
             
@@ -297,12 +297,12 @@
             </div>         
             
             
-                <div id="original0">
-                    <select id="alumno" class="form-control" name ="alumno" style = "width: 565px; margin-top: 5px;">
+                <div id="original0" value="">
+                    <select id="alumno0" class="form-control" name ="alumno0" style = "width: 565px; margin-top: 5px;">
                         
-                        <option value="" selected disabled>seleccione estudiante</option>
+                        <option value=""  selected disabled>seleccione estudiante</option>
                           @foreach($estudiante_list as $estudiante)
-                        <option value = "{{$estudiante->nombre }}" data-id="{{$estudiante->id}}">{{"rut: ".$estudiante ->rut." | "."nombre: ".$estudiante ->nombre}}</option>
+                        <option value = "{{$estudiante->id}}" data-id="{{$estudiante->id}}">{{"rut: ".$estudiante ->rut." | "."nombre: ".$estudiante ->nombre}}</option>
                        @endforeach
                     
                     </select>
@@ -316,21 +316,19 @@
             
             
             <div class="form-group" style = "margin-top: 40px;">
-                        <input id="id_Academico_1" type="hidden"  class="form-control" name = "id_Academico_1" placeholder="" >
-                        <input id="id_Academico_2" type="hidden"  class="form-control" name = "id_Academico_2" placeholder="" >
-          
+                       
                      <label for="inputState">Academico(*)</label>
                    
-                        <select id="academico_1" class="form-control" name ="academico_1">
+                        <select id="id_academico_1" class="form-control" name ="id_academico_1">
                         <option value="" selected disabled>seleccione academico</option>
                         @foreach($academico_list as $academico)
-                        <option value = "{{$academico->nombre }}" data-id = "{{$academico->id}}">{{"rut: ".$academico ->rut." | "."nombre: ".$academico ->nombre}}</option>
+                        <option value = "{{$academico->id }}" data-id = "{{$academico->id}}">{{"rut: ".$academico ->rut." | "."nombre: ".$academico ->nombre}}</option>
                         @endforeach
                         </select>
-                        <select id="academico_2" class="form-control" name ="academico_2" style = "margin-top: 5px;">
+                        <select id="id_academico_2" class="form-control" name ="id_academico_2" style = "margin-top: 5px;">
                         <option value="" selected disabled>seleccione academico (opcional)</option>
                         @foreach($academico_list as $academico)
-                        <option value = "{{$academico->nombre }}" data-id = "{{$academico->id}}">{{"rut: ".$academico ->rut." | "."nombre: ".$academico ->nombre}}</option>
+                        <option value = "{{$academico->id }}" data-id = "{{$academico->id}}">{{"rut: ".$academico ->rut." | "."nombre: ".$academico ->nombre}}</option>
                         @endforeach
                         </select>
                      
@@ -365,19 +363,19 @@
     <div class = "form-group hidden" id="menu_extra" >       
     <div class="form-group">
              <label for="inputState">Nombre organización</label>
-             <input id="nombreOrganizacion" type="text" class="form-control" name = "nombre" placeholder="Nombre organización">
+             <input id="nombreOrganizacion" type="text" class="form-control" name = "nombreOrganizacion" placeholder="Nombre organización">
     </div>
     
     <div class="form-group">
              <label for="inputState">Tutor</label>
-             <input id="tutor" type="text" class="form-control" name = "tutor" placeholder="Tutor">
+             <input id="nombreTutor" type="text" class="form-control" name = "nombreTutor" placeholder="Tutor">
     </div>
     <button type="submit" id="boton2" class="btn btn-primary" style="display: inline-block;vertical-align: top; margin-top:20px">Inscribir</button>
     
     </div>
-    </form>
+  
     <button type="submit" id="boton1" class="btn btn-primary" style="display: inline-block;vertical-align: top; margin-top:20px">Inscribir</button>
-            
+    </form>       
         
     
 </div> 
@@ -389,14 +387,7 @@
 </body>
 <script>
 
-$('#academico_1').on('change',function(){
-        var id = $(this).children('option:selected').data('id');
-        $("#id_Academico_1").val(id);
-    });
-$('#academico_2').on('change',function(){
-        var id = $(this).children('option:selected').data('id');
-        $("#id_Academico_2").val(id);
-    });
+
 
 $('#actividad').on('change',function(){
     renovar = true;
@@ -443,13 +434,13 @@ function agregarEstudiantes(){
     if(i < $("#cantidadEstudiantes").val()-1){
         var original;
         
-        original = document.getElementById("original" +i);
-    
+        original = document.getElementById("alumno" +i);
+        aux = document.getElementById("original0");
     
     var clone = original.cloneNode(true); // "deep" clone
-    clone.id = "original" + ++i; // para asegurar que no se repita ninguna id
-    
-    original.appendChild(clone);
+    clone.id = "alumno" + ++i; // para asegurar que no se repita ninguna id
+    clone.name = clone.id;
+    aux.appendChild(clone);
     
     
     }
@@ -468,7 +459,7 @@ function quitarEstudiantes(){
 if((i <= $("#cantidadEstudiantes").val()-1 && i != 0) || renovar == true){
     var original;
     
-    original = document.getElementById("original" +i);
+    original = document.getElementById("alumno" +i);
 
 
 original.parentNode.removeChild(original);
@@ -487,7 +478,7 @@ original.parentNode.removeChild(original);
 }
 
 $("#boton1").click(function(e){
-Enviar();
+
 });
 
 function EnviarOrganizacion(){
@@ -512,8 +503,8 @@ function Enviar(){
                 var _token = $('input[name="_token"]').val();
                 $.ajax({
             
-               type:'post',
-               url:'/Inscripcion/registrar',
+                    url:'{{ route('Inscripcion.registrar') }}',
+                    method:"POST",
                data:{titulo:titulo,id_Actividad:id_Actividad,id_Academico_1:id_Academico_1,id_Academico_2:id_Academico_2,
                 fechaInicio:fechaInicio,fechaTermino:fechaTermino,estudiantes:estudiantes,_token:_token},
                success:function(data){

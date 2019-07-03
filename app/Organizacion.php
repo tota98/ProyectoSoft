@@ -8,7 +8,7 @@ class Organizacion extends Model
 {
     //
     protected $fillable = [
-        'nombre_organizacion','nombre_tutor','correo_tutor',
+        'nombre_organizacion','nombre_tutor',
     ];
 
 }
