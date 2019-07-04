@@ -20,17 +20,14 @@
     <!-- Fonts -->
    
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-    
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/alertify.min.js"></script>
+
+<!-- CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/css/alertify.min.css"/>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-
-  
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    
- 
-    
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/i18n/jquery-ui-i18n.min.js"></script>
   
     <script src="../js/locale/bootstrap-datepicker.es.js" charset="UTF-8"></script>
@@ -84,7 +81,15 @@
   border-radius: 50%;
 }
 
-
+.alertify-notifier .ajs-message.ajs-error{
+    color: #ffffff;
+    background: rgba(217, 92, 92, 0,95);
+    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0,5);
+    width:500px;
+}
+.alertify-notifier.ajs-right .ajs-message.ajs-visible {
+  right: 530px;
+}
 
     .navbar {
         background-color: #23415b;
@@ -430,7 +435,9 @@ var renovar = false;
 
 
 function agregarEstudiantes(){
-
+    alertify.set('notifier','delay', 5);
+    alertify.set('notifier','position', 'top-right');
+              
     if(i < $("#cantidadEstudiantes").val()-1){
         var original;
         
@@ -446,15 +453,23 @@ function agregarEstudiantes(){
     }
             else if ($("#cantidadEstudiantes").val() == 0)
                     {
-                    alert("error, seleccione previamente una actividad"); 
+                        alertify.error('Error, seleccione previamente una actividad.');
+
                     }
             else{
-                    alert("error, se llego a la cantidad maxima de estudiantes de esta actividad.");
+              
+
+                alertify.error('Error, se llego a la cantidad maxima de estudiantes de esta actividad.');
+
+                    //alert("error, se llego a la cantidad maxima de estudiantes de esta actividad.");
                 }
         
 }
 
 function quitarEstudiantes(){
+
+    alertify.set('notifier','delay', 5);
+    alertify.set('notifier','position', 'top-right');
 
 if((i <= $("#cantidadEstudiantes").val()-1 && i != 0) || renovar == true){
     var original;
@@ -469,10 +484,11 @@ original.parentNode.removeChild(original);
 }
         else if ($("#cantidadEstudiantes").val() == 0)
                 {
-                alert("error, seleccione previamente una actividad"); 
+                    alertify.error('Error, seleccione previamente una actividad.');
                 }
         else{
-                alert("error,no puede inscribir una actividad con cero estudiantes.");
+            alertify.error('Error, no puede inscribir una actividad sin estudiantes.');
+
             }
     
 }
