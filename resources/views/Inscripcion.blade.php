@@ -606,9 +606,11 @@ function Enviar(){
             },
             nombreOrganizacion:{
                 required:true,
+                lettersonly: true,
             },
             nombreTutor:{
                 required:true,
+                lettersonly: true,
             },
            
         }
