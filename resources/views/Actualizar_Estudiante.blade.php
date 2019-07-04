@@ -13,9 +13,8 @@
     
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
-      integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
-      crossorigin="anonymous"></script>
-
+      integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 
@@ -230,7 +229,7 @@
         
         <!-- FORMULARIO PARA ACTUALIZAR ESTUDIANTE -->
                                     
-        <form method ="GET" action="{{route('estudiantes.modificar')}}" id="form">
+        <form id="form">
             {{ csrf_field() }}
 
         
@@ -284,12 +283,12 @@
             </div>
             
 
-             <button type="submit" class="btn btn-primary" value="user_value" >Aplicar</button>
+            
 
             
             
         </form>
-
+        <button type="submit" class="btn btn-primary btn-submit" >Aplicar</button>
     
     
     </div>
@@ -378,6 +377,106 @@ function submit(){
     });
 });
 </script>
+
+
+<script type="text/javascript">
+
+
+
+
+
+
+    $(".btn-submit").click(function(e){
+      if($('#ELIMINAR').is(":checked")){
+            
+            swal({
+                        title: "Seguro que desea eliminar este estudiante?",
+                        text: "Una vez eliminado, no podra recuperar la información perdida",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                        buttons: ["Cancelar", "Aceptar"],
+                })
+            .then((willDelete) => {
+              if (willDelete) 
+              {
+                Enviar();
+                }
+             }); 
+            }
+        else
+        {
+           Enviar();
+        }
+    });
+    
+
+</script>
+<script>
+
+function Enviar(){
+        $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+            var nombre = $("input[id=nombre]").val();
+            var apellido = $("input[id=apellido]").val();
+            var id_Estudiante = $("input[id=id_Estudiante]").val();
+            var correo = $("input[id=correo]").val();
+            var carrera = $("#carrera :selected").text();
+            var telefono = $("input[id=telefono]").val();
+            var eliminar = $('#ELIMINAR').val();
+            var ischecked = $('#ELIMINAR').is(":checked");
+            if (ischecked) {
+                eliminar = "on";
+            }
+            else{
+                eliminar = "off";
+            }
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+            
+               type:'get',
+               url:'/Modificar_Estudiante',
+               data:{nombre:nombre,apellido:apellido,correo:correo,id_Estudiante:id_Estudiante,carrera:carrera,telefono:telefono,eliminar:eliminar,_token:_token},
+               success:function(data){
+                    location.reload(); 
+               }
+           
+            }).fail( function( jqXHR, textStatus, errorThrown ) {
+                alert( 'ERROR, revise que los datos del formulario esten correctos. ' )
+                //location.reload();
+            });
+            }
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </html>
 
 

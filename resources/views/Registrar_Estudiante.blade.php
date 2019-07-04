@@ -15,21 +15,27 @@
     <title>Titulación</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+  
 
     <!-- Fonts -->
    
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
-    <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- Styles -->
 
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 </head>
 
 
 <style type="text/css">
+.error 
+    {
+     color: #F00;
+    }
     .navbar {
         background-color: #23415b;
     }
@@ -188,8 +194,9 @@
                 </ul>
              </a>
         </div>
+        
     </nav>
-
+    </div>
     <div class="container theme-showcase" role="main">
     <div class="jumbotron">
     <!-- El include permite el uso del blade 'Notificacion', muestra los banners de alerta y errores  -->
@@ -202,10 +209,11 @@
    
     <!-- FORMULARIO PARA REGISTRAR ESTUDIANTE -->
     
-        <form method ="post" action="{{route('estudiantes.store')}}">
+        <form method ="post" action="{{route('estudiantes.store')}}" id="form">
             {{ csrf_field() }}
            
-            <div class="form-row">
+            <div class="form-group">
+        
                 <div class="form-group col-md-6">
                     <label for="nombre">Nombre(*)</label>
                     <input id="nombre" type="text" class="form-control" name = "nombre" placeholder="Nombre">
@@ -215,13 +223,14 @@
                      <label for="apellido">Apellido(*)</label>
                      <input id="apellido"  type="text" class="form-control" name = "apellido" placeholder="Apellido">
                  </div>
-
+        
+            
             </div>
-
             <div class="form-group">
-                <label for="rut">Rut(*)</label>
+            <label for="rut">Rut(*)</label>
                 <input id="rut" type="text" class="form-control" name = "rut" placeholder="12.345.678-9">
             </div>
+                
 
             <div class="form-group">
                 <label for="inputAddress2">Correo(*)</label>
@@ -242,7 +251,10 @@
 
             <div class="form-group">
                  <label for="telefono">Telefono</label>
+                 <div class="form-group form-inline">
+                 <label for="exampleInputEmail1">+56 9</label>
                  <input id="telefono" name = "telefono" type="text" class="form-control" >
+                 </div>
             </div>
         
              <button type="submit" class="btn btn-primary">Registrar</button>
@@ -250,9 +262,72 @@
     
     
     </div>
-    
-
     </div>
 
+  
+
 </body>
+
+
+
+<script>
+
+
+
+    $(document).ready(function () {
+
+        jQuery.validator.addMethod('lettersonly', function(value, element) {
+    return this.optional(element) || /^[a-z áãâäàéêëèíîïìóõôöòúûüùçñ]+$/i.test(value);
+}, "Letters and spaces only please");
+
+        $.extend( $.validator.messages, {
+	required: "Este campo es obligatorio.",
+	remote: "Por favor, rellena este campo.",
+	email: "Por favor, escribe una dirección de correo válida.",
+	url: "Por favor, escribe una URL válida.",
+	date: "Por favor, escribe una fecha válida.",
+	dateISO: "Por favor, escribe una fecha (ISO) válida.",
+	number: "Por favor, escribe un número válido.",
+    digits: "Por favor, escribe sólo dígitos.",
+    lettersonly: "Por favor, incluir solo letras en el campo.",
+	creditcard: "Por favor, escribe un número de tarjeta válido.",
+	equalTo: "Por favor, escribe el mismo valor de nuevo.",
+	extension: "Por favor, escribe un valor con una extensión aceptada.",
+	maxlength: $.validator.format( "Por favor, no escribas más de {0} digitos." ),
+	minlength: $.validator.format( "Por favor, no escribas menos de {0} caracteres." ),
+	rangelength: $.validator.format( "Por favor, escribe un valor entre {0} y {1} caracteres." ),
+	range: $.validator.format( "Por favor, escribe un valor entre {0} y {1}." ),
+	max: $.validator.format( "Por favor, escribe un valor menor o igual a {0}." ),
+	min: $.validator.format( "Por favor, escribe un valor mayor o igual a {0}." ),
+	nifES: "Por favor, escribe un NIF válido.",
+	nieES: "Por favor, escribe un NIE válido.",
+	cifES: "Por favor, escribe un CIF válido."
+} );
+
+        
+    $('#form').validate({
+
+   
+        //se inicia plugin para validar en tiempo real
+        rules: {
+            nombre: {
+                required: true,
+                lettersonly: true
+            },
+            apellido: {
+                required: true,
+                lettersonly: true
+            },
+            correo: {
+                required: true,
+                email: true   
+            },
+            telefono: {
+                number: true,
+                maxlength: 8
+            },
+        }
+    });
+});
+</script>
 </html>

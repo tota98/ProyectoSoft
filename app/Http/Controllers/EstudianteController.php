@@ -143,7 +143,7 @@ class EstudianteController extends Controller
     {
         $estudiante = Estudiante::find($id);
         $estudiante->delete();
-        return back()->with('success','Eliminacion de estudiante con exito.');
+        \Session::flash('success','Eliminacion de estudiante con exito.');
     }
 
     public function check($rut) {
@@ -231,14 +231,14 @@ class EstudianteController extends Controller
     {
         //dd($request->all());
         $request->validate([
-            'nombre'=>'required',
-            'apellido'=>'required',
-            'correo'=>'required',
+            'nombre'=>'required|regex:/^[\pL\s\-]+$/u',
+            'apellido'=>'required|regex:/^[\pL\s\-]+$/u',
+            'correo'=>'required|email',
             'carrera'=>'required',
             'telefono'=>'required',
             'id_Estudiante' =>'required',
         ]);
-        if($isChecked = $request->has('ELIMINAR')){
+        if($request->get('eliminar')=="on"){
             $id = $request->get('id_Estudiante');
             return self::destroy($id);
         }
@@ -251,7 +251,7 @@ class EstudianteController extends Controller
         $estudiante->telefono = $request->get('telefono');
         $estudiante->save();
 
-        return back()->with('success','Modificacion de estudiante con exito.');
+        \Session::flash('success','Modificacion de estudiante con exito.');
         }
     }
 

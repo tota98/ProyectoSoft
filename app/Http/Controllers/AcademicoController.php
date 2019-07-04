@@ -250,7 +250,7 @@ class AcademicoController extends Controller
         $academico->apellido =$request->get('apellido');
         $academico->correo =$request->get('correo');
         $academico->save();
-        \Session::flash('success','Modificacion de estudiante con exito.');
+        \Session::flash('success','Modificacion de academico con exito.');
     
         }
     }

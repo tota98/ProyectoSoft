@@ -221,7 +221,7 @@
        
         
         <!-- FORMULARIO PARA ACTUALIZAR ACTIVIDAD -->
-        <form id="form"style = "margin-bottom: 225px">
+        <form id="form"style = "margin-bottom: 225px" >
 
         <div class="flash-message"></div>
             {{ csrf_field() }}
