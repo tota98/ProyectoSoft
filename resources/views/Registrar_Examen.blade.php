@@ -25,6 +25,25 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+ $(document).ready(function(){
+    $.datepicker.setDefaults($.datepicker.regional['es']);
+
+    $('#fechaInicio').datepicker({
+        inline: true,
+        minDate: "dateToday",
+        onClose: function( selectedDate ) {
+        $( "#fechaTermino").datepicker( "option", "minDate", selectedDate );
+    }
+    });
+    $('#fechaTermino').datepicker({
+        
+    }); 
+});
+
+</script>
 </head>
 
 
@@ -222,14 +241,16 @@
             </div>
 
             <div class="form-group col-md-6">
-                <div class="form-group">                
-                        <label for="tipo">Numero de inscripcion</label>
-                        <input id="numInscripcion" type="text" class="form-control" name = "numInscripcion" placeholder="Numero de inscripcion">
+                <div class="form-group">                              
+                        <label for="tipo">Nota</label>
+                        <input id="nota" type="text" class="form-control" name = "nota" placeholder="Numero de inscripcion">
+
+                        <label for="inputState">Fecha del examen de titulo</label>
+                        <input placeholder="fecha" type="text" id="fechaExamen" name="fechaExamen" class="form-control datepicker" style="width: 120px;">
                 </div>
                     <button type="submit" class="btn btn-primary">Registrar</button>
             </div>
         </div>
-
         
         </form>
     </div>

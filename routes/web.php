@@ -78,6 +78,14 @@ Route::get('/reg_3B', function () {
     return view('Actualizar_Actividad');
 });
 
+Route::get('/reg_4A', function () {
+    return view('Registrar_Inscripcion');
+});
+
+Route::get('/reg_5A', function () {
+    return view('Registrar_Examen');
+});
+
 Route::get('/secre', function () {
     return view('Menu_Secretaria');
 });
