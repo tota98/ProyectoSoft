@@ -317,6 +317,12 @@
                 required: true,
                 lettersonly: true
             },
+            cant_max:{
+                required: true,
+            },
+            duracion:{
+                required: true,
+            },
            
         }
     });

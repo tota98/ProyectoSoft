@@ -323,8 +323,15 @@
                 email: true   
             },
             telefono: {
+                
                 number: true,
                 maxlength: 8
+            },
+            rut:{
+                required: true,
+            },
+            carrera:{
+                required: true,
             },
         }
     });

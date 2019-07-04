@@ -293,6 +293,9 @@
                 required: true,
                 email: true   
             },
+            rut: {
+                required: true,
+            },
         }
     });
 });
