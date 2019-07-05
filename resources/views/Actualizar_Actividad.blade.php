@@ -10,7 +10,7 @@
     <title>Titulación</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+   
 
     <!-- Fonts -->
    
@@ -18,13 +18,23 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/alertify.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/css/alertify.min.css"/>
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 
 <style type="text/css">
+.error 
+    {
+     color: #F00;
+    }
+
     .navbar {
         background-color: #23415b;
     }
@@ -203,7 +213,7 @@
         
         <!-- FORMULARIO PARA ACTUALIZAR ESTUDIANTE -->
     
-        <form method ="GET" action="{{route('actividades.modificar')}}">
+        <form id="form">
             {{ csrf_field() }} 
            
             <div class="form-row">
@@ -258,9 +268,10 @@
                  
             </div>
             
-             <button type="submit" class="btn btn-primary">Aplicar</button>
-
+             
         </form>
+        <button type="submit" class="btn btn-primary btn-submit">Aplicar</button>
+
         
     </div>
 
@@ -268,6 +279,147 @@
     </div>
 
 </body>
+
+<script>
+
+
+
+    $(document).ready(function () {
+
+        jQuery.validator.addMethod('lettersonly', function(value, element) {
+    return this.optional(element) || /^[a-z áãâäàéêëèíîïìóõôöòúûüùçñ]+$/i.test(value);
+}, "Letters and spaces only please");
+
+        $.extend( $.validator.messages, {
+	required: "Este campo es obligatorio.",
+	remote: "Por favor, rellena este campo.",
+	email: "Por favor, escribe una dirección de correo válida.",
+	url: "Por favor, escribe una URL válida.",
+	date: "Por favor, escribe una fecha válida.",
+	dateISO: "Por favor, escribe una fecha (ISO) válida.",
+	number: "Por favor, escribe un número válido.",
+    digits: "Por favor, escribe sólo dígitos.",
+    lettersonly: "Por favor, incluir solo letras en el campo.",
+	creditcard: "Por favor, escribe un número de tarjeta válido.",
+	equalTo: "Por favor, escribe el mismo valor de nuevo.",
+	extension: "Por favor, escribe un valor con una extensión aceptada.",
+	maxlength: $.validator.format( "Por favor, no escribas más de {0} digitos." ),
+	minlength: $.validator.format( "Por favor, no escribas menos de {0} caracteres." ),
+	rangelength: $.validator.format( "Por favor, escribe un valor entre {0} y {1} caracteres." ),
+	range: $.validator.format( "Por favor, escribe un valor entre {0} y {1}." ),
+	max: $.validator.format( "Por favor, escribe un valor menor o igual a {0}." ),
+	min: $.validator.format( "Por favor, escribe un valor mayor o igual a {0}." ),
+	nifES: "Por favor, escribe un NIF válido.",
+	nieES: "Por favor, escribe un NIE válido.",
+	cifES: "Por favor, escribe un CIF válido."
+} );
+
+        
+    $('#form').validate({
+
+   
+        //se inicia plugin para validar en tiempo real
+        rules: {
+            nombre: {
+                required: true,
+                lettersonly: true
+            },
+            duracion: {
+                required: true,
+            },
+            cantEst: {
+                required: true,
+                 
+            },
+           
+        }
+    });
+});
+</script>
+
+
+<script type="text/javascript">
+
+
+
+
+
+
+    $(".btn-submit").click(function(e){
+      if($('#ELIMINAR').is(":checked")){
+            
+            swal({
+                        title: "Seguro que desea eliminar este academico?",
+                        text: "Una vez eliminado, no podra recuperar la información perdida",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                        buttons: ["Cancelar", "Aceptar"],
+                })
+            .then((willDelete) => {
+              if (willDelete) 
+              {
+                Enviar();
+                }
+             }); 
+            }
+        else
+        {
+           Enviar();
+        }
+    });
+    
+
+</script>
+<script>
+
+function Enviar(){
+        $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+            var nombre = $("input[id=nombre]").val();
+            var cantEst = $("input[id=cantEst]").val();
+            var duracion = $("input [id=duracion]").val();
+            var id_Actividad = $("input [id=id_Actividad]").val();
+            var participacion;
+            var ischecked2 = $('#participacion_organizacion').is(":checked");
+            if(ischecked2){
+                participacion = "on";
+            }
+            else{
+                participacion = "off;"
+            }
+            var eliminar = $('#ELIMINAR').val();
+            var ischecked = $('#ELIMINAR').is(":checked");
+            if (ischecked) {
+                eliminar = "on";
+            }
+            else{
+                eliminar = "off";
+            }
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+            
+               type:'get',
+               url:'/Modificar_Actividad',
+               data:{nombre:nombre,cantEst:cantEst,duracion:duracion,participacion:participacion,eliminar:eliminar,_token:_token},
+               success:function(data){
+                    location.reload(); 
+               }
+           
+            }).fail( function( jqXHR, textStatus, errorThrown ) {
+                alert( 'ERROR, revise que los datos del formulario esten correctos. ' )
+                //location.reload();
+            });
+            }
+
+
+</script>
+
+
+
 </html>
 
 
