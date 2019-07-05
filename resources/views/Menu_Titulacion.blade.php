@@ -206,7 +206,7 @@
                  <a href="{{route('InscripcionActividad')}}" class="btn btn-primary btn-block">Inscribir un trabajo de titulación</a>
                  <a href="#" class="btn btn-primary btn-block">Autorizar actividad</a>
                  <a href="{{route('ActualizarInscripcion')}}" class="btn btn-primary btn-block" >Ingresar numero de inscripción</a>
-                 <a href="{{url('/reg_5A')}}" class="btn btn-primary btn-block" >Exámenes de título</a>
+                 <a href="{{route('ActualizarFinalizar')}}" class="btn btn-primary btn-block" >Exámenes de título</a>
                  <a href="#" class="btn btn-primary btn-block">Anular un trabajo de titulación</a>
      
                  <a href="#" class="btn btn-primary btn-block">Reportes</a>

@@ -40,7 +40,7 @@ class ActividadController extends Controller
     public function RegistroExamen(){
 
         $actividad_list = DB::table('tipo_actividads')->get();
-        $actividad_titulacions = DB::table('actividad_titulacion')->get();
+        $actividad_titulacions = DB::table('actividad_titulacions')->get();
         return view('Registrar_Examen')->with('actividad_list',$actividad_list)->with('actividad_titulacions',$actividad_titulacions);
     }
 
