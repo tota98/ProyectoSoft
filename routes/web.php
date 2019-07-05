@@ -55,7 +55,15 @@ Route::get('/Registrar_Actividad','ActividadController@Registrar')
 
 Route::get('/Actualizar_Actividad','ActividadController@Actualizar')
     ->name('ActualizarActividad');
-Route::get('/Inscripcion','ActividadController@Inscripcion')->name('InscripcionActividad');
+
+Route::get('/Inscripcion','ActividadController@Inscripcion')
+    ->name('InscripcionActividad'); 
+
+Route::get('/Registrar_Inscripcion','ActividadController@RegistroInscripcion')
+    ->name('ActualizarInscripcion');
+
+Route::get('/Registrar_Examen','ActividadController@RegistroExamen')
+    ->name('ActualizarFinalizar');
 
 
 Route::get('/reg_1B', function () {
@@ -110,6 +118,9 @@ Route::post('/autocomplete/A_Actividad','AutoCompleteController@ActualizarActivi
 
 Route::post('/Inscripcion/registrar','InscripcionController@registrar')->name('Inscripcion.registrar');
 
+//Route::post('/autocomplete/A_Actividad','AutoCompleteController@ActualizarInscripcion')->name('autocomplete.actividad');
+//Route::post('/autocomplete/A_Actividad','AutoCompleteController@ActualizarFinalizar')->name('autocomplete.actividad');
+//?                         ¿"""""""""""?
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
