@@ -118,9 +118,7 @@ Route::post('/autocomplete/A_Actividad','AutoCompleteController@ActualizarActivi
 
 Route::post('/Inscripcion/registrar','InscripcionController@registrar')->name('Inscripcion.registrar');
 
-//Route::post('/autocomplete/A_Actividad','AutoCompleteController@ActualizarInscripcion')->name('autocomplete.actividad');
-//Route::post('/autocomplete/A_Actividad','AutoCompleteController@ActualizarFinalizar')->name('autocomplete.actividad');
-//?                         ¿"""""""""""?
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
