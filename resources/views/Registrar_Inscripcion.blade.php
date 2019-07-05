@@ -14,17 +14,17 @@
     <title>Titulación</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    
 
     <!-- Fonts -->
-   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  
 </head>
 
 
@@ -207,7 +207,7 @@
             <div class="form-group col-md-12">
                     <div class="form-group">
                         <label for="inputState">Numero de inscripcion </label>
-                        <input id="numero" name="numero" type="text" class="form-control" placeholder="Buscar por rut"/>
+                        <input id="numero" name="numero" type="text" class="form-control" placeholder="numero"/>
             
                     </div>        
             </div>
@@ -215,11 +215,11 @@
                 
                
             
-                <button type="submit" class="btn btn-primary" style="margin-left: 15px;">Registrar</button>
-                <table class="table">
+                <button type="submit" class="btn btn-primary" style="margin-left: 15px;" id="boton">Registrar </button>
+                <table class="table" id="tabla">
                 <thead class="thead-dark">
                   <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">id</th>
                     <th scope="col">Titulo</th>
                     <th scope="col">Estado</th>
                     <th scope="col">fecha registro</th>
@@ -231,12 +231,12 @@
 
                        @foreach($actividad_titulacions as $actividad)
                        <tr>
-                         <th scope="row">1</th>
+                      <td id="id_actividad">{{$actividad->id}}</td>
                          <td>{{$actividad->titulo}}</td>
                          <td>{{$actividad->estado}}</td>
                          <td>{{$actividad->fecha_registro}}</td>
                          <td>
-                         <input class="form-check-input" type="checkbox" id="seleccionar" name="seleccionar">
+                         <input id="radio"  type="radio" class="form-check-input" id="seleccionar" name="seleccionar">
                          </td>
                        </tr>
                           @endforeach
@@ -273,5 +273,50 @@ var aux = "asdasdasd";
 var tabla = document.getElementById("tabla");
 
 });
+</script>
+
+<script>
+$("#boton1").click(function(e){
+
+});
+
+var id_actividad;
+
+
+$('input[type="radio"]').on('click change', function(e) {
+
+});
+function Enviar(){
+        $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+            var numero = $("input[id=numero]").val();
+            var id_Actividad = $("input[id=id_Actividad]").val();
+            var id_Academico_1 = $("input[id=id_Academico_1]").val();
+            var id_Academico_2 = $("input[id=id_Academico_2]").val();
+            var fechaInicio = $("#fechaInicio").val();
+            var fechaTermino = $("#fechaTermino").val();
+            var estudiantes = 1;
+            
+            
+            
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+            
+                    url:'{{ route('Inscripcion.registrar') }}',
+                    method:"POST",
+               data:{titulo:titulo,id_Actividad:id_Actividad,id_Academico_1:id_Academico_1,id_Academico_2:id_Academico_2,
+                fechaInicio:fechaInicio,fechaTermino:fechaTermino,estudiantes:estudiantes,_token:_token},
+               success:function(data){
+                
+               }
+           
+            }).fail( function( jqXHR, textStatus, errorThrown ) {
+                alert( 'dead ajax' )
+                //location.reload();
+            });
+}
 </script>
 </html>
