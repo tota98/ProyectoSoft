@@ -191,11 +191,11 @@
 
 <div class="container theme-showcase" role="main" id="main">
     <div class="jumbotron">
-         <div class="input-group input-group-lg">
+         <div class="input-group input-group-lg hidden">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-lg">BUSQUEDA</span>
              </div>
-             <input id="buscar" name="buscar" type="text" class="form-control" placeholder="Buscar por rut"/>
+             <input id="buscar" name="buscar" type="text" class="form-control" placeholder="numero"/>
              <div id="sugerencias"></div>
          </div>
          @include('Alerts.Notificacion')  
@@ -209,33 +209,44 @@
             <div class="form-group col-md-12">
                     <div class="form-group">
                         <label for="inputState">Numero de inscripcion </label>
+                        <input id="numero" name="numero" type="text" class="form-control" placeholder="Buscar por rut"/>
+            
                     </div>        
             </div>
-            <div class="panel-body">
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th width="10px">Titulo</th>
-                            <th width="10px">IDOrganizacion</th>
-                            <th width="10px">IDTitulacion</th>
-                            <th colspan="1">&nbsp;</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($actividad_titulacions as $actividad_titulacion)
-                    <tr>
-                        <td> {{$actividad_titulacion->titulo}} </td>
-                        <td> {{$actividad_titulacion->id_organizacion}} </td>
-                        <td> {{$actividad_titulacion->id_tipo_actividad}} </td>
-                    </tr>
-                    @endforeach
-                    </tbody>
-                </table>
+            
+                
                
-            </div>
+            
                 <button type="submit" class="btn btn-primary" style="margin-left: 15px;">Registrar</button>
-    
+                <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">fecha registro</th>
+                    <th scope="col">seleccion</th>
+                  </tr>
+                </thead>
+                     <tbody>
+                       
+
+                       @foreach($actividad_titulacions as $actividad)
+                       <tr>
+                         <th scope="row">1</th>
+                         <td>{{$actividad->titulo}}</td>
+                         <td>{{$actividad->estado}}</td>
+                         <td>{{$actividad->fecha_registro}}</td>
+                         <td>
+                         <input class="form-check-input" type="checkbox" id="seleccionar" name="seleccionar">
+                         </td>
+                       </tr>
+                          @endforeach
+                    
+                     </tbody>
+                </table>
         </form>
+        
     </div>
 </div>
 
@@ -257,4 +268,12 @@
 
 </script>
 
+<script>
+$(document).ready(function(){
+var cantidad = 10;
+var aux = "asdasdasd";
+var tabla = document.getElementById("tabla");
+
+});
+</script>
 </html>
