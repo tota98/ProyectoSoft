@@ -57,15 +57,21 @@ class ActividadController extends Controller
         $actividades = Tipo_actividad::all();
         return view('Actualizar_Actividad',compact('actividades'));
     }
-    public function ActualizarIncripciones()
+    public function ActualizarIncripciones($request)
     {
-        $actividade_titulacions = Actividad_titulacion::all();
-        return view('Registrar_Inscripcion',compact('actividades3'));
+
+        $id = $request->get("id_actividad");
+        $inscripcion = actividade_titulacion::find($id);
+        $inscripcion->numero_inscripcion = $request->get("numero");
+        $inscripcion->save();
+        
     }
     public function ActualizarFinalizar()
     {
-        $actividade_titulacions = Actividad_titulacion::all();
-        return view('Registrar_Examen',compact('actividades4'));
+        $id = $request->get("id_actividad");
+        $inscripcion = actividade_titulacion::find($id);
+        $inscripcion->numero_inscripcion = $request->get("Estado");
+        $inscripcion->save();
     }
     /**
      * Store a newly created resource in storage.
