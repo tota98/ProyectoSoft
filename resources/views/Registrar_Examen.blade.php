@@ -199,10 +199,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                     <a class="navbar-brand" href="{{ URL::previous() }}">
-                     Inicio
                      <a class="navbar-brand" href="{{ url('/') }}">
-                     Cerrar Sesion
+                     Inicio
                 </ul>
              </a>
         </div>
