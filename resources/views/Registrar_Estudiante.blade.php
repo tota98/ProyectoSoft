@@ -248,7 +248,7 @@
             </div>
 
             <div class="form-group">
-                 <label for="telefono">Telefono</label>
+                 <label for="telefono">Teléfono</label>
                  <div class="form-group form-inline">
                  <label for="exampleInputEmail1">+56 9</label>
                  <input id="telefono" name = "telefono" type="text" class="form-control" >

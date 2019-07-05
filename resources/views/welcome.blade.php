@@ -208,7 +208,7 @@
 
              <div class="btn-group" role="group" aria-label="Basic example">
                  <a class="btn btn-link" href="{{route('MenuSecretaria')}}" role="button">Secretaria</a>
-                 <a class="btn btn-secondary" href="{{url('/titulacion')}}" role="button">Encargado Titulacion</a>
+                 <a class="btn btn-secondary" href="{{url('/titulacion')}}" role="button">Encargado Titulación</a>
              </div>
 
         </div>

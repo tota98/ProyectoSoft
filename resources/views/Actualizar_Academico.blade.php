@@ -202,7 +202,7 @@
     <div class="jumbotron">
          <div class="input-group input-group-lg">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-lg">BUSQUEDA</span>
+                <span class="input-group-text" id="inputGroup-sizing-lg">BÚSQUEDA</span>
              </div>
 
              <input id="buscar" name="buscar" type="text" class="form-control" placeholder="Buscar" />

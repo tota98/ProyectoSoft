@@ -212,7 +212,7 @@
     
          <div class="input-group input-group-lg">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-lg">BUSQUEDA</span>
+                <span class="input-group-text" id="inputGroup-sizing-lg">BÚSQUEDA</span>
              </div>
 
              
@@ -265,7 +265,7 @@
             </div>
 
             <div class="form-group">
-                 <label for="telefono">Telefono</label>
+                 <label for="telefono">Teléfono</label>
                  <div class="form-group form-inline">
                  <label for="exampleInputEmail1">+56 9</label>   
                  <input type="text" class="form-control" id="telefono" name = "telefono" disabled>

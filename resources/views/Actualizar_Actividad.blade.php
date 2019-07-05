@@ -200,7 +200,7 @@
     <div class="jumbotron">
          <div class="input-group input-group-lg">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-lg">BUSQUEDA</span>
+                <span class="input-group-text" id="inputGroup-sizing-lg">BÚSQUEDA</span>
              </div>
              <input id="buscar" name="buscar" type="text" class="form-control" placeholder="Buscar" />
              <div id="sugerencias"></div>
@@ -253,7 +253,7 @@
 
             <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" id="participacion_organizacion" name="participacion_organizacion" disabled>
-            <label class="custom-control-label" for="defaultUnchecked">incluye participación externa</label>
+            <label class="custom-control-label" for="defaultUnchecked">Incluye participación externa</label>
         </div>
 
         

@@ -14,7 +14,7 @@
     <title>Titulación</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+
 
     <!-- Fonts -->
    
@@ -22,25 +22,28 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
-    <script type="text/javascript">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/i18n/jquery-ui-i18n.min.js"></script>
+  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="../js/locale/bootstrap-datepicker.es.js" charset="UTF-8"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="../css/datepicker.css" >
+    
+    
+<script type="text/javascript">
 
  $(document).ready(function(){
     $.datepicker.setDefaults($.datepicker.regional['es']);
 
-    $('#fechaInicio').datepicker({
+    $('#fechaExamen').datepicker({
         inline: true,
         minDate: "dateToday",
-        onClose: function( selectedDate ) {
-        $( "#fechaTermino").datepicker( "option", "minDate", selectedDate );
-    }
-    });
-    $('#fechaTermino').datepicker({
         
-    }); 
+    });
+     
 });
 
 </script>
@@ -208,35 +211,94 @@
 
 <div class="container theme-showcase" role="main" id="main">
     <div class="jumbotron">
-         <div class="input-group input-group-lg">
+         <div class="input-group input-group-lg hidden">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-lg">BUSQUEDA</span>
+                <span class="input-group-text" id="inputGroup-sizing-lg">BÚSQUEDA</span>
              </div>
              <input id="buscar" name="buscar" type="text" class="form-control" placeholder="Buscar por rut" />
              <div id="sugerencias"></div>
          </div>
          @include('Alerts.Notificacion')  
 
-         <h1>REGISTRO<span class="badge badge-secondary"></span></h1>
+         <h1>Exámenes de Título <span class="badge badge-secondary"></span></h1>
    
     <!-- FORMULARIO PARA REGISTRAR EXAMEN -->
     
-        <form method ="post" action="{{route('actividades.store')}}">
-            {{ csrf_field() }}
-                <div class="form-group col-md-12">
+    <form>
+            {{ csrf_field() }}                
+            <div class="form-group col-md-12">
                     <div class="form-group">
-                        <label for="inputState">Fecha del examen de titulo</label>
-                        <input placeholder="Fecha" type="text" id="fechaExamen" name="fechaExamen" class="form-control datepicker" style="width: 120px;">
-                    </div>
-                    <div class="form-group">                                            
-                        <label for="tipo">Nota</label>
-                        <input id="nota" type="text" class="form-control" name = "nota" placeholder="Nota examen" style="width: 120px;">
-                    </div>
-                </div>
+                        <label for="inputState">Fecha examen </label>
+                        <input id="fechaExamen" name="fechaExamen" type="text" class="form-control datepicker" style="width: 120px" placeholder="Fecha Examen"/>
+            
+                    </div>  
+                    <div class="form-group">
+                        <label for="inputState">Nota </label>
+                        <input id="nota" name="nota" type="text" class="form-control" style="width: 120px" placeholder="Notas"/>
+            
+                    </div>      
+            </div>
+            
+                
+               
+            
                 <button type="submit" class="btn btn-primary" style="margin-left: 15px;">Registrar</button>
+                <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Título</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Fecha registro</th>
+                    <th scope="col">Seleccion</th>
+                  </tr>
+                </thead>
+                     <tbody>
+                       
+
+                       @foreach($actividad_titulacions as $actividad)
+                       <tr>
+                         <th scope="row">1</th>
+                         <td>{{$actividad->titulo}}</td>
+                         <td>{{$actividad->estado}}</td>
+                         <td>{{$actividad->fecha_registro}}</td>
+                         <td>
+                         <input class="form-check-input" type="radio" id="seleccionar" name="seleccionar">
+                         </td>
+                       </tr>
+                          @endforeach
+                    
+                     </tbody>
+                </table>
         </form>
+        
     </div>
 </div>
 
 </body>
+
+<script type="text/javascript">
+
+    //$(".btn-submit").click(){
+        //swal({
+            //title: "¿Seguro que ingresó el número de inscripción correcto?",
+            //text: "Una vez ingresado, no podrá modificarse",
+            //icon: "warning",
+            //buttons: true,
+            //dangerMode: true,
+            //buttons: ["Cancelar", "Aceptar"],
+        //})
+        //Enviar();
+    //});
+
+</script>
+
+<script>
+$(document).ready(function(){
+var cantidad = 10;
+var aux = "asdasdasd";
+var tabla = document.getElementById("tabla");
+
+});
+</script>
 </html>
