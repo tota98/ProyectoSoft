@@ -28,6 +28,13 @@ class ActividadController extends Controller
         return view('Inscripcion')->with('actividad_list',$actividad_list)->with('estudiante_list',$estudiante_list)->with('academico_list',$academico_list);
     }
 
+    public function Registro_Inscripcion(){
+
+        $actividad_list = DB::table('tipo_actividads')->get();
+        
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
