@@ -229,10 +229,10 @@
                 <h3>ALUMNOS<span class="badge badge-secondary"></span></h3>
                 <a href="{{route('RegistrarEstudiante')}}" class="btn btn-primary btn-block" >Registrar</a>
                 <a href="{{route('ActualizarEstudiante')}}" class="btn btn-primary btn-block" >Actualizar/Eliminar</a>
-            </div> 
+            </div>
             
             <div class="container">
-                <h3>ACADEMICOS<span class="badge badge-secondary"></span></h3>
+                <h3>ACADÉMICOS<span class="badge badge-secondary"></span></h3>
                 <a href="{{url('/reg_2A')}}" class="btn btn-primary btn-block" >Registrar</a>
                 <a href="{{url('/reg_2B')}}" class="btn btn-primary btn-block" >Actualizar/Eliminar</a>
             </div> 
@@ -242,7 +242,7 @@
                 <a href="{{url('/reg_3A')}}" class="btn btn-primary btn-block" >Registrar una actividad</a>
                 <a href="{{url('/reg_3B')}}" class="btn btn-primary btn-block" >Actualizar una actividad/Eliminar</a>
                 <a href="{{route('InscripcionActividad')}}" method="post" class="btn btn-primary btn-block" >Inscribir un trabajo de titulación</a>
-                <a href="{{route('ActualizarInscripcion')}}" class="btn btn-primary btn-block" >Ingresar numero de inscripción</a>
+                <a href="{{route('ActualizarInscripcion')}}" class="btn btn-primary btn-block" >Ingresar número de inscripción</a>
                 <a href="{{route('ActualizarFinalizar')}}" class="btn btn-primary btn-block" >Exámenes de título</a>
                 <a href="#" class="btn btn-primary btn-block" >Anular un trabajo de titulación</a>
                 

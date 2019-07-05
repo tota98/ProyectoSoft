@@ -196,15 +196,15 @@
                             <li><a href="{{ route('register') }}" style="color: white;">Registro</a></li>
                         @else
                             @if(auth()->user()->tipo == "SECRETARIA")
-                            <li><a href="{{ route('MenuSecretaria') }}" style="color: white;">Menu Secretaria</a></li>
+                            <li><a href="{{ route('MenuSecretaria') }}" style="color: white;">Menú Secretaria</a></li>
                             @endif
 
-                            @if(auth()->user()->tipo == "ENCARGADO TITULACION")
-                            <li><a href="{{url('/titulacion')}}" style="color: white;">Menu encargado titulación</a></li>
+                            @if(auth()->user()->tipo == "ENCARGADO TITULACIÓN")
+                            <li><a href="{{url('/titulacion')}}" style="color: white;">Menú Encargado titulación</a></li>
                             @endif
                             
-                            @if(auth()->user()->tipo == "ACADEMICO")
-                            <li><a href="{{url('/titulacion')}}" style="color: white;">Menu Academico</a></li>
+                            @if(auth()->user()->tipo == "ACADÉMICO")
+                            <li><a href="{{url('/titulacion')}}" style="color: white;">Menú Académico</a></li>
                             @endif
 
                             <li class="dropdown">

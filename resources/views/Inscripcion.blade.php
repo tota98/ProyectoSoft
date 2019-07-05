@@ -325,16 +325,16 @@
             
             <div class="form-group" style = "margin-top: 40px;">
                        
-                     <label for="inputState">Academico(*)</label>
+                     <label for="inputState">Académico(*)</label>
                    
                         <select id="id_academico_1" class="form-control" name ="id_academico_1">
-                        <option value="" selected disabled>seleccione academico</option>
+                        <option value="" selected disabled>seleccione académico</option>
                         @foreach($academico_list as $academico)
                         <option value = "{{$academico->id }}" data-id = "{{$academico->id}}">{{"rut: ".$academico ->rut." | "."nombre: ".$academico ->nombre}}</option>
                         @endforeach
                         </select>
                         <select id="id_academico_2" class="form-control" name ="id_academico_2" style = "margin-top: 5px;">
-                        <option value="" selected disabled>seleccione academico (opcional)</option>
+                        <option value="" selected disabled>seleccione académico (opcional)</option>
                         @foreach($academico_list as $academico)
                         <option value = "{{$academico->id }}" data-id = "{{$academico->id}}">{{"rut: ".$academico ->rut." | "."nombre: ".$academico ->nombre}}</option>
                         @endforeach
@@ -347,7 +347,7 @@
                              <input placeholder="fecha" type="text" id="fechaInicio" name="fechaInicio" class="form-control datepicker" style="width: 120px;">
                     </div>
                     <div class="form-group" style="margin-left: 30px;">
-                             <label for="inputState">Fecha termino(*)</label>
+                             <label for="inputState">Fecha término(*)</label>
                              <input placeholder="fecha" type="text" id="fechaTermino" name="fechaTermino" class="form-control datepicker" style="width: 120px;">
                     </div>
             </div>

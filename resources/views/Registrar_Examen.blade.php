@@ -213,7 +213,7 @@
     <div class="jumbotron">
          <div class="input-group input-group-lg hidden">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-lg">BUSQUEDA</span>
+                <span class="input-group-text" id="inputGroup-sizing-lg">BÚSQUEDA</span>
              </div>
              <input id="buscar" name="buscar" type="text" class="form-control" placeholder="Buscar por rut" />
              <div id="sugerencias"></div>
@@ -247,10 +247,10 @@
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Titulo</th>
+                    <th scope="col">Título</th>
                     <th scope="col">Estado</th>
-                    <th scope="col">fecha registro</th>
-                    <th scope="col">seleccion</th>
+                    <th scope="col">Fecha registro</th>
+                    <th scope="col">Seleccion</th>
                   </tr>
                 </thead>
                      <tbody>
