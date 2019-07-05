@@ -16,11 +16,13 @@ use Faker\Generator as Faker;
 $factory->define(App\User::class, function (Faker $faker) {
     static $password;
 
+    $arreglo = ['SECRETARIA','ACADEMICO','ENCARGADO DE TITULACION'];
+    
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
+        'tipo' => $arreglo[rand(0,2)],
         'remember_token' => str_random(10),
-        'tipo' => $faker -> randomElement(['SECRETARIA','ACADEMICO','ENCARGADO DE TITULACION'])
     ];
 });

@@ -19,7 +19,8 @@ class CreateEstudiantesTable extends Migration
             $table->timestamps();
             $table->string('nombre',255);
             $table->string('apellido',255);
-            $table->string('rut',15)->unique();
+            //$table->string('rut',15)->unique();
+            $table->string('rut',15);
             $table->string('correo',128)->unique();
             $table->string('carrera',128);
             $table->integer('telefono')->unsigned();
