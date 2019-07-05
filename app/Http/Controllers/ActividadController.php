@@ -28,6 +28,13 @@ class ActividadController extends Controller
         return view('Inscripcion')->with('actividad_list',$actividad_list)->with('estudiante_list',$estudiante_list)->with('academico_list',$academico_list);
     }
 
+    public function Registro_Inscripcion(){
+
+        $actividad_list = DB::table('tipo_actividads')->get();
+        
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -142,7 +149,8 @@ class ActividadController extends Controller
     {
         $actividades = Tipo_actividad::find($id);
         $actividades->delete();
-        return back()->with('success','Eliminacion de actividad con exito.');
+        \Session::flash('success','Eliminacion de actividad con exito.');
+    
     }
 
     
@@ -157,10 +165,7 @@ class ActividadController extends Controller
             
         
         ]);
-        if($request->get('participacion_organizacion') == null){
-            $request['participacion_organizacion'] = 'off';
-            //dd($request->all());
-        }
+        
         if($isChecked = $request->has('ELIMINAR')){
             $id = $request->get('id_Actividad');
             return self::destroy($id);
@@ -173,7 +178,8 @@ class ActividadController extends Controller
         $Tipo_actividad->participacion_organizacion = $request->get('participacion_organizacion');
         $Tipo_actividad->save();
 
-        return back()->with('success','Modificacion de actividad con exito.');
+        \Session::flash('success','Modificacion de actividad con exito.');
+    
         }
     }
 }
