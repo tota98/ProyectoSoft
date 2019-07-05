@@ -292,7 +292,7 @@
                      <option value="" selected disabled>seleccione actividad</option>
                      @foreach($actividad_list as $actividad)
                         'nombre','cant_max','duracion','participacion_organizacion',
-                    <option value = "{{$actividad->nombre }}" data-cant_max = "{{$actividad->cant_max}}" data-organizacion ="{{$actividad->participacion_organizacion}}" data-id="{{$actividad->id}}" >{{"nombre :".$actividad ->nombre." | "."cant. maxima de estudiantes: ".$actividad->cant_max}}</option>
+                     <option value = "{{$actividad->nombre }}" data-cant_max = "{{$actividad->cant_max}}" data-organizacion ="{{$actividad->participacion_organizacion}}" data-id="{{$actividad->id}}" >{{"nombre :".$actividad ->nombre." | "."cant. maxima de estudiantes: ".$actividad->cant_max}}</option>
                      @endforeach
                      
                  </select>
