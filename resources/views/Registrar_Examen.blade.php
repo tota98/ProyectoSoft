@@ -208,7 +208,7 @@
 
 <div class="container theme-showcase" role="main" id="main">
     <div class="jumbotron">
-         <div class="input-group input-group-lg">
+         <div class="input-group input-group-lg hidden">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-lg">BUSQUEDA</span>
              </div>
@@ -221,22 +221,81 @@
    
     <!-- FORMULARIO PARA REGISTRAR EXAMEN -->
     
-        <form method ="post" action="{{route('actividades.store')}}">
-            {{ csrf_field() }}
-                <div class="form-group col-md-12">
+    <form>
+            {{ csrf_field() }}                
+            <div class="form-group col-md-12">
                     <div class="form-group">
-                        <label for="inputState">Fecha del examen de titulo</label>
-                        <input placeholder="Fecha" type="text" id="fechaExamen" name="fechaExamen" class="form-control datepicker" style="width: 120px;">
-                    </div>
-                    <div class="form-group">                                            
-                        <label for="tipo">Nota</label>
-                        <input id="nota" type="text" class="form-control" name = "nota" placeholder="Nota examen" style="width: 120px;">
-                    </div>
-                </div>
+                        <label for="inputState">Fecha examen </label>
+                        <input id="FechaExamen" name="fecha" type="text" class="form-control" placeholder="Fecha Examen"/>
+            
+                    </div>  
+                    <div class="form-group">
+                        <label for="inputState">Nota </label>
+                        <input id="nota" name="nota" type="text" class="form-control" placeholder="Notas"/>
+            
+                    </div>      
+            </div>
+            
+                
+               
+            
                 <button type="submit" class="btn btn-primary" style="margin-left: 15px;">Registrar</button>
+                <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">fecha registro</th>
+                    <th scope="col">seleccion</th>
+                  </tr>
+                </thead>
+                     <tbody>
+                       
+
+                       @foreach($actividad_titulacions as $actividad)
+                       <tr>
+                         <th scope="row">1</th>
+                         <td>{{$actividad->titulo}}</td>
+                         <td>{{$actividad->estado}}</td>
+                         <td>{{$actividad->fecha_registro}}</td>
+                         <td>
+                         <input class="form-check-input" type="radio" id="seleccionar" name="seleccionar">
+                         </td>
+                       </tr>
+                          @endforeach
+                    
+                     </tbody>
+                </table>
         </form>
+        
     </div>
 </div>
 
 </body>
+
+<script type="text/javascript">
+
+    //$(".btn-submit").click(){
+        //swal({
+            //title: "¿Seguro que ingresó el número de inscripción correcto?",
+            //text: "Una vez ingresado, no podrá modificarse",
+            //icon: "warning",
+            //buttons: true,
+            //dangerMode: true,
+            //buttons: ["Cancelar", "Aceptar"],
+        //})
+        //Enviar();
+    //});
+
+</script>
+
+<script>
+$(document).ready(function(){
+var cantidad = 10;
+var aux = "asdasdasd";
+var tabla = document.getElementById("tabla");
+
+});
+</script>
 </html>
