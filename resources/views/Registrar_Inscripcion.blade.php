@@ -206,8 +206,8 @@
             {{ csrf_field() }}                
             <div class="form-group col-md-12">
                     <div class="form-group">
-                        <label for="inputState">Numero de inscripcion </label>
-                        <input id="numero" name="numero" type="text" class="form-control" style="width: 120px" placeholder="Buscar por rut"/>
+                        <label for="inputState">Número de inscripción </label>
+                        <input id="numero" name="numero" type="text" class="form-control" style="width: 180px" placeholder="Número de inscripción"/>
             
                     </div>        
             </div>
