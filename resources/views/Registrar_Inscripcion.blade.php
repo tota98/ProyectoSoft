@@ -195,7 +195,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-lg">BUSQUEDA</span>
              </div>
-             <input id="buscar" name="buscar" type="text" class="form-control" placeholder="Buscar por rut" />
+             <input id="buscar" name="buscar" type="text" class="form-control" placeholder="Buscar por rut"/>
              <div id="sugerencias"></div>
          </div>
          @include('Alerts.Notificacion')  
@@ -204,14 +204,35 @@
    
     <!-- FORMULARIO PARA REGISTRAR INSCRIPCION -->
     
-        <form method ="post" action="{{route('actividades.store')}}">
+        <form method ="post" action="{{route('actividades3.update')}}">
             {{ csrf_field() }}                
             <div class="form-group col-md-12">
                     <div class="form-group">
-                        <label for="inputState">Numero de inscripcion</label>
-                        <input placeholder="Numero de inscripcion" type="text" id="numInscripcion" name="numInscripcion" class="form-control" style="width: 240px;">
-                    </div>
-                </div>
+                        <label for="inputState">Numero de inscripcion </label>
+                    </div>        
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th width="10px">Titulo</th>
+                            <th width="10px">IDOrganizacion</th>
+                            <th width="10px">IDTitulacion</th>
+                            <th colspan="1">&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($actividad_titulacions as $actividad_titulacion)
+                    <tr>
+                        <td> {{$actividad_titulacion->titulo}} </td>
+                        <td> {{$actividad_titulacion->id_organizacion}} </td>
+                        <td> {{$actividad_titulacion->id_tipo_actividad}} </td>
+                    </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+                {{ $actividad_titulacions->render() }}
+            </div>
                 <button type="submit" class="btn btn-primary" style="margin-left: 15px;">Registrar</button>
     
         </form>
@@ -222,17 +243,17 @@
 
 <script type="text/javascript">
 
-    $(".btn-submit").click(){
-        swal({
-            title: "¿Seguro que ingresó el número de inscripción correcto?",
-            text: "Una vez ingresado, no podrá modificarse",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-            buttons: ["Cancelar", "Aceptar"],
-        })
-        Enviar();
-    });
+    //$(".btn-submit").click(){
+        //swal({
+            //title: "¿Seguro que ingresó el número de inscripción correcto?",
+            //text: "Una vez ingresado, no podrá modificarse",
+            //icon: "warning",
+            //buttons: true,
+            //dangerMode: true,
+            //buttons: ["Cancelar", "Aceptar"],
+        //})
+        //Enviar();
+    //});
 
 </script>
 
