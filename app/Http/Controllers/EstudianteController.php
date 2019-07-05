@@ -48,8 +48,8 @@ class EstudianteController extends Controller
         $validator = Validator::make($request->all(), [
             'nombre'=>'required',
             'apellido'=> 'required',
-            'rut' => 'required',
-            'correo' => 'required',
+            'rut' => 'required|unique:Estudiantes',
+            'correo' => 'required|unique:Estudiantes',
             'carrera' => 'required',
             'telefono' => 'required|integer',
 
