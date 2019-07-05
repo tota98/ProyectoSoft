@@ -198,7 +198,7 @@
          </div>
          @include('Alerts.Notificacion')  
 
-         <h1>REGISTRO<span class="badge badge-secondary"></span></h1>
+         <h1>Inscripción Formal<span class="badge badge-secondary"></span></h1>
    
     <!-- FORMULARIO PARA REGISTRAR INSCRIPCION -->
     
@@ -207,7 +207,7 @@
             <div class="form-group col-md-12">
                     <div class="form-group">
                         <label for="inputState">Numero de inscripcion </label>
-                        <input id="numero" name="numero" type="text" class="form-control" placeholder="Buscar por rut"/>
+                        <input id="numero" name="numero" type="text" class="form-control" style="width: 120px" placeholder="Buscar por rut"/>
             
                     </div>        
             </div>

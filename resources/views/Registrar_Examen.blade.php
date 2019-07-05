@@ -14,7 +14,7 @@
     <title>Titulación</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+
 
     <!-- Fonts -->
    
@@ -22,25 +22,28 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
-    <script type="text/javascript">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/i18n/jquery-ui-i18n.min.js"></script>
+  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="../js/locale/bootstrap-datepicker.es.js" charset="UTF-8"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="../css/datepicker.css" >
+    
+    
+<script type="text/javascript">
 
  $(document).ready(function(){
     $.datepicker.setDefaults($.datepicker.regional['es']);
 
-    $('#fechaInicio').datepicker({
+    $('#fechaExamen').datepicker({
         inline: true,
         minDate: "dateToday",
-        onClose: function( selectedDate ) {
-        $( "#fechaTermino").datepicker( "option", "minDate", selectedDate );
-    }
-    });
-    $('#fechaTermino').datepicker({
         
-    }); 
+    });
+     
 });
 
 </script>
@@ -217,7 +220,7 @@
          </div>
          @include('Alerts.Notificacion')  
 
-         <h1>REGISTRO<span class="badge badge-secondary"></span></h1>
+         <h1>Exámenes de Título <span class="badge badge-secondary"></span></h1>
    
     <!-- FORMULARIO PARA REGISTRAR EXAMEN -->
     
@@ -226,12 +229,12 @@
             <div class="form-group col-md-12">
                     <div class="form-group">
                         <label for="inputState">Fecha examen </label>
-                        <input id="FechaExamen" name="fecha" type="text" class="form-control" placeholder="Fecha Examen"/>
+                        <input id="fechaExamen" name="fechaExamen" type="text" class="form-control datepicker" style="width: 120px" placeholder="Fecha Examen"/>
             
                     </div>  
                     <div class="form-group">
                         <label for="inputState">Nota </label>
-                        <input id="nota" name="nota" type="text" class="form-control" placeholder="Notas"/>
+                        <input id="nota" name="nota" type="text" class="form-control" style="width: 120px" placeholder="Notas"/>
             
                     </div>      
             </div>
