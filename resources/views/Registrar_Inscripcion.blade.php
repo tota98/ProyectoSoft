@@ -204,7 +204,7 @@
    
     <!-- FORMULARIO PARA REGISTRAR INSCRIPCION -->
     
-        <form method ="post" action="{{route('actividades3.update')}}">
+        <form>
             {{ csrf_field() }}                
             <div class="form-group col-md-12">
                     <div class="form-group">
@@ -231,7 +231,7 @@
                     @endforeach
                     </tbody>
                 </table>
-                {{ $actividad_titulacions->render() }}
+               
             </div>
                 <button type="submit" class="btn btn-primary" style="margin-left: 15px;">Registrar</button>
     
