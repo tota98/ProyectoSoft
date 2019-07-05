@@ -191,25 +191,25 @@
         
              <div class="container">
                  <h3>ALUMNOS<span class="badge badge-secondary"></span></h3>
-                 <a href="{{url('/reg_1A')}}" class="btn btn-primary btn-block">Registro</a>
-                 <a href="{{url('/reg_1B')}}" class="btn btn-primary btn-block">Actualización/Eliminación</a>
+                 <a href="{{url('/reg_1A')}}" class="btn btn-primary btn-block">Registrar</a>
+                 <a href="{{url('/reg_1B')}}" class="btn btn-primary btn-block">Actualizar/Eliminar</a>
              </div> 
 
             <div class="container">
                  <h3>ACADEMICO<span class="badge badge-secondary"></span></h3>
-                 <a href="{{url('/reg_2A')}}" class="btn btn-primary btn-block">Registro</a>
-                 <a href="{{url('/reg_2B')}}" class="btn btn-primary btn-block">Actualización/Eliminación</a>
+                 <a href="{{url('/reg_2A')}}" class="btn btn-primary btn-block">Registrar</a>
+                 <a href="{{url('/reg_2B')}}" class="btn btn-primary btn-block">Actualizar/Eliminar</a>
              </div> 
 
             <div class="container">
                  <h3>TITULACIÓN<span class="badge badge-secondary"></span></h3>
-                 <a href="{{url('/reg_3A')}}" class="btn btn-primary btn-block">Registro de actividad</a>
-                 <a href="{{url('/reg_3B')}}" class="btn btn-primary btn-block">Actualización de actividad/Eliminación</a>             
-                 <a href="#" class="btn btn-primary btn-block">Inscripción</a>
+                 <a href="{{url('/reg_3A')}}" class="btn btn-primary btn-block">Registrar una actividad</a>
+                 <a href="{{url('/reg_3B')}}" class="btn btn-primary btn-block">Actualizar una actividad/Eliminar</a>             
+                 <a href="{{route('InscripcionActividad')}}" class="btn btn-primary btn-block">Inscribir un trabajo de titulación</a>
                  <a href="#" class="btn btn-primary btn-block">Autorizar actividad</a>
-                 <a href="{{url('/reg_4A')}}" class="btn btn-primary btn-block" >Ingreso numero de inscripcion</a>
-                 <a href="{{url('/reg_5A')}}" class="btn btn-primary btn-block" >Examenes de titulo</a>
-                 <a href="#" class="btn btn-primary btn-block">Anulacion</a>
+                 <a href="{{url('/reg_4A')}}" class="btn btn-primary btn-block" >Ingresar numero de inscripción</a>
+                 <a href="{{url('/reg_5A')}}" class="btn btn-primary btn-block" >Examenes de título</a>
+                 <a href="#" class="btn btn-primary btn-block">Anulacr un trabajo de titulación</a>
      
                  <a href="#" class="btn btn-primary btn-block">Reportes</a>
              </div>
