@@ -242,7 +242,7 @@
                 <a href="{{url('/reg_3A')}}" class="btn btn-primary btn-block" >Registrar una actividad</a>
                 <a href="{{url('/reg_3B')}}" class="btn btn-primary btn-block" >Actualizar una actividad/Eliminar</a>
                 <a href="{{route('InscripcionActividad')}}" method="post" class="btn btn-primary btn-block" >Inscribir un trabajo de titulación</a>
-                <a href="{{url('/reg_4A')}}" class="btn btn-primary btn-block" >Ingresar numero de inscripción</a>
+                <a href="{{route('ActualizarInscripcion')}}" class="btn btn-primary btn-block" >Ingresar numero de inscripción</a>
                 <a href="{{url('/reg_5A')}}" class="btn btn-primary btn-block" >Exámenes de título</a>
                 <a href="#" class="btn btn-primary btn-block" >Anular un trabajo de titulación</a>
                 
