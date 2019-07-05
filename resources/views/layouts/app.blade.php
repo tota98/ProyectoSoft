@@ -192,30 +192,30 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}">Ingreso</a></li>
-                            <li><a href="{{ route('register') }}">Registro</a></li>
+                            <li><a href="{{ route('login') }}" style="color: white;">Ingreso</a></li>
+                            <li><a href="{{ route('register') }}" style="color: white;">Registro</a></li>
                         @else
                             @if(auth()->user()->tipo == "SECRETARIA")
-                            <li><a href="{{ route('MenuSecretaria') }}">Menu Secretaria</a></li>
-                            <li><a href="{{ route('register') }}">Registro</a></li>
+                            <li><a href="{{ route('MenuSecretaria') }}" style="color: white;">Menu Secretaria</a></li>
+                            <li><a href="{{ route('register') }}" style="color: white;">Registro</a></li>
                             @endif
 
                             @if(auth()->user()->tipo == "ENCARGADO TITULACION")
-                            <li><a href="{{url('/titulacion')}}">Menu encargado titulación</a></li>
-                            <li><a href="{{ route('register') }}">Registro</a></li>
+                            <li><a href="{{url('/titulacion')}}" style="color: white;">Menu encargado titulación</a></li>
+                            <li><a href="{{ route('register') }}" style="color: white;">Registro</a></li>
                             @endif
                             
                             @if(auth()->user()->tipo == "ACADEMICO")
-                            <li><a href="{{url('/titulacion')}}">Menu Academico</a></li>
+                            <li><a href="{{url('/titulacion')}}" style="color: white;">Menu Academico</a></li>
                             @endif
 
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                                <a href="#" style="color: white;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
                                 
                                 <li>
-                                    <a href="{{ route('logout') }}"
+                                    <a href="{{ route('logout') }}" style="color: white;"
                                         onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
                                         Cerrar sesión 
