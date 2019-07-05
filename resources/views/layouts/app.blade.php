@@ -197,12 +197,10 @@
                         @else
                             @if(auth()->user()->tipo == "SECRETARIA")
                             <li><a href="{{ route('MenuSecretaria') }}" style="color: white;">Menu Secretaria</a></li>
-                            <li><a href="{{ route('register') }}" style="color: white;">Registro</a></li>
                             @endif
 
                             @if(auth()->user()->tipo == "ENCARGADO TITULACION")
                             <li><a href="{{url('/titulacion')}}" style="color: white;">Menu encargado titulación</a></li>
-                            <li><a href="{{ route('register') }}" style="color: white;">Registro</a></li>
                             @endif
                             
                             @if(auth()->user()->tipo == "ACADEMICO")
