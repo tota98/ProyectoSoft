@@ -427,6 +427,10 @@ $('#actividad').on('change',function(){
     renovar = false;
 });
 
+
+   
+
+
 </script>
 
 <script type='text/javascript'>
