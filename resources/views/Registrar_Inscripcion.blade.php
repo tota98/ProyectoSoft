@@ -205,19 +205,35 @@
     <!-- FORMULARIO PARA REGISTRAR INSCRIPCION -->
     
         <form method ="post" action="{{route('actividades.store')}}">
-            {{ csrf_field() }}
-            <div class="form-group form-inline"> 
-                <div class="form-group col-md-6">
-                    <div class="form-group">                
-                            <label for="tipo">Numero de inscripcion</label>
-                            <input id="numInscripcion" type="text" class="form-control" name = "numInscripcion" placeholder="Numero de inscripcion">
+            {{ csrf_field() }}                
+            <div class="form-group col-md-12">
+                    <div class="form-group">
+                        <label for="inputState">Numero de inscripcion</label>
+                        <input placeholder="Numero de inscripcion" type="text" id="numInscripcion" name="numInscripcion" class="form-control" style="width: 240px;">
                     </div>
-                        <button type="submit" class="btn btn-primary">Registrar</button>
                 </div>
-            </div>        
+                <button type="submit" class="btn btn-primary" style="margin-left: 15px;">Registrar</button>
+    
         </form>
     </div>
 </div>
 
 </body>
+
+<script type="text/javascript">
+
+    $(".btn-submit").click(){
+        swal({
+            title: "¿Seguro que ingresó el número de inscripción correcto?",
+            text: "Una vez ingresado, no podrá modificarse",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            buttons: ["Cancelar", "Aceptar"],
+        })
+        Enviar();
+    });
+
+</script>
+
 </html>

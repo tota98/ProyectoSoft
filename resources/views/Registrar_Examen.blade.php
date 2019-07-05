@@ -221,37 +221,21 @@
 
          <h1>REGISTRO<span class="badge badge-secondary"></span></h1>
    
-    <!-- FORMULARIO PARA REGISTRAR INSCRIPCION -->
+    <!-- FORMULARIO PARA REGISTRAR EXAMEN -->
     
         <form method ="post" action="{{route('actividades.store')}}">
             {{ csrf_field() }}
-
-            <div class="btn-group-vertical">
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Actividad 1</button>
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Actividad 2</button>
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Actividad 3</button>
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Actividad 4</button>
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Actividad 5</button>
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Actividad 6</button>
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Actividad 7</button>
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Actividad 8</button>
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Actividad 9</button>
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Actividad 10</button>
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Actividad 11</button>
-            </div>
-
-            <div class="form-group col-md-6">
-                <div class="form-group">                              
-                        <label for="tipo">Nota</label>
-                        <input id="nota" type="text" class="form-control" name = "nota" placeholder="Numero de inscripcion">
-
+                <div class="form-group col-md-12">
+                    <div class="form-group">
                         <label for="inputState">Fecha del examen de titulo</label>
-                        <input placeholder="fecha" type="text" id="fechaExamen" name="fechaExamen" class="form-control datepicker" style="width: 120px;">
+                        <input placeholder="Fecha" type="text" id="fechaExamen" name="fechaExamen" class="form-control datepicker" style="width: 120px;">
+                    </div>
+                    <div class="form-group">                                            
+                        <label for="tipo">Nota</label>
+                        <input id="nota" type="text" class="form-control" name = "nota" placeholder="Nota examen" style="width: 120px;">
+                    </div>
                 </div>
-                    <button type="submit" class="btn btn-primary">Registrar</button>
-            </div>
-        </div>
-        
+                <button type="submit" class="btn btn-primary" style="margin-left: 15px;">Registrar</button>
         </form>
     </div>
 </div>
