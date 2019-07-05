@@ -13,7 +13,7 @@ use App\actividad_profesor;
 use Illuminate\Support\Facades\Validator;
 use DB;
 class InscripcionController extends Controller
-{
+{   
     public function registrar(Request $request)
     {
         //dd($request->all());
@@ -118,5 +118,5 @@ class InscripcionController extends Controller
       
          //METODO ALTERNATIVO
             
-    }  //
+        }   
 }
