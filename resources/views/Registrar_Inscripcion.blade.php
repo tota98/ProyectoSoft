@@ -187,66 +187,75 @@
         </div>
     </nav>
 
+
 <div class="container theme-showcase" role="main" id="main">
     <div class="jumbotron">
          <div class="input-group input-group-lg hidden">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-lg">BÚSQUEDA</span>
-             </div>
-             <input id="buscar" name="buscar" type="text" class="form-control" placeholder="numero"/>
-             <div id="sugerencias"></div>
-         </div>
+            
+        </div>
          @include('Alerts.Notificacion')  
 
-         <h1>Inscripción Formal<span class="badge badge-secondary"></span></h1>
+         <h2>Inscripción Formal<span class="badge badge-secondary"></span></h2>
    
     <!-- FORMULARIO PARA REGISTRAR INSCRIPCION -->
     
         <form>
-            {{ csrf_field() }}                
-            <div class="form-group col-md-12">
+            {{ csrf_field() }}
+            @php
+                $count = 0;
+            @endphp                      
+                <table class="table" id="tabla">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Titulo</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Fecha registro</th>
+                        <th scope="col">Seleccion</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($actividad_titulacions as $actividad)
+                        @if($actividad->estado == "INGRESADA")
+                        @break($count == 10)
+                        <tr>
+                        <td id="id_actividad">{{$actividad->id}}</td>
+                        <td>{{$actividad->titulo}}</td>
+                        <td>{{$actividad->estado}}</td>
+                        <td>{{$actividad->fecha_registro}}</td>
+                        <td>
+                        <div class="form-group">
+                            <input class="custom-control-input" type="checkbox" id="ACEPTAR" name="ACEPTAR" value="$actividad->id">
+                            <label class="custom-control-label" for="defaultUnchecked">¿Aceptar?</label>
+
+                        </div>
+                        </td>
+                        @php
+                            $count++;
+                        @endphp
+                        @endif
+                        </tr>
+                        @endforeach
+                    
+                    </tbody>
+                </table>
+        
+                <div class="form-group col-md-12">
                     <div class="form-group">
                         <label for="inputState">Numero de inscripcion </label>
-                        <input id="numero" name="numero" type="text" class="form-control" placeholder="numero"/>
-            
-                    </div>        
-            </div>
-            
-                
-               
-            
-                <button type="submit" class="btn btn-primary" style="margin-left: 15px;" id="boton">Registrar </button>
-                <table class="table" id="tabla">
-                <thead class="thead-dark">
-                  <tr>
-                    <th scope="col">id</th>
-                    <th scope="col">Titulo</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col">Fecha registro</th>
-                    <th scope="col">Seleccion</th>
-                  </tr>
-                </thead>
-                     <tbody>
-                       
-
-                       @foreach($actividad_titulacions as $actividad)
-                       <tr>
-                      <td id="id_actividad">{{$actividad->id}}</td>
-                         <td>{{$actividad->titulo}}</td>
-                         <td>{{$actividad->estado}}</td>
-                         <td>{{$actividad->fecha_registro}}</td>
-                         <td>
-                         <input id="radio"  type="radio" class="form-check-input" id="seleccionar" name="seleccionar">
-                         </td>
-                       </tr>
-                          @endforeach
-                    
-                     </tbody>
-                </table>
-        </form>
+                        @if($count < 10 )
+                        <input class="form-control" id="disabledInput" type="text" placeholder="Rut" disabled>
+                        @else
+                        <input id="buscar" name="buscar" type="text" class="form-control" placeholder="Rut"/>
+                        <div id="sugerencias"></div>
+                        @endif
+                    </div>  
         
-    </div>
-</div>
+                </div>
+                    <button type="submit" class="btn btn-primary" style="margin-left: 15px;"name="Actualizar" id="boton">Registrar </button>
+                </div>
+                </form>
+         </div>
 
 </body>
 
@@ -319,4 +328,54 @@ function Enviar(){
             });
 }
 </script>
+<script>
+         $(document).ready(function(){
+
+            $('#buscar').keyup(function(event){
+
+            var key = event.key;
+            if(key == "Backspace"){
+                if ($('#buscar').val() == '') 
+                {
+                    $('#sugerencias').fadeOut(0);
+                }
+            }
+            var query = $(this).val();
+            
+            if(query != '')
+            { 
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    
+                    
+                    url:'{{ route('autocomplete.estudiante') }}',
+                    method:"POST",
+                    data:{query:query, _token:_token},
+                    success:function(data){
+                        $('#sugerencias').fadeIn(0);
+                        $('#sugerencias').html(data);
+                    }
+                }).fail( function( jqXHR, textStatus, errorThrown ) {
+                        alert( 'Error, revise la conexion con la base de datos ' )
+                });
+
+
+            }
+});
+            $(document).on('click', 'li', function(){ 
+                 
+                
+
+              $('#buscar').val(""); 
+              var array =  $(this).text().split(" | ").join("|");
+              array = array.split("|");
+             
+              $('#sugerencias').fadeOut(0);
+              (array[6]);
+              
+                
+            });
+         });
+         
+    </script>
 </html>
