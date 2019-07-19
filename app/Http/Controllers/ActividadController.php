@@ -62,9 +62,11 @@ class ActividadController extends Controller
     public function ActualizarIncripciones($id)
     {
         $inscripcion = actividade_titulacion::find($id);
-        $inscripcion->estato = "ACEPTADO";
+        $inscripcion->estado = "ACEPTADO";
         $inscripcion->numero_inscripcion = $request->get("numero");
         $inscripcion->save();
+
+        return view('Registrar_Inscripcion', compact('inscripcion'));
         
     }
     public function ActualizarFinalizar($id)
