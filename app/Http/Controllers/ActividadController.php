@@ -32,7 +32,6 @@ class ActividadController extends Controller
     public function RegistroInscripcion(){
         
         $cantidad = DB::table('actividad_titulacions')->count();
-        
         $actividad_list = DB::table('tipo_actividads')->get();
         $actividad_titulacions = DB::table('actividad_titulacions')->get();
         return view('Registrar_Inscripcion')->with('cantidad',$cantidad)->with('actividad_list',$actividad_list)->with('actividad_titulacions',$actividad_titulacions);   
@@ -59,9 +58,10 @@ class ActividadController extends Controller
         $actividades = Tipo_actividad::all();
         return view('Actualizar_Actividad',compact('actividades'));
     }
-    public function ActualizarIncripciones($id)
+    public function ActualizarIncripciones(Request $request)
     {
-        $inscripcion = actividade_titulacion::find($id);
+        $z = $request->$id;
+        $inscripcion = actividade_titulacion::find($z);
         $inscripcion->estado = "ACEPTADO";
         $inscripcion->numero_inscripcion = $request->get("numero");
         $inscripcion->save();
@@ -69,12 +69,15 @@ class ActividadController extends Controller
         return view('Registrar_Inscripcion', compact('inscripcion'));
         
     }
-    public function ActualizarFinalizar($id)
+    public function ActualizarFinalizar(Request $request)
     {
-        $inscripcion = actividade_titulacion::find($id);
+        $z = $request->$id;
+        $inscripcion = actividade_titulacion::find($z);
         $inscripcion->estato = "FINALIZADO";
         $inscripcion->numero_inscripcion = $request->get("Estado");
         $inscripcion->save();
+
+        return view('Registrar_Registro', compact('inscripcion'));
     }
     /**
      * Store a newly created resource in storage.
