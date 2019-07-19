@@ -192,88 +192,91 @@
 
 <body>
 
-    <div id="app" >
-    
-    <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-        <div class="container">
-            <a class="navbar-brand">
-                Titulación
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-                     <a class="navbar-brand" href="{{ url('/') }}">
-                     Inicio
-                </ul>
-             </a>
-        </div>
-    </nav>
-
-<div class="container theme-showcase" role="main" id="main">
-    <div class="jumbotron">
-         <div class="input-group input-group-lg hidden">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-lg">BÚSQUEDA</span>
-             </div>
-             <input id="buscar" name="buscar" type="text" class="form-control" placeholder="Buscar por rut" />
-             <div id="sugerencias"></div>
-         </div>
-         @include('Alerts.Notificacion')  
-
-         <h1>Exámenes de Título <span class="badge badge-secondary"></span></h1>
-   
-    <!-- FORMULARIO PARA REGISTRAR EXAMEN -->
-    
-    <form>
-            {{ csrf_field() }}                
-            <div class="form-group col-md-12">
-                    <div class="form-group">
-                        <label for="inputState">Fecha examen </label>
-                        <input id="fechaExamen" name="fechaExamen" type="text" class="form-control datepicker" style="width: 120px" placeholder="Fecha Examen"/>
-            
-                    </div>  
-                    <div class="form-group">
-                        <label for="inputState">Nota </label>
-                        <input id="nota" name="nota" type="text" class="form-control" style="width: 120px" placeholder="Notas"/>
-            
-                    </div>      
-            </div>
-            
-                
-               
-            
-                <button type="submit" class="btn btn-primary" style="margin-left: 15px;">Registrar</button>
-                <table class="table">
-                <thead class="thead-dark">
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Título</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col">Fecha registro</th>
-                    <th scope="col">Seleccion</th>
-                  </tr>
-                </thead>
-                     <tbody>
-                       
-
-                       @foreach($actividad_titulacions as $actividad)
-                       <tr>
-                         <th scope="row">1</th>
-                         <td>{{$actividad->titulo}}</td>
-                         <td>{{$actividad->estado}}</td>
-                         <td>{{$actividad->fecha_registro}}</td>
-                         <td>
-                         <input class="form-check-input" type="radio" id="seleccionar" name="seleccionar">
-                         </td>
-                       </tr>
-                          @endforeach
-                    
-                     </tbody>
-                </table>
-        </form>
+        <div id="app" >
         
-    </div>
-</div>
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+            <div class="container">
+                <a class="navbar-brand">
+                    Titulación
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav mr-auto">
+                        <a class="navbar-brand" href="{{ url('/') }}">
+                        Inicio
+                    </ul>
+                </a>
+            </div>
+        </nav>
+
+    <div class="container theme-showcase" role="main" id="main">
+        <div class="jumbotron">
+            <div class="input-group input-group-lg hidden">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-lg">BÚSQUEDA</span>
+                </div>
+                <input id="buscar" name="buscar" type="text" class="form-control" placeholder="Buscar por rut" />
+                <div id="sugerencias"></div>
+            </div>
+                @include('Alerts.Notificacion')  
+
+                <h2>Exámenes de Título <span class="badge badge-secondary"></span></h2>
+    
+                <!-- FORMULARIO PARA REGISTRAR EXAMEN -->
+        
+                <form>
+                    {{ csrf_field() }}
+                    @php
+                        $count = 0;
+                    @endphp                  
+                    <div class="form-group col-md-12">
+                        <table class="table">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Título</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Fecha registro</th>
+                                <th scope="col">Seleccion</th>
+                             </tr>
+                             </thead>
+                             <tbody>
+                             @foreach($actividad_titulacions as $actividad)
+                             @if($actividad->estado == "FINALIZADA")
+                                @break($count == 10)
+                                <tr>
+                                <td id="id_actividad">{{$actividad->id}}</td>
+                                <td>{{$actividad->titulo}}</td>
+                                <td>{{$actividad->estado}}</td>
+                                <td>{{$actividad->fecha_registro}}</td>
+                                <td>
+                                <input class="form-check-input" type="radio" id="seleccionar" name="seleccionar">
+                                </td>
+                                @php
+                                $count++;
+                                @endphp
+                                @endif
+                                </tr>
+                             @endforeach
+                             </tbody>
+                         </table>
+                        <div class="form-group col-md-12">
+                        <div class="form-group">
+                            <label for="inputState">Numero de inscripcion </label>
+                            @if($count < 10 )
+                            <input class="form-control" id="disabledInput" type="text" placeholder="Rut" disabled>
+                            @else
+                            <input id="numero" name="numero" type="text" class="form-control" placeholder="Rut"/>
+                            @endif
+                        </div>  
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="margin-left: 15px;">Registrar</button>
+                     </div> 
+                 </form>
+         </div>     
+     </div>     
+ 
+    
 
 </body>
 
