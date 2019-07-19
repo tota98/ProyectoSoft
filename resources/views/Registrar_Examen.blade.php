@@ -230,13 +230,14 @@
                         $count = 0;
                     @endphp                  
                     <div class="form-group col-md-12">
-                        <table class="table">
+                        <input type="text" id="ID1" onkeyup="myFunction()" placeholder="Search for names..">
+                        <table class="table" id="tabla">
                             <thead class="thead-dark">
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Título</th>
                                 <th scope="col">Estado</th>
-                                <th scope="col">Fecha registro</th>
+                                
                                 <th scope="col">Seleccion</th>
                              </tr>
                              </thead>
@@ -248,7 +249,6 @@
                                 <td id="id_actividad">{{$actividad->id}}</td>
                                 <td>{{$actividad->titulo}}</td>
                                 <td>{{$actividad->estado}}</td>
-                                <td>{{$actividad->fecha_registro}}</td>
                                 <td>
                                 <input class="form-check-input" type="radio" id="seleccionar" name="seleccionar">
                                 </td>
@@ -304,4 +304,32 @@ var tabla = document.getElementById("tabla");
 
 });
 </script>
+<script>
+    function myFunction() {
+  // Declare variables 
+  var input, filter, table, tr, td, i, j, visible;
+  input = document.getElementById("ID1");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("tabla");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    visible = false;
+    /* Obtenemos todas las celdas de la fila, no sólo la primera */
+    td = tr[i].getElementsByTagName("td");
+    for (j = 0; j < td.length; j++) {
+      if (td[j] && td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+        visible = true;
+      }
+    }
+    if (visible === true) {
+      tr[i].style.display = "";
+    } else {
+      tr[i].style.display = "none";
+    }
+  }
+}
+
+    </script>
 </html>
