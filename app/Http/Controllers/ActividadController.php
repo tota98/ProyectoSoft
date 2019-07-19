@@ -59,19 +59,18 @@ class ActividadController extends Controller
         $actividades = Tipo_actividad::all();
         return view('Actualizar_Actividad',compact('actividades'));
     }
-    public function ActualizarIncripciones($request)
+    public function ActualizarIncripciones($id)
     {
-
-        $id = $request->get("id_actividad");
         $inscripcion = actividade_titulacion::find($id);
+        $inscripcion->estato = "ACEPTADO";
         $inscripcion->numero_inscripcion = $request->get("numero");
         $inscripcion->save();
         
     }
-    public function ActualizarFinalizar()
+    public function ActualizarFinalizar($id)
     {
-        $id = $request->get("id_actividad");
         $inscripcion = actividade_titulacion::find($id);
+        $inscripcion->estato = "FINALIZADO";
         $inscripcion->numero_inscripcion = $request->get("Estado");
         $inscripcion->save();
     }
@@ -212,7 +211,7 @@ class ActividadController extends Controller
         \Session::flash('success','Eliminacion de actividad con exito.');
     
     }
-
+    
     
 
     public function Modificar(Request $request)
@@ -225,7 +224,7 @@ class ActividadController extends Controller
             
         
         ]);
-        
+
         if($isChecked = $request->has('ELIMINAR')){
             $id = $request->get('id_Actividad');
             return self::destroy($id);
