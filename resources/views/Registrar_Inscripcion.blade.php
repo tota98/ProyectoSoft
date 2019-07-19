@@ -257,7 +257,7 @@
                     </div>  
         
                 </div>
-                    <button type="submit" class="btn btn-primary" style="margin-left: 15px;"name="Actualizar" id="boton">Registrar </button>
+                    <button type="submit" class="btn btn-primary" style="margin-left: 15px;"name="Actualizar" id="boton">Actualizar </button>
                 </div>
                 
                 </form>
