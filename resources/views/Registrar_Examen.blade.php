@@ -226,24 +226,39 @@
         
                 <form>
                     {{ csrf_field() }}
+                    <div class="container">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputState">Fecha examen </label>
+                                <input id="fechaExamen" name="fechaExamen" type="text" class="form-control datepicker" style="width: 120px" placeholder="Fecha Examen"/>
+                            </div>
+            
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputState">Nota </label>
+                                <input id="nota" name="nota" type="text" class="form-control" style="width: 120px" placeholder="Notas"/>  
+                            </div>
+                        </div>
+                    </div>
+
                     @php
                         $count = 0;
-                    @endphp                  
-                    <div class="form-group col-md-12">
-                        <input type="text" id="ID1" onkeyup="myFunction()" placeholder="Search for names..">
-                        <table class="table" id="tabla">
-                            <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Título</th>
-                                <th scope="col">Estado</th>
+                    @endphp
+                    <input type="text" id="ID1" onkeyup="myFunction()" placeholder="Buscar rut..">                 
+                    <table class="table" id="tabla">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Título</th>
+                            <th scope="col">Estado</th>
                                 
-                                <th scope="col">Seleccion</th>
-                             </tr>
-                             </thead>
-                             <tbody>
-                             @foreach($actividad_titulacions as $actividad)
-                             @if($actividad->estado == "FINALIZADA")
+                            <th scope="col">Seleccion</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($actividad_titulacions as $actividad)
+                            @if($actividad->estado == "ACEPTADA")
                                 @break($count == 10)
                                 <tr>
                                 <td id="id_actividad">{{$actividad->id}}</td>
@@ -257,9 +272,9 @@
                                 @endphp
                                 @endif
                                 </tr>
-                             @endforeach
-                             </tbody>
-                         </table>
+                            @endforeach
+                            </tbody>
+                        </table>
                         <div class="form-group col-md-12">
                         <div class="form-group">
                             <label for="inputState">Numero de inscripcion </label>
@@ -270,8 +285,8 @@
                             @endif
                         </div>  
                         </div>
-                        <button type="submit" class="btn btn-primary" style="margin-left: 15px;">Registrar</button>
-                     </div> 
+                        <button  type="submit" class="btn btn-primary btn-submit" style = "margin-bottom: -55px">Registrar</button>
+                      
                  </form>
          </div>     
      </div>     
@@ -282,17 +297,12 @@
 
 <script type="text/javascript">
 
-    //$(".btn-submit").click(){
-        //swal({
-            //title: "¿Seguro que ingresó el número de inscripción correcto?",
-            //text: "Una vez ingresado, no podrá modificarse",
-            //icon: "warning",
-            //buttons: true,
-            //dangerMode: true,
-            //buttons: ["Cancelar", "Aceptar"],
-        //})
-        //Enviar();
-    //});
+    $(".btn-submit").click(function(e){
+      if($('#seleccionar').is(":checked")){
+        Enviar();    
+      }
+    });
+    
 
 </script>
 
@@ -330,6 +340,43 @@ var tabla = document.getElementById("tabla");
     }
   }
 }
+</script>
 
-    </script>
+<script>
+function Enviar(){
+        $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+            var id_actividad = $("input[id_actividad]").val();
+            var nota = $("input[id=nota]").val();
+            var fechaExamen = $("input[id=fechaExamen]").val()
+
+            var participacion;
+            var ischecked2 = $('#seleccionar').is(":checked");
+            if(ischecked2){
+                Seleccion = "on";
+            }
+            else{
+                Seleccion = "off;"
+            }
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+            
+            type:'get',
+            url:'/Registrar_Examen',
+            data:{id_actividad:id_actividad,nota:nota,fechaExamen:fechaExamen,Seleccion:Seleccion,_token:_token},
+            success:function(data){
+                location.reload(); 
+            }
+           
+            }).fail( function( jqXHR, textStatus, errorThrown ) {
+                alert( 'ERROR, revise que los datos del formulario esten correctos. ' )
+                //location.reload();
+            });
+            }
+
+
+</script>
 </html>
