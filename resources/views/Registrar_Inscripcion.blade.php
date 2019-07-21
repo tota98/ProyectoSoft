@@ -228,12 +228,8 @@
                             <td>{{$actividad->titulo}}</td>
                             <td>{{$actividad->estado}}</td>
                             
-                            <td>
-                            <div class="form-group">
-                                <input class="custom-control-input" type="checkbox" id="ACEPTAR" name="ACEPTAR" value="$actividad->id">
-                                <label class="custom-control-label" for="defaultUnchecked">¿Aceptar?</label>
-
-                            </div>
+                            <td>                           
+                            <input class="form-check-input" type="radio" id="seleccionar" name="seleccionar">
                             </td>
                             @php
                                 $count++;
@@ -412,4 +408,49 @@ function Enviar(){
 }
 
     </script>
+<script>
+function Enviar(){
+        $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+            var nombre = $("input[id=nombre]").val();
+            var cantEst = $("input[id=cantEst]").val();
+            var duracion = $("input [id=duracion]").val();
+            var id_Actividad = $("input [id=id_Actividad]").val();
+            var participacion;
+            var ischecked2 = $('#participacion_organizacion').is(":checked");
+            if(ischecked2){
+                participacion = "on";
+            }
+            else{
+                participacion = "off;"
+            }
+            var eliminar = $('#ELIMINAR').val();
+            var ischecked = $('#ELIMINAR').is(":checked");
+            if (ischecked) {
+                eliminar = "on";
+            }
+            else{
+                eliminar = "off";
+            }
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+            
+               type:'get',
+               url:'/Modificar_Actividad',
+               data:{nombre:nombre,cantEst:cantEst,duracion:duracion,participacion:participacion,eliminar:eliminar,_token:_token},
+               success:function(data){
+                    location.reload(); 
+               }
+           
+            }).fail( function( jqXHR, textStatus, errorThrown ) {
+                alert( 'ERROR, revise que los datos del formulario esten correctos. ' )
+                //location.reload();
+            });
+            }
+
+
+</script>
 </html>
