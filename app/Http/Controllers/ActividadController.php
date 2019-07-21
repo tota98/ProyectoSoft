@@ -60,8 +60,8 @@ class ActividadController extends Controller
     }
     public function ActualizarIncripciones(Request $request)
     {
-        $z = $request->$id;
-        $inscripcion = actividade_titulacion::find($z);
+        $id = $request->get("id_actividad");
+        $inscripcion = actividade_titulacion::find($id);
         $inscripcion->estado = "ACEPTADO";
         $inscripcion->numero_inscripcion = $request->get("numero");
         $inscripcion->save();
@@ -71,13 +71,14 @@ class ActividadController extends Controller
     }
     public function ActualizarFinalizar(Request $request)
     {
-        $z = $request->$id;
-        $inscripcion = actividade_titulacion::find($z);
-        $inscripcion->estato = "FINALIZADO";
-        $inscripcion->numero_inscripcion = $request->get("Estado");
-        $inscripcion->save();
-
-        return view('Registrar_Registro', compact('inscripcion'));
+            $id = $request->get("id_actividad");
+            $inscripcion = actividade_titulacion::find($id);
+            $inscripcion->fecha_examen = $request->get('fechaExamen');
+            $inscripcion->nota = $request->get('nota');
+            $inscripcion->estato = "FINALIZADO";
+            $inscripcion->save();
+        
+        return view('Registrar_Registro', compact('$inscripcion'));
     }
     /**
      * Store a newly created resource in storage.
