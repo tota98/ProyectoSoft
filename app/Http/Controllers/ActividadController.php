@@ -58,25 +58,24 @@ class ActividadController extends Controller
         $actividades = Tipo_actividad::all();
         return view('Actualizar_Actividad',compact('actividades'));
     }
-    public function ActualizarIncripciones(Request $request)
+    public function ActualizarInscripciones(Request $request)
     {
         $id = $request->get("id_actividad");
-        $inscripcion = actividade_titulacion::find($id);
+        $inscripcion = actividad_titulacion::find($id);
         $inscripcion->estado = "ACEPTADO";
-        $inscripcion->numero_inscripcion = $request->get("numero");
         $inscripcion->save();
 
         return view('Registrar_Inscripcion', compact('inscripcion'));
         
     }
-    public function ActualizarFinalizar(Request $request)
+    public function ActualizarFinalizars(Request $request)
     {
-            $id = $request->get("id_actividad");
-            $inscripcion = actividade_titulacion::find($id);
-            $inscripcion->fecha_examen = $request->get('fechaExamen');
-            $inscripcion->nota = $request->get('nota');
-            $inscripcion->estato = "FINALIZADO";
-            $inscripcion->save();
+        $id = $request->get("id_actividad");
+        $inscripcion = actividad_titulacion::find($id);
+        $inscripcion->fecha_examen = $request->get('fechaExamen');
+        $inscripcion->nota = $request->get('nota');
+        $inscripcion->estato = "FINALIZADO";
+        $inscripcion->save();
         
         return view('Registrar_Registro', compact('$inscripcion'));
     }
