@@ -194,102 +194,110 @@
 
         <div id="app" >
         
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
-                <a class="navbar-brand">
-                    Titulación
+            <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+                <div class="container">
+                    <a class="navbar-brand">
+                        Titulación
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        <a class="navbar-brand" href="{{ url('/') }}">
-                        Inicio
-                    </ul>
-                </a>
-            </div>
-        </nav>
-
-    <div class="container theme-showcase" role="main" id="main">
-        <div class="jumbotron">
-            <div class="input-group input-group-lg hidden">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-lg">BÚSQUEDA</span>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <!-- Left Side Of Navbar -->
+                        <ul class="navbar-nav mr-auto">
+                            <a class="navbar-brand" href="{{ url('/') }}">
+                            Inicio
+                        </ul>
+                    </a>
                 </div>
-                <input id="buscar" name="buscar" type="text" class="form-control" placeholder="Buscar por rut" />
-                <div id="sugerencias"></div>
-            </div>
-                @include('Alerts.Notificacion')  
+            </nav>
 
-                <h2>Exámenes de Título <span class="badge badge-secondary"></span></h2>
-    
-                <!-- FORMULARIO PARA REGISTRAR EXAMEN -->
-        
-                <form>
-                    {{ csrf_field() }}
-                    <div class="container">
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputState">Fecha examen </label>
-                                <input id="fechaExamen" name="fechaExamen" type="text" class="form-control datepicker" style="width: 120px" placeholder="Fecha Examen"/>
-                            </div>
-            
+            <div class="container theme-showcase" role="main" id="main">
+                <div class="jumbotron">
+                    <div class="input-group input-group-lg hidden">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-lg">BÚSQUEDA</span>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputState">Nota </label>
-                                <input id="nota" name="nota" type="text" class="form-control" style="width: 120px" placeholder="Notas"/>  
-                            </div>
-                        </div>
+                        <input id="buscar" name="buscar" type="text" class="form-control" placeholder="Buscar por rut" />
+                        <div id="sugerencias"></div>
                     </div>
+                    @include('Alerts.Notificacion')  
 
-                    @php
-                        $count = 0;
-                    @endphp
-                    <input type="text" id="ID1" onkeyup="myFunction()" placeholder="Buscar rut..">                 
-                    <table class="table" id="tabla">
-                        <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Título</th>
-                            <th scope="col">Estado</th>
-                                
-                            <th scope="col">Seleccion</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($actividad_titulacions as $actividad)
-                            @if($actividad->estado == "ACEPTADA")
-                                @break($count == 10)
-                                <tr>
-                                <td id="id_actividad">{{$actividad->id}}</td>
-                                <td>{{$actividad->titulo}}</td>
-                                <td>{{$actividad->estado}}</td>
-                                <td>
-                                <input class="form-check-input" type="radio" id="seleccionar" name="seleccionar">
-                                </td>
-                                @php
-                                $count++;
-                                @endphp
-                                @endif
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                        <div class="form-group col-md-12">
-                        <div class="form-group">
-                            <label for="inputState">Numero de inscripcion </label>
-                            @if($count < 10 )
-                            <input class="form-control" id="disabledInput" type="text" placeholder="Rut" disabled>
-                            @else
-                            <input id="numero" name="numero" type="text" class="form-control" placeholder="Rut"/>
-                            @endif
-                        </div>  
+                    <h2>Exámenes de Título <span class="badge badge-secondary"></span></h2>
+            
+                    <!-- FORMULARIO PARA REGISTRAR EXAMEN -->
+                
+                    <form method ="post" id="form">
+                        {{ csrf_field() }}
+                        <div class="container">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputState">Fecha examen </label>
+                                    <input id="fechaExamen" name="fechaExamen" type="text" class="form-control datepicker" style="width: 120px" placeholder="Fecha Examen"/>
+                                </div>
+                    
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputState">Nota </label>
+                                    <input id="nota" name="nota" type="text" class="form-control" style="width: 120px" placeholder="Notas"/>  
+                                </div>
+                            </div>
                         </div>
-                        <button  type="submit" class="btn btn-primary btn-submit" style = "margin-bottom: -55px">Registrar</button>
-                      
-                 </form>
+
+                        @php
+                            $count = 0;
+                        @endphp
+                        <input type="text" id="ID1" onkeyup="myFunction()" placeholder="Buscar rut..">                 
+                        <table class="table" id="tabla">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Título</th>
+                                <th scope="col">Estado</th>
+                                    
+                                <th scope="col">Seleccion</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($actividad_titulacions as $actividad)
+                                    @if($actividad->estado == "ACEPTADA")
+                                        @break($count == 10)
+                                    <tr>
+                                        <td id="id_actividad">{{$actividad->id}}</td>
+                                        <td>{{$actividad->titulo}}</td>
+                                        <td>{{$actividad->estado}}</td>
+                                        <td>
+                                        <input class="form-check-input" type="radio" id="seleccionar" name="seleccionar">
+                                        <script>
+                                        if($('#seleccionar').is(":checked")){
+                                            id1 = id};
+                                        }
+                                        </script>
+                                        </td>
+                                        @php
+                                            $count++;
+                                        @endphp
+                                    @endif
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                         </table>
+                         <div class="form-group col-md-12">
+                            <div class="form-group">
+                                    
+                                @if($count < 10 )
+                                <input class="form-control" id="disabledInput" type="text" placeholder="Rut" disabled>
+                                @else
+                                <input id="numero" name="numero" type="text" class="form-control" placeholder="Rut"/>
+                                @endif
+                            </div>  
+            
+                         </div>
+                         <button  type="submit" class="btn btn-primary btn-submit" style = "margin-bottom: -55px">Aplicar</button>
+                     </form>
+                     
+                            
+                        
+             </div>     
          </div>     
-     </div>     
  
     
 
@@ -298,9 +306,9 @@
 <script type="text/javascript">
 
     $(".btn-submit").click(function(e){
-      if($('#seleccionar').is(":checked")){
+      
         Enviar();    
-      }
+      
     });
     
 
@@ -349,24 +357,16 @@ function Enviar(){
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
         });
-            var id_actividad = $("input[id_actividad]").val();
+            var id = id1;
             var nota = $("input[id=nota]").val();
             var fechaExamen = $("input[id=fechaExamen]").val()
 
-            var participacion;
-            var ischecked2 = $('#seleccionar').is(":checked");
-            if(ischecked2){
-                Seleccion = "on";
-            }
-            else{
-                Seleccion = "off;"
-            }
             var _token = $('input[name="_token"]').val();
             $.ajax({
             
             type:'get',
-            url:'/Registrar_Examen',
-            data:{id_actividad:id_actividad,nota:nota,fechaExamen:fechaExamen,Seleccion:Seleccion,_token:_token},
+            url:'/Modificar_Examen',
+            data:{id:id,nota:nota,fechaExamen:fechaExamen,_token:_token},
             success:function(data){
                 location.reload(); 
             }
