@@ -172,162 +172,163 @@
 
     <div id="app" >
     
-    <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-        <div class="container">
-            <a class="navbar-brand">
-                Titulación
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+            <div class="container">
+                <a class="navbar-brand">
+                    Titulación
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-                     <a class="navbar-brand" href="{{ url('/') }}">
-                     Inicio
-                </ul>
-             </a>
-        </div>
-    </nav>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                        <ul class="navbar-nav mr-auto">
+                             <a class="navbar-brand" href="{{ url('/') }}">
+                            Inicio
+                            </a>
+                        </ul>
+                        
+                     </div>
+                </div>
+         </nav>
 
 
-<div class="container theme-showcase" role="main" id="main">
-    <div class="jumbotron">
-         <div class="input-group input-group-lg hidden">
+    <div class="container theme-showcase" role="main" id="main">
+        <div class="jumbotron">
+            <div class="input-group input-group-lg hidden">
             
-        </div>
-         @include('Alerts.Notificacion')  
+            </div>
+            @include('Alerts.Notificacion')  
 
-         <h2>Inscripción Formal<span class="badge badge-secondary"></span></h2>
-         <div class="form-group">
+            <h2>Inscripción Formal<span class="badge badge-secondary"></span></h2>
+            <div class="form-group">
                 <label for="inputAddress2">ID buscada</label>
-         </div>
+            </div>
 
    
     <!-- FORMULARIO PARA REGISTRAR INSCRIPCION -->
     
-        <form>
-            {{ csrf_field() }}
-            @php
-                $count = 0;
-            @endphp
+            <form method ="post" id="form">
+                {{ csrf_field() }}
+                @php
+                    $count = 0;
+                @endphp
                 <input type="text" id="ID1" onkeyup="myFunction()" placeholder="Search for names..">                      
                 <table class="table" id="tabla" >
                     <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">Titulo</th>
-                        <th scope="col">Estado</th>
-                        
-                        <th scope="col">Seleccion</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                            @foreach($actividad_titulacions as $actividad)
-                            @if($actividad->estado == "INGRESADA")
-                            @break($count == 10)
-                            <tr>
+                        <tr>
+                            <th scope="col">id</th>
+                            <th scope="col">Titulo</th>
+                            <th scope="col">Estado</th>
+                            
+                            <th scope="col">Seleccion</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        @foreach($actividad_titulacions as $actividad)
+                        @if($actividad->estado == "INGRESADA")
+                        @break($count == 10)
+                        <tr>
                             <td id="id_actividad">{{$actividad->id}}</td>
                             <td>{{$actividad->titulo}}</td>
                             <td>{{$actividad->estado}}</td>
                             
-                            <td>                           
-                            <input class="form-check-input" type="radio" id="seleccionar" name="seleccionar">
-                            </td>
+                            <td>
                             @php
                                 $count++;
-                            @endphp
+                            @endphp              
+                            <input class="form-check-input" type="radio" id="seleccionar" name="seleccionar">
+                            <script>
+                                if($('#seleccionar').is(":checked")){
+                                    ID = id;
+                                }
+                            </script>
+                            </td>
                             @endif
-                            </tr>
-                            @endforeach
+                        </tr>
+                        @endforeach
                          
                         
                     
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
         
-                <div class="form-group col-md-12">
-                    <div class="form-group">
-                        <label for="inputState">Numero de inscripcion </label>
+                    <div class="form-group col-md-12">
+                        <div class="form-group">
+                            @if($count < 10 )
+                            <input class="form-control" id="disabledInput" type="text" placeholder="Rut" disabled>
+                            @else
+                            <input id="numero" name="numero" type="text" class="form-control" placeholder="Rut"/>
+                            @endif
+                            <div id="sugerencias"></div>
                         
-                        <input id="buscar" name="buscar" type="text" class="form-control" placeholder="Rut"/>
-                        <div id="sugerencias"></div>
-                        
-                    </div>  
+                         </div>  
         
-                </div>
-                    <button type="submit" class="btn btn-primary" style="margin-left: 15px;"name="Actualizar" id="boton">Actualizar </button>
-                </div>
-                
+                     </div>
+                     <button type="submit" class="btn btn-primary btn-submit" style="margin-left: 15px;"name="Actualizar" id="boton">Aplicar </button>
                 </form>
+                
+                
+                
          </div>
+     </div>
 
 </body>
 
 <script type="text/javascript">
 
-    //$(".btn-submit").click(){
-        //swal({
-            //title: "¿Seguro que ingresó el número de inscripción correcto?",
-            //text: "Una vez ingresado, no podrá modificarse",
-            //icon: "warning",
-            //buttons: true,
-            //dangerMode: true,
-            //buttons: ["Cancelar", "Aceptar"],
-        //})
-        //Enviar();
+    $(".btn-submit").click(){
+        Enviar();
+    });
+
+</script>
+
+<script>
+    $(document).ready(function(){
+    var cantidad = 10;
+    var aux = "asdasdasd";
+    var tabla = document.getElementById("tabla");
+
+    });
+</script>
+
+<script>
+    //$("#boton1").click(function(e){
+
     //});
 
-</script>
-
-<script>
-$(document).ready(function(){
-var cantidad = 10;
-var aux = "asdasdasd";
-var tabla = document.getElementById("tabla");
-
-});
-</script>
-
-<script>
-$("#boton1").click(function(e){
-
-});
-
-var id_actividad;
+    //var id_actividad;
 
 
-$('input[type="radio"]').on('click change', function(e) {
+    //$('input[type="radio"]').on('click change', function(e) {
 
-});
+    //});
 function Enviar(){
         $.ajaxSetup({
         headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
         });
-            var numero = $("input[id=numero]").val();
-            var id_Actividad = $("input[id=id_Actividad]").val();
-            var id_Academico_1 = $("input[id=id_Academico_1]").val();
-            var id_Academico_2 = $("input[id=id_Academico_2]").val();
-            var fechaInicio = $("#fechaInicio").val();
-            var fechaTermino = $("#fechaTermino").val();
-            var estudiantes = 1;
+        
+        if($('#seleccionar').is(":checked")){
+            Seleccionar = "on"
+        }
+        else{
+            Seleccionar = "off"
+        }
+        var id_actividad = ID;
+
+        var _token = $('input[name="_token"]').val();
+        $.ajax({
             
-            
-            
-                var _token = $('input[name="_token"]').val();
-                $.ajax({
-            
-                    url:'{{ route('Inscripcion.registrar') }}',
-                    method:"POST",
-               data:{titulo:titulo,id_Actividad:id_Actividad,id_Academico_1:id_Academico_1,id_Academico_2:id_Academico_2,
-                fechaInicio:fechaInicio,fechaTermino:fechaTermino,estudiantes:estudiantes,_token:_token},
-               success:function(data){
-                
-               }
+        type:'get',
+        url:'/Modificar_Incripcion',
+        data:{id_actividad:id_actividad,Seleccionar:Seleccionar,_token:_token},
+        success:function(data){
+            location.reload();
+        }
            
-            }).fail( function( jqXHR, textStatus, errorThrown ) {
-                alert( 'dead ajax' )
+        }).fail( function( jqXHR, textStatus, errorThrown ) {
+            alert( 'dead ajax' )
                 //location.reload();
-            });
+        });
 }
 </script>
 <script>
@@ -408,49 +409,4 @@ function Enviar(){
 }
 
     </script>
-<script>
-function Enviar(){
-        $.ajaxSetup({
-        headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-        });
-            var nombre = $("input[id=nombre]").val();
-            var cantEst = $("input[id=cantEst]").val();
-            var duracion = $("input [id=duracion]").val();
-            var id_Actividad = $("input [id=id_Actividad]").val();
-            var participacion;
-            var ischecked2 = $('#participacion_organizacion').is(":checked");
-            if(ischecked2){
-                participacion = "on";
-            }
-            else{
-                participacion = "off;"
-            }
-            var eliminar = $('#ELIMINAR').val();
-            var ischecked = $('#ELIMINAR').is(":checked");
-            if (ischecked) {
-                eliminar = "on";
-            }
-            else{
-                eliminar = "off";
-            }
-                var _token = $('input[name="_token"]').val();
-                $.ajax({
-            
-               type:'get',
-               url:'/Modificar_Actividad',
-               data:{nombre:nombre,cantEst:cantEst,duracion:duracion,participacion:participacion,eliminar:eliminar,_token:_token},
-               success:function(data){
-                    location.reload(); 
-               }
-           
-            }).fail( function( jqXHR, textStatus, errorThrown ) {
-                alert( 'ERROR, revise que los datos del formulario esten correctos. ' )
-                //location.reload();
-            });
-            }
-
-
-</script>
 </html>
