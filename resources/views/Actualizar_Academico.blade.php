@@ -259,17 +259,17 @@
 
         </form>
         <div>
-            <div class="form-check">
+             <div class="form-check">
                  <input class="form-check-input" type="checkbox" id="ELIMINAR" name="ELIMINAR"   disabled>
                  <label class="form-check-label" for="defaultCheck1">
                  Eliminar Academico
                  </label>
-                 </div>
+             </div>
          
-             <button  type="submit" class="btn btn-primary btn-submit" style = "margin-bottom: -55px">Aplicar</button>
+         <button  type="submit" class="btn btn-primary btn-submit" style = "margin-bottom: -55px">Aplicar</button>
              
             
-          </div>
+         </div>
     </div>
     
     </div>
