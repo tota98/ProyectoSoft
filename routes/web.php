@@ -20,8 +20,6 @@ Route::get('/reg_1A', function ()
     return view('Registrar_Estudiante');
 });
 
-
-
 Route::resource('estudiantes','EstudianteController');
 
 
@@ -30,12 +28,16 @@ Route::get('/Modificar_Estudiante','EstudianteController@Modificar')
     ->name('estudiantes.modificar');
 Route::get('/Modificar_Academico','AcademicoController@Modificar')
     ->name('academicos.modificar');
-    Route::get('/Modificar_Actividad','ActividadController@Modificar')
+Route::get('/Modificar_Actividad','ActividadController@Modificar')
     ->name('actividades.modificar');
 
 Route::resource('actividades','ActividadController');
 
 Route::resource('academicos','AcademicoController');
+
+Route::get('/Modificar_Examen','ActividadController@ActualizarFinalizars');
+    
+Route::get('/Modificar_Incripcion','ActividadController@ActualizarInscripciones');
 
 
 Route::get('/Menu_Secretaria','SecretariaController@Menu')
