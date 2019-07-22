@@ -269,6 +269,7 @@
              
         </form>
         <button type="submit" class="btn btn-primary btn-submit">Aplicar</button>
+        
 
         
     </div>
@@ -279,9 +280,6 @@
 </body>
 
 <script>
-
-
-
     $(document).ready(function () {
 
         jQuery.validator.addMethod('lettersonly', function(value, element) {
@@ -314,9 +312,7 @@
 
         
     $('#form').validate({
-
-   
-        //se inicia plugin para validar en tiempo real
+      //se inicia plugin para validar en tiempo real
         rules: {
             nombre: {
                 required: true,
@@ -337,12 +333,6 @@
 
 
 <script type="text/javascript">
-
-
-
-
-
-
     $(".btn-submit").click(function(e){
       if($('#ELIMINAR').is(":checked")){
             
