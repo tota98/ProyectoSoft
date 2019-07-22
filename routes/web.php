@@ -35,9 +35,11 @@ Route::resource('actividades','ActividadController');
 
 Route::resource('academicos','AcademicoController');
 
-Route::get('/Modificar_Examen','ActividadController@ActualizarFinalizars');
+Route::get('/Modificar_Examen','ActividadController@ActualizarFinalizars')
+    ->name(actividades.update);
     
-Route::get('/Modificar_Incripcion','ActividadController@ActualizarInscripciones');
+Route::get('/Modificar_Incripcion','ActividadController@ActualizarInscripciones')
+    ->name(actividades.update);
 
 
 Route::get('/Menu_Secretaria','SecretariaController@Menu')
